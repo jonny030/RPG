@@ -352,8 +352,8 @@ QProgressBar::chunk {
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>images/play-button.png</normaloff>images/play-button.png</iconset>
+     <iconset resource="images_list.qrc">
+      <normaloff>:/assets/images/play-button.png</normaloff>:/assets/images/play-button.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -375,8 +375,8 @@ QProgressBar::chunk {
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>images/stop2.png</normaloff>images/stop2.png</iconset>
+     <iconset resource="images_list.qrc">
+      <normaloff>:/assets/images/stop2.png</normaloff>:/assets/images/stop2.png</iconset>
     </property>
     <property name="iconSize">
      <size>

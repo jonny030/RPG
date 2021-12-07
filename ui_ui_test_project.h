@@ -270,14 +270,14 @@ public:
         startButton->setGeometry(QRect(310, 420, 61, 31));
         startButton->setAutoFillBackground(false);
         QIcon icon3;
-        icon3.addFile(QString::fromUtf8("images/play-button.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QString::fromUtf8(":/assets/images/play-button.png"), QSize(), QIcon::Normal, QIcon::Off);
         startButton->setIcon(icon3);
         startButton->setIconSize(QSize(20, 20));
         stopButton = new QPushButton(centralwidget);
         stopButton->setObjectName(QString::fromUtf8("stopButton"));
         stopButton->setGeometry(QRect(400, 420, 61, 31));
         QIcon icon4;
-        icon4.addFile(QString::fromUtf8("images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon4.addFile(QString::fromUtf8(":/assets/images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
         stopButton->setIcon(icon4);
         stopButton->setIconSize(QSize(25, 25));
         UI_Test_Project->setCentralWidget(centralwidget);

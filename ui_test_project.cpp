@@ -7,7 +7,7 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
 {
     ui->setupUi(this);
     srand( time(NULL) );
-    QMovie *movie = new QMovie("images/monster1.gif");
+    QMovie *movie = new QMovie(":/assets/images/monster1.gif");
     movie->start();
     ui->monster->setMovie(movie);
     ui->monster->setScaledContents(true);
@@ -47,9 +47,9 @@ void UI_Test_Project::on_startButton_clicked()
 {
     m_nTimerID = this->startTimer(300);
     QIcon icon1,icon2;
-    icon1.addFile(QString::fromUtf8("images/stop.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon1.addFile(QString::fromUtf8(":/assets/images/stop.png"), QSize(), QIcon::Normal, QIcon::Off);
     ui->stopButton->setIcon(icon1);
-    icon2.addFile(QString::fromUtf8("images/play-button%1.png").arg(2), QSize(), QIcon::Normal, QIcon::Off);
+    icon2.addFile(QString::fromUtf8(":/assets/images/play-button%1.png").arg(2), QSize(), QIcon::Normal, QIcon::Off);
     ui->startButton->setIcon(icon2);
 }
 
@@ -58,9 +58,9 @@ void UI_Test_Project::on_stopButton_clicked()
 {
     killTimer(m_nTimerID);
     QIcon icon1,icon2;
-    icon1.addFile(QString::fromUtf8("images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon1.addFile(QString::fromUtf8(":/assets/images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
     ui->stopButton->setIcon(icon1);
-    icon2.addFile(QString::fromUtf8("images/play-button.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon2.addFile(QString::fromUtf8(":/assets/images/play-button.png"), QSize(), QIcon::Normal, QIcon::Off);
     ui->startButton->setIcon(icon2);
 }
 
