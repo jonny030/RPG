@@ -45,7 +45,7 @@ void UI_Test_Project::timerEvent(QTimerEvent *event){
 
 void UI_Test_Project::on_startButton_clicked()
 {
-    m_nTimerID = this->startTimer(400);
+    m_nTimerID = this->startTimer(300);
     QIcon icon1,icon2;
     icon1.addFile(QString::fromUtf8("images/stop.png"), QSize(), QIcon::Normal, QIcon::Off);
     ui->stopButton->setIcon(icon1);
