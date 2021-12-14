@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/assets" lang="img">
+        <file>images/backpack_black_24dp.png</file>
+        <file>images/backpack_black_24dp.svg</file>
+        <file>images/btnbg.png</file>
+        <file>images/cog-solid.png</file>
+        <file>images/cog-solid.svg</file>
+        <file>images/profile.png</file>
+        <file>images/store-solid.png</file>
+        <file>images/store-solid.svg</file>
+        <file>images/tumblr_p7k8f3fMWS1wvbydeo1_1280.png</file>
+        <file>images/monster1.gif</file>
+        <file>images/play-button.png</file>
+        <file>images/play-button2.png</file>
+        <file>images/stop.png</file>
+        <file>images/stop2.png</file>
+    </qresource>
+</RCC>
