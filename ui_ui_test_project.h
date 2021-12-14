@@ -11,10 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
-#include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -69,11 +67,13 @@ public:
     QVBoxLayout *_3;
     QFrame *backpack_action_bar;
     QHBoxLayout *_4;
-    QSpacerItem *horizontalSpacer_2;
-    QPushButton *close_backpack;
     QComboBox *select_item;
+    QPushButton *close_backpack;
     QLabel *item_info_panel;
-    QDialogButtonBox *item_action;
+    QFrame *item_action_btn;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -314,6 +314,7 @@ public:
         _2->setObjectName(QString::fromUtf8("_2"));
         equipment_layout = new QFrame(backpack_gui);
         equipment_layout->setObjectName(QString::fromUtf8("equipment_layout"));
+        equipment_layout->setMaximumSize(QSize(134, 16777215));
         equipment_layout->setStyleSheet(QString::fromUtf8("min-width:100px;\n"
 "background-color: gray;\n"
 "border:solid black 3px;"));
@@ -370,17 +371,28 @@ public:
         _3->setObjectName(QString::fromUtf8("_3"));
         backpack_action_bar = new QFrame(item_info);
         backpack_action_bar->setObjectName(QString::fromUtf8("backpack_action_bar"));
-        backpack_action_bar->setMaximumSize(QSize(16777215, 64));
-        backpack_action_bar->setStyleSheet(QString::fromUtf8("min-height:64px;\n"
-"max-heght:64px;"));
+        backpack_action_bar->setMinimumSize(QSize(0, 32));
+        backpack_action_bar->setMaximumSize(QSize(16777215, 48));
+        backpack_action_bar->setStyleSheet(QString::fromUtf8(""));
         _4 = new QHBoxLayout(backpack_action_bar);
         _4->setObjectName(QString::fromUtf8("_4"));
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        select_item = new QComboBox(backpack_action_bar);
+        select_item->setObjectName(QString::fromUtf8("select_item"));
+        select_item->setMinimumSize(QSize(0, 32));
+        select_item->setMaximumSize(QSize(16777215, 32));
+        select_item->setCursor(QCursor(Qt::PointingHandCursor));
+        select_item->setStyleSheet(QString::fromUtf8("background:white;\n"
+"border:3px solid black;\n"
+"border-width:8px;\n"
+"border-radius:16px;\n"
+""));
 
-        _4->addItem(horizontalSpacer_2);
+        _4->addWidget(select_item);
 
         close_backpack = new QPushButton(backpack_action_bar);
         close_backpack->setObjectName(QString::fromUtf8("close_backpack"));
+        close_backpack->setMinimumSize(QSize(36, 36));
+        close_backpack->setMaximumSize(QSize(32, 32));
         close_backpack->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "min-width:32px;min-height:32px;\n"
 "background:rgb(0, 0, 0);\n"
@@ -393,17 +405,6 @@ public:
 
         _3->addWidget(backpack_action_bar);
 
-        select_item = new QComboBox(item_info);
-        select_item->setObjectName(QString::fromUtf8("select_item"));
-        select_item->setCursor(QCursor(Qt::PointingHandCursor));
-        select_item->setStyleSheet(QString::fromUtf8("background:white;\n"
-"border:3px solid black;\n"
-"border-width:8px;\n"
-"border-radius:16px;\n"
-""));
-
-        _3->addWidget(select_item);
-
         item_info_panel = new QLabel(item_info);
         item_info_panel->setObjectName(QString::fromUtf8("item_info_panel"));
         item_info_panel->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
@@ -413,18 +414,30 @@ public:
 
         _3->addWidget(item_info_panel);
 
-        item_action = new QDialogButtonBox(item_info);
-        item_action->setObjectName(QString::fromUtf8("item_action"));
-        item_action->setStyleSheet(QString::fromUtf8("min-width:100px;\n"
-"color:white;\n"
-"background-color: black;\n"
-"border:solid black 3px;\n"
+        item_action_btn = new QFrame(item_info);
+        item_action_btn->setObjectName(QString::fromUtf8("item_action_btn"));
+        item_action_btn->setMaximumSize(QSize(16777215, 52));
+        item_action_btn->setStyleSheet(QString::fromUtf8(""));
+        horizontalLayout_2 = new QHBoxLayout(item_action_btn);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        pushButton = new QPushButton(item_action_btn);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
-        item_action->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
-        item_action->setCenterButtons(true);
 
-        _3->addWidget(item_action);
+        horizontalLayout_2->addWidget(pushButton);
+
+        pushButton_2 = new QPushButton(item_action_btn);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+"border-radius:16px;\n"
+"border-width:8px;"));
+
+        horizontalLayout_2->addWidget(pushButton_2);
+
+
+        _3->addWidget(item_action_btn);
 
 
         _2->addWidget(item_info);
@@ -458,6 +471,8 @@ public:
         offhand->setText(QCoreApplication::translate("UI_Test_Project", "\345\211\257\346\211\213\346\255\246\345\231\250", nullptr));
         close_backpack->setText(QCoreApplication::translate("UI_Test_Project", "X", nullptr));
         item_info_panel->setText(QCoreApplication::translate("UI_Test_Project", "\346\255\246\345\231\250\344\273\213\347\264\271\345\217\212\346\255\246\345\231\250\345\274\267\345\214\226\347\255\211\345\212\237\350\203\275", nullptr));
+        pushButton->setText(QCoreApplication::translate("UI_Test_Project", "\350\243\235\345\202\231", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("UI_Test_Project", "\345\215\207\347\264\232(+1)", nullptr));
     } // retranslateUi
 
 };

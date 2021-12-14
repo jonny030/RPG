@@ -419,6 +419,12 @@ border:solid black 3px;</string>
     <layout class="QHBoxLayout" name="_2">
      <item>
       <widget class="QFrame" name="equipment_layout">
+       <property name="maximumSize">
+        <size>
+         <width>134</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">min-width:100px;
 background-color: gray;
@@ -509,32 +515,62 @@ border:solid black 3px;</string>
        <layout class="QVBoxLayout" name="_3">
         <item>
          <widget class="QFrame" name="backpack_action_bar">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>64</height>
+            <height>48</height>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">min-height:64px;
-max-heght:64px;</string>
+           <string notr="true"/>
           </property>
           <layout class="QHBoxLayout" name="_4">
            <item>
-            <spacer name="horizontalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
+            <widget class="QComboBox" name="select_item">
+             <property name="minimumSize">
               <size>
-               <width>40</width>
-               <height>20</height>
+               <width>0</width>
+               <height>32</height>
               </size>
              </property>
-            </spacer>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background:white;
+border:3px solid black;
+border-width:8px;
+border-radius:16px;
+</string>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QPushButton" name="close_backpack">
+             <property name="minimumSize">
+              <size>
+               <width>36</width>
+               <height>36</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">border:3px solid black;
 min-width:32px;min-height:32px;
@@ -549,20 +585,6 @@ border-width:2px;</string>
             </widget>
            </item>
           </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="select_item">
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background:white;
-border:3px solid black;
-border-width:8px;
-border-radius:16px;
-</string>
-          </property>
          </widget>
         </item>
         <item>
@@ -581,21 +603,42 @@ border-width:8px;</string>
          </widget>
         </item>
         <item>
-         <widget class="QDialogButtonBox" name="item_action">
+         <widget class="QFrame" name="item_action_btn">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>52</height>
+           </size>
+          </property>
           <property name="styleSheet">
-           <string notr="true">min-width:100px;
-color:white;
-background-color: black;
-border:solid black 3px;
+           <string notr="true"/>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="styleSheet">
+              <string notr="true">border:3px solid black;
 border-radius:16px;
 border-width:8px;</string>
-          </property>
-          <property name="standardButtons">
-           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-          </property>
-          <property name="centerButtons">
-           <bool>true</bool>
-          </property>
+             </property>
+             <property name="text">
+              <string>裝備</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="styleSheet">
+              <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+             </property>
+             <property name="text">
+              <string>升級(+1)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
