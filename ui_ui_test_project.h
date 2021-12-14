@@ -379,21 +379,32 @@ public:
         _4->setObjectName(QString::fromUtf8("_4"));
         select_item = new QComboBox(backpack_action_bar);
         select_item->setObjectName(QString::fromUtf8("select_item"));
-        select_item->setMinimumSize(QSize(0, 0));
-        select_item->setMaximumSize(QSize(16777215, 32));
+        select_item->setMinimumSize(QSize(0, 38));
+        select_item->setMaximumSize(QSize(16777215, 68));
         select_item->setCursor(QCursor(Qt::PointingHandCursor));
         select_item->setStyleSheet(QString::fromUtf8("QComboBox {\n"
-"	background:white;\n"
-"	border:3px solid black !important;\n"
-"	border-width:8px;\n"
-"	border-radius:16px;\n"
-"	padding-left:8px;\n"
+"border:solid 3px rgb(0, 0, 0);\n"
+"background:white;\n"
+"border-width:8px;\n"
+"border-radius:16px;\n"
+"padding-left:8px;\n"
+"font-size:16px \"SimHei\";\n"
+"}  \n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"border:solid 3px rgb(0, 0, 0);\n"
+"background:white;\n"
+"border-width:8px;\n"
+"border-radius:0px !important;\n"
+"padding-left:8px;\n"
+"font-size:16px \"SimHei\";\n"
 "}\n"
 "\n"
-"QComboBox:first {\n"
-"	border-radius:16px !important;\n"
-"	background:white !important;\n"
-"}"));
+" QComboBox::drop-down{\n"
+"width: 40px;\n"
+"border-left: 1px solid #ffffff; \n"
+"}    \n"
+""));
 
         _4->addWidget(select_item);
 
