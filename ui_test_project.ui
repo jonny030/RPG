@@ -267,14 +267,20 @@ QProgressBar::chunk {
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="gridLayoutWidget_2">
+   <widget class="QFrame" name="gridFrame_2">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>553</x>
       <y>160</y>
       <width>218</width>
       <height>231</height>
      </rect>
+    </property>
+    <property name="toolTipDuration">
+     <number>-1</number>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="1">
@@ -536,7 +542,7 @@ border:solid black 3px;</string>
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>32</height>
+               <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -549,11 +555,18 @@ border:solid black 3px;</string>
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="styleSheet">
-              <string notr="true">background:white;
-border:3px solid black;
-border-width:8px;
-border-radius:16px;
-</string>
+              <string notr="true">QComboBox {
+	background:white;
+	border:3px solid black !important;
+	border-width:8px;
+	border-radius:16px;
+	padding-left:8px;
+}
+
+QComboBox:first {
+	border-radius:16px !important;
+	background:white !important;
+}</string>
              </property>
             </widget>
            </item>

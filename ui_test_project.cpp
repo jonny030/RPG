@@ -14,6 +14,8 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->monster->setMovie(movie);
     ui->monster->setScaledContents(true);
     ui->backpack_gui->setVisible(false);
+    ui->select_item->addItem(QString("測試物品"));
+    ui->select_item->addItem(QString("測試裝備"));
 }
 
 UI_Test_Project::~UI_Test_Project()

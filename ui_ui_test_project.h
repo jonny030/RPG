@@ -48,7 +48,7 @@ public:
     QGridLayout *gridLayout;
     QProgressBar *playerHp;
     QLabel *player;
-    QWidget *gridLayoutWidget_2;
+    QFrame *gridFrame_2;
     QGridLayout *gridLayout_2;
     QProgressBar *monsterHp;
     QLabel *monster;
@@ -243,13 +243,14 @@ public:
 
         gridLayout->addWidget(player, 1, 1, 1, 1);
 
-        gridLayoutWidget_2 = new QWidget(centralwidget);
-        gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(590, 160, 218, 231));
-        gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
+        gridFrame_2 = new QFrame(centralwidget);
+        gridFrame_2->setObjectName(QString::fromUtf8("gridFrame_2"));
+        gridFrame_2->setGeometry(QRect(553, 160, 218, 231));
+        gridFrame_2->setToolTipDuration(-1);
+        gridFrame_2->setLineWidth(1);
+        gridLayout_2 = new QGridLayout(gridFrame_2);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        monsterHp = new QProgressBar(gridLayoutWidget_2);
+        monsterHp = new QProgressBar(gridFrame_2);
         monsterHp->setObjectName(QString::fromUtf8("monsterHp"));
         monsterHp->setStyleSheet(QString::fromUtf8("QProgressBar {\n"
 "	text-align:center;\n"
@@ -264,7 +265,7 @@ public:
 
         gridLayout_2->addWidget(monsterHp, 0, 1, 1, 1);
 
-        monster = new QLabel(gridLayoutWidget_2);
+        monster = new QLabel(gridFrame_2);
         monster->setObjectName(QString::fromUtf8("monster"));
         monster->setAlignment(Qt::AlignCenter);
 
@@ -378,14 +379,21 @@ public:
         _4->setObjectName(QString::fromUtf8("_4"));
         select_item = new QComboBox(backpack_action_bar);
         select_item->setObjectName(QString::fromUtf8("select_item"));
-        select_item->setMinimumSize(QSize(0, 32));
+        select_item->setMinimumSize(QSize(0, 0));
         select_item->setMaximumSize(QSize(16777215, 32));
         select_item->setCursor(QCursor(Qt::PointingHandCursor));
-        select_item->setStyleSheet(QString::fromUtf8("background:white;\n"
-"border:3px solid black;\n"
-"border-width:8px;\n"
-"border-radius:16px;\n"
-""));
+        select_item->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"	background:white;\n"
+"	border:3px solid black !important;\n"
+"	border-width:8px;\n"
+"	border-radius:16px;\n"
+"	padding-left:8px;\n"
+"}\n"
+"\n"
+"QComboBox:first {\n"
+"	border-radius:16px !important;\n"
+"	background:white !important;\n"
+"}"));
 
         _4->addWidget(select_item);
 
