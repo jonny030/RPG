@@ -80,14 +80,22 @@ public:
     QFrame *shop_select_bar;
     QHBoxLayout *horizontalLayout_3;
     QComboBox *shop_select_item;
-    QPushButton *pushButton_3;
+    QPushButton *shop_refresh;
     QFrame *shop_item_panel;
     QVBoxLayout *verticalLayout_4;
     QLabel *shop_item_info;
     QFrame *shop_action;
     QHBoxLayout *horizontalLayout_5;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_4;
+    QPushButton *shop_buy_item;
+    QPushButton *shop_close_panel;
+    QFrame *setting_gui;
+    QHBoxLayout *_6;
+    QFrame *verticalFrame_3;
+    QVBoxLayout *verticalLayout_5;
+    QPushButton *backtogame;
+    QPushButton *gamesaves;
+    QPushButton *volumesetting;
+    QPushButton *endgame;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -524,14 +532,14 @@ public:
 
         horizontalLayout_3->addWidget(shop_select_item);
 
-        pushButton_3 = new QPushButton(shop_select_bar);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setMaximumSize(QSize(100, 16777215));
-        pushButton_3->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+        shop_refresh = new QPushButton(shop_select_bar);
+        shop_refresh->setObjectName(QString::fromUtf8("shop_refresh"));
+        shop_refresh->setMaximumSize(QSize(100, 16777215));
+        shop_refresh->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
 
-        horizontalLayout_3->addWidget(pushButton_3);
+        horizontalLayout_3->addWidget(shop_refresh);
 
 
         verticalLayout_3->addWidget(shop_select_bar);
@@ -560,27 +568,113 @@ public:
 "border:solid black 3px;"));
         horizontalLayout_5 = new QHBoxLayout(shop_action);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        pushButton_5 = new QPushButton(shop_action);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-        pushButton_5->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+        shop_buy_item = new QPushButton(shop_action);
+        shop_buy_item->setObjectName(QString::fromUtf8("shop_buy_item"));
+        shop_buy_item->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
 
-        horizontalLayout_5->addWidget(pushButton_5);
+        horizontalLayout_5->addWidget(shop_buy_item);
 
-        pushButton_4 = new QPushButton(shop_action);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+        shop_close_panel = new QPushButton(shop_action);
+        shop_close_panel->setObjectName(QString::fromUtf8("shop_close_panel"));
+        shop_close_panel->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
 
-        horizontalLayout_5->addWidget(pushButton_4);
+        horizontalLayout_5->addWidget(shop_close_panel);
 
 
         verticalLayout_3->addWidget(shop_action);
 
 
         _5->addLayout(verticalLayout_3);
+
+        setting_gui = new QFrame(centralwidget);
+        setting_gui->setObjectName(QString::fromUtf8("setting_gui"));
+        setting_gui->setGeometry(QRect(280, 500, 250, 300));
+        setting_gui->setMinimumSize(QSize(250, 300));
+        setting_gui->setMaximumSize(QSize(0, 0));
+        setting_gui->setBaseSize(QSize(0, 0));
+        setting_gui->setLayoutDirection(Qt::LeftToRight);
+        setting_gui->setAutoFillBackground(false);
+        setting_gui->setStyleSheet(QString::fromUtf8("background-color: rgb(255,255,255);\n"
+"border-radius:16px;\n"
+"border:solid black 3px;"));
+        _6 = new QHBoxLayout(setting_gui);
+        _6->setObjectName(QString::fromUtf8("_6"));
+        verticalFrame_3 = new QFrame(setting_gui);
+        verticalFrame_3->setObjectName(QString::fromUtf8("verticalFrame_3"));
+        verticalFrame_3->setStyleSheet(QString::fromUtf8("background:gray;\n"
+""));
+        verticalLayout_5 = new QVBoxLayout(verticalFrame_3);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        backtogame = new QPushButton(verticalFrame_3);
+        backtogame->setObjectName(QString::fromUtf8("backtogame"));
+        backtogame->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        verticalLayout_5->addWidget(backtogame);
+
+        gamesaves = new QPushButton(verticalFrame_3);
+        gamesaves->setObjectName(QString::fromUtf8("gamesaves"));
+        gamesaves->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        verticalLayout_5->addWidget(gamesaves);
+
+        volumesetting = new QPushButton(verticalFrame_3);
+        volumesetting->setObjectName(QString::fromUtf8("volumesetting"));
+        volumesetting->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        verticalLayout_5->addWidget(volumesetting);
+
+        endgame = new QPushButton(verticalFrame_3);
+        endgame->setObjectName(QString::fromUtf8("endgame"));
+        endgame->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        verticalLayout_5->addWidget(endgame);
+
+
+        _6->addWidget(verticalFrame_3);
 
         UI_Test_Project->setCentralWidget(centralwidget);
 
@@ -613,10 +707,14 @@ public:
         item_info_panel->setText(QCoreApplication::translate("UI_Test_Project", "\346\255\246\345\231\250\344\273\213\347\264\271\345\217\212\346\255\246\345\231\250\345\274\267\345\214\226\347\255\211\345\212\237\350\203\275", nullptr));
         pushButton->setText(QCoreApplication::translate("UI_Test_Project", "\350\243\235\345\202\231", nullptr));
         pushButton_2->setText(QCoreApplication::translate("UI_Test_Project", "\345\215\207\347\264\232(+1)", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("UI_Test_Project", "\345\210\267\346\226\260\345\225\206\345\272\227", nullptr));
+        shop_refresh->setText(QCoreApplication::translate("UI_Test_Project", "\345\210\267\346\226\260\345\225\206\345\272\227", nullptr));
         shop_item_info->setText(QCoreApplication::translate("UI_Test_Project", "\346\255\246\345\231\250\344\273\213\347\264\271\345\217\212\346\255\246\345\231\250\345\274\267\345\214\226\347\255\211\345\212\237\350\203\275\345\203\271\351\214\242", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("UI_Test_Project", "\350\263\274\350\262\267", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("UI_Test_Project", "\351\227\234\351\226\211", nullptr));
+        shop_buy_item->setText(QCoreApplication::translate("UI_Test_Project", "\350\263\274\350\262\267", nullptr));
+        shop_close_panel->setText(QCoreApplication::translate("UI_Test_Project", "\351\227\234\351\226\211", nullptr));
+        backtogame->setText(QCoreApplication::translate("UI_Test_Project", "\350\277\224\345\233\236\351\201\212\346\210\262", nullptr));
+        gamesaves->setText(QCoreApplication::translate("UI_Test_Project", "\351\201\212\346\210\262\347\264\200\351\214\204", nullptr));
+        volumesetting->setText(QCoreApplication::translate("UI_Test_Project", "\350\201\262\351\237\263\350\250\255\345\256\232", nullptr));
+        endgame->setText(QCoreApplication::translate("UI_Test_Project", "\347\265\220\346\235\237\351\201\212\346\210\262", nullptr));
     } // retranslateUi
 
 };

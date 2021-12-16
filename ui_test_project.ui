@@ -748,7 +748,7 @@ border-left: 1px solid #ffffff;
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="shop_refresh">
             <property name="maximumSize">
              <size>
               <width>100</width>
@@ -804,7 +804,7 @@ border:solid black 3px;</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
-           <widget class="QPushButton" name="pushButton_5">
+           <widget class="QPushButton" name="shop_buy_item">
             <property name="styleSheet">
              <string notr="true">border:3px solid black;
 border-radius:16px;
@@ -816,7 +816,7 @@ border-width:8px;</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_4">
+           <widget class="QPushButton" name="shop_close_panel">
             <property name="styleSheet">
              <string notr="true">border:3px solid black;
 border-radius:16px;
@@ -831,6 +831,137 @@ border-width:8px;</string>
         </widget>
        </item>
       </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="setting_gui">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>500</y>
+      <width>250</width>
+      <height>300</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>250</width>
+      <height>300</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255,255,255);
+border-radius:16px;
+border:solid black 3px;</string>
+    </property>
+    <layout class="QHBoxLayout" name="_6">
+     <item>
+      <widget class="QFrame" name="verticalFrame_3">
+       <property name="styleSheet">
+        <string notr="true">background:gray;
+</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QPushButton" name="backtogame">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:4px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+          </property>
+          <property name="text">
+           <string>返回遊戲</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="gamesaves">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:4px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+          </property>
+          <property name="text">
+           <string>遊戲紀錄</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="volumesetting">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:4px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+          </property>
+          <property name="text">
+           <string>聲音設定</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="endgame">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:4px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+          </property>
+          <property name="text">
+           <string>結束遊戲</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </item>
     </layout>
    </widget>

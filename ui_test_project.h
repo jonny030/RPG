@@ -29,7 +29,11 @@ private slots:
 
     void on_shopButton_clicked();
 
-    void on_pushButton_4_clicked();
+    void on_settingButton_clicked();
+
+    void on_backtogame_clicked();
+
+    void on_shop_close_panel_clicked();
 
 private:
     Ui::UI_Test_Project *ui;
