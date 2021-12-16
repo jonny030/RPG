@@ -1,4 +1,4 @@
-/********************************************************************************
+﻿/********************************************************************************
 ** Form generated from reading UI file 'ui_test_project.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.2.0
@@ -190,7 +190,7 @@ public:
         username = new QLabel(layoutWidget);
         username->setObjectName(QString::fromUtf8("username"));
         QFont font;
-        font.setFamilies({QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224")});
+        font.setFamily({QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224")});
         font.setPointSize(12);
         username->setFont(font);
         username->setTextFormat(Qt::AutoText);
