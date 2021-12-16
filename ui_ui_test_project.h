@@ -74,6 +74,20 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QFrame *shop_gui;
+    QHBoxLayout *_5;
+    QVBoxLayout *verticalLayout_3;
+    QFrame *shop_select_bar;
+    QHBoxLayout *horizontalLayout_3;
+    QComboBox *shop_select_item;
+    QPushButton *pushButton_3;
+    QFrame *shop_item_panel;
+    QVBoxLayout *verticalLayout_4;
+    QLabel *shop_item_info;
+    QFrame *shop_action;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_4;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -303,7 +317,7 @@ public:
         stopButton->setIconSize(QSize(25, 25));
         backpack_gui = new QFrame(centralwidget);
         backpack_gui->setObjectName(QString::fromUtf8("backpack_gui"));
-        backpack_gui->setGeometry(QRect(30, 31, 741, 381));
+        backpack_gui->setGeometry(QRect(40, 500, 741, 381));
         backpack_gui->setMinimumSize(QSize(741, 381));
         backpack_gui->setBaseSize(QSize(0, 0));
         backpack_gui->setLayoutDirection(Qt::LeftToRight);
@@ -461,6 +475,113 @@ public:
 
         _2->addWidget(item_info);
 
+        shop_gui = new QFrame(centralwidget);
+        shop_gui->setObjectName(QString::fromUtf8("shop_gui"));
+        shop_gui->setGeometry(QRect(40, 40, 741, 381));
+        shop_gui->setMinimumSize(QSize(741, 381));
+        shop_gui->setBaseSize(QSize(0, 0));
+        shop_gui->setLayoutDirection(Qt::LeftToRight);
+        shop_gui->setAutoFillBackground(false);
+        shop_gui->setStyleSheet(QString::fromUtf8("background-color: rgb(255,255,255);\n"
+"border-radius:16px;\n"
+"border:solid black 3px;"));
+        _5 = new QHBoxLayout(shop_gui);
+        _5->setObjectName(QString::fromUtf8("_5"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        shop_select_bar = new QFrame(shop_gui);
+        shop_select_bar->setObjectName(QString::fromUtf8("shop_select_bar"));
+        shop_select_bar->setMaximumSize(QSize(16777215, 50));
+        shop_select_bar->setStyleSheet(QString::fromUtf8("background-color: gray;\n"
+"border:solid black 3px;"));
+        horizontalLayout_3 = new QHBoxLayout(shop_select_bar);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        shop_select_item = new QComboBox(shop_select_bar);
+        shop_select_item->setObjectName(QString::fromUtf8("shop_select_item"));
+        shop_select_item->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"border:solid 3px rgb(0, 0, 0);\n"
+"background:white;\n"
+"border-width:8px;\n"
+"border-radius:16px;\n"
+"padding-left:8px;\n"
+"font-size:16px \"SimHei\";\n"
+"}  \n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"border:solid 3px rgb(0, 0, 0);\n"
+"background:white;\n"
+"border-width:8px;\n"
+"border-radius:0px !important;\n"
+"padding-left:8px;\n"
+"font-size:16px \"SimHei\";\n"
+"}\n"
+"\n"
+" QComboBox::drop-down{\n"
+"width: 40px;\n"
+"border-left: 1px solid #ffffff; \n"
+"}    \n"
+""));
+
+        horizontalLayout_3->addWidget(shop_select_item);
+
+        pushButton_3 = new QPushButton(shop_select_bar);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setMaximumSize(QSize(100, 16777215));
+        pushButton_3->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+"border-radius:16px;\n"
+"border-width:8px;"));
+
+        horizontalLayout_3->addWidget(pushButton_3);
+
+
+        verticalLayout_3->addWidget(shop_select_bar);
+
+        shop_item_panel = new QFrame(shop_gui);
+        shop_item_panel->setObjectName(QString::fromUtf8("shop_item_panel"));
+        shop_item_panel->setStyleSheet(QString::fromUtf8("background-color: gray;\n"
+"border:solid black 3px;"));
+        verticalLayout_4 = new QVBoxLayout(shop_item_panel);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        shop_item_info = new QLabel(shop_item_panel);
+        shop_item_info->setObjectName(QString::fromUtf8("shop_item_info"));
+        shop_item_info->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+"border-radius:16px;\n"
+"border-width:8px;"));
+
+        verticalLayout_4->addWidget(shop_item_info);
+
+
+        verticalLayout_3->addWidget(shop_item_panel);
+
+        shop_action = new QFrame(shop_gui);
+        shop_action->setObjectName(QString::fromUtf8("shop_action"));
+        shop_action->setMaximumSize(QSize(16777215, 50));
+        shop_action->setStyleSheet(QString::fromUtf8("background-color: gray;\n"
+"border:solid black 3px;"));
+        horizontalLayout_5 = new QHBoxLayout(shop_action);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        pushButton_5 = new QPushButton(shop_action);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButton_5->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+"border-radius:16px;\n"
+"border-width:8px;"));
+
+        horizontalLayout_5->addWidget(pushButton_5);
+
+        pushButton_4 = new QPushButton(shop_action);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButton_4->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+"border-radius:16px;\n"
+"border-width:8px;"));
+
+        horizontalLayout_5->addWidget(pushButton_4);
+
+
+        verticalLayout_3->addWidget(shop_action);
+
+
+        _5->addLayout(verticalLayout_3);
+
         UI_Test_Project->setCentralWidget(centralwidget);
 
         retranslateUi(UI_Test_Project);
@@ -492,6 +613,10 @@ public:
         item_info_panel->setText(QCoreApplication::translate("UI_Test_Project", "\346\255\246\345\231\250\344\273\213\347\264\271\345\217\212\346\255\246\345\231\250\345\274\267\345\214\226\347\255\211\345\212\237\350\203\275", nullptr));
         pushButton->setText(QCoreApplication::translate("UI_Test_Project", "\350\243\235\345\202\231", nullptr));
         pushButton_2->setText(QCoreApplication::translate("UI_Test_Project", "\345\215\207\347\264\232(+1)", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("UI_Test_Project", "\345\210\267\346\226\260\345\225\206\345\272\227", nullptr));
+        shop_item_info->setText(QCoreApplication::translate("UI_Test_Project", "\346\255\246\345\231\250\344\273\213\347\264\271\345\217\212\346\255\246\345\231\250\345\274\267\345\214\226\347\255\211\345\212\237\350\203\275\345\203\271\351\214\242", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("UI_Test_Project", "\350\263\274\350\262\267", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("UI_Test_Project", "\351\227\234\351\226\211", nullptr));
     } // retranslateUi
 
 };

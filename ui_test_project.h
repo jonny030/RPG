@@ -27,6 +27,10 @@ private slots:
 
     void on_close_backpack_clicked();
 
+    void on_shopButton_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::UI_Test_Project *ui;
 };
