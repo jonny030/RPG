@@ -385,6 +385,581 @@ QProgressBar::chunk {
      </size>
     </property>
    </widget>
+   <widget class="QFrame" name="backpack_gui">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>1000</y>
+      <width>741</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>741</width>
+      <height>381</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255,255,255);
+border-radius:16px;
+border:solid black 3px;</string>
+    </property>
+    <layout class="QHBoxLayout" name="_2">
+     <item>
+      <widget class="QFrame" name="equipment_layout">
+       <property name="maximumSize">
+        <size>
+         <width>134</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">min-width:100px;
+background-color: gray;
+border:solid black 3px;</string>
+       </property>
+       <layout class="QVBoxLayout" name="equipment">
+        <item>
+         <widget class="QLabel" name="chest_item">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+          </property>
+          <property name="text">
+           <string>胸甲區塊</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="leg_item">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+          </property>
+          <property name="text">
+           <string>護腿區塊</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="hand">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+          </property>
+          <property name="text">
+           <string>手持武器</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="offhand">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+          </property>
+          <property name="text">
+           <string>副手武器</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="item_info">
+       <property name="styleSheet">
+        <string notr="true">background-color: gray;
+border:solid black 3px;</string>
+       </property>
+       <layout class="QVBoxLayout" name="_3">
+        <item>
+         <widget class="QFrame" name="backpack_action_bar">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <layout class="QHBoxLayout" name="_4">
+           <item>
+            <widget class="QComboBox" name="select_item">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>38</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>68</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QComboBox {
+border:solid 3px rgb(0, 0, 0);
+background:white;
+border-width:8px;
+border-radius:16px;
+padding-left:8px;
+font-size:16px &quot;SimHei&quot;;
+}  
+
+QComboBox QAbstractItemView {
+border:solid 3px rgb(0, 0, 0);
+background:white;
+border-width:8px;
+border-radius:0px !important;
+padding-left:8px;
+font-size:16px &quot;SimHei&quot;;
+}
+
+ QComboBox::drop-down{
+width: 40px;
+border-left: 1px solid #ffffff; 
+}    
+</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="close_backpack">
+             <property name="minimumSize">
+              <size>
+               <width>36</width>
+               <height>36</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border:3px solid black;
+min-width:32px;min-height:32px;
+background:rgb(0, 0, 0);
+color:white;
+border-radius:16px;
+border-width:2px;</string>
+             </property>
+             <property name="text">
+              <string>X</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="item_info_panel">
+          <property name="styleSheet">
+           <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+          </property>
+          <property name="text">
+           <string>武器介紹及武器強化等功能</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="item_action_btn">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>52</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="styleSheet">
+              <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+             </property>
+             <property name="text">
+              <string>裝備</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="styleSheet">
+              <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+             </property>
+             <property name="text">
+              <string>升級(+1)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="shop_gui">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>1000</y>
+      <width>741</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>741</width>
+      <height>381</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255,255,255);
+border-radius:16px;
+border:solid black 3px;</string>
+    </property>
+    <layout class="QHBoxLayout" name="_5">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QFrame" name="shop_select_bar">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: gray;
+border:solid black 3px;</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QComboBox" name="shop_select_item">
+            <property name="styleSheet">
+             <string notr="true">QComboBox {
+border:solid 3px rgb(0, 0, 0);
+background:white;
+border-width:8px;
+border-radius:16px;
+padding-left:8px;
+font-size:16px &quot;SimHei&quot;;
+}  
+
+QComboBox QAbstractItemView {
+border:solid 3px rgb(0, 0, 0);
+background:white;
+border-width:8px;
+border-radius:0px !important;
+padding-left:8px;
+font-size:16px &quot;SimHei&quot;;
+}
+
+ QComboBox::drop-down{
+width: 40px;
+border-left: 1px solid #ffffff; 
+}    
+</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_3">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+            </property>
+            <property name="text">
+             <string>刷新商店</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="shop_item_panel">
+         <property name="styleSheet">
+          <string notr="true">background-color: gray;
+border:solid black 3px;</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="shop_item_info">
+            <property name="styleSheet">
+             <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+            </property>
+            <property name="text">
+             <string>武器介紹及武器強化等功能價錢</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="shop_action">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: gray;
+border:solid black 3px;</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QPushButton" name="buy">
+            <property name="styleSheet">
+             <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+            </property>
+            <property name="text">
+             <string>購買</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="shop_close_panel">
+            <property name="styleSheet">
+             <string notr="true">border:3px solid black;
+border-radius:16px;
+border-width:8px;</string>
+            </property>
+            <property name="text">
+             <string>關閉</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="setting_gui">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>1000</y>
+      <width>250</width>
+      <height>300</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>250</width>
+      <height>300</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255,255,255);
+border-radius:16px;
+border:solid black 3px;</string>
+    </property>
+    <layout class="QHBoxLayout" name="_6">
+     <item>
+      <widget class="QFrame" name="verticalFrame_3">
+       <property name="styleSheet">
+        <string notr="true">background:gray;
+</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QPushButton" name="backtogame">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:4px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+          </property>
+          <property name="text">
+           <string>返回遊戲</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="gamesaves">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:4px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+          </property>
+          <property name="text">
+           <string>遊戲紀錄</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="volumesetting">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:4px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+          </property>
+          <property name="text">
+           <string>聲音設定</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="endgame">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:4px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+          </property>
+          <property name="text">
+           <string>結束遊戲</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <resources>
