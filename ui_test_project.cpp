@@ -63,4 +63,3 @@ void UI_Test_Project::on_stopButton_clicked()
     icon2.addFile(QString::fromUtf8(":/assets/images/play-button.png"), QSize(), QIcon::Normal, QIcon::Off);
     ui->startButton->setIcon(icon2);
 }
-

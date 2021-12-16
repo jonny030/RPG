@@ -59,7 +59,7 @@ public:
         if (UI_Test_Project->objectName().isEmpty())
             UI_Test_Project->setObjectName(QString::fromUtf8("UI_Test_Project"));
         UI_Test_Project->setEnabled(true);
-        UI_Test_Project->resize(808, 481);
+        UI_Test_Project->resize(808, 487);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -163,7 +163,7 @@ public:
 
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(7, 22, 161, 66));
+        layoutWidget->setGeometry(QRect(7, 22, 161, 61));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
