@@ -180,7 +180,7 @@ min-height:100px;</string>
       <x>7</x>
       <y>22</y>
       <width>161</width>
-      <height>61</height>
+      <height>66</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -231,8 +231,8 @@ QProgressBar::chunk {
      <rect>
       <x>50</x>
       <y>160</y>
-      <width>163</width>
-      <height>231</height>
+      <width>171</width>
+      <height>221</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -634,7 +634,7 @@ border-width:8px;</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="equi">
              <property name="styleSheet">
               <string notr="true">border:3px solid black;
 border-radius:16px;
@@ -646,7 +646,7 @@ border-width:8px;</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="levelup">
              <property name="styleSheet">
               <string notr="true">border:3px solid black;
 border-radius:16px;
@@ -743,7 +743,7 @@ border-left: 1px solid #ffffff;
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="resetshop">
             <property name="maximumSize">
              <size>
               <width>100</width>

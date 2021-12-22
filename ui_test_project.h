@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QMovie>
+#include "play_item.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class UI_Test_Project; }
 QT_END_NAMESPACE
@@ -18,6 +19,8 @@ public:
     virtual void timerEvent(QTimerEvent *event);
     int m_nTimerID;
     int killcount=0;
+    player *player_note=new player(100,1);
+    player *monster_note=new player(100);
 private slots:
     void on_startButton_clicked();
 

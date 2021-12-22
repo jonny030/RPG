@@ -13,6 +13,7 @@ SOURCES += \
     ui_test_project.cpp
 
 HEADERS += \
+    play_item.h \
     ui_test_project.h
 
 FORMS += \

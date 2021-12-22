@@ -1,8 +1,7 @@
 ﻿#include "ui_test_project.h"
 #include "ui_ui_test_project.h"
-
 #include <QMessageBox>
-
+#include <QThread>
 UI_Test_Project::UI_Test_Project(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::UI_Test_Project)
@@ -10,6 +9,10 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->setupUi(this);
     srand( time(NULL) );
     QMovie *movie = new QMovie(":/assets/images/monster1.gif");
+    QImage img;
+    ui->player->setScaledContents(true);
+    img.load(":/assets/images/play_icon.png");
+    ui->player->setPixmap(QPixmap::fromImage(img));
     movie->start();
     ui->monster->setMovie(movie);
     ui->monster->setScaledContents(true);
@@ -28,27 +31,35 @@ UI_Test_Project::~UI_Test_Project()
 }
 void UI_Test_Project::timerEvent(QTimerEvent *event){
     int who=rand()%10+1;
-    int atk=rand()%11+1;
+    int monster_atk=monster_note->atk+rand()%5+1;
+    int player_atk=player_note->getatk();
+    int player_def=player_note->getdef();
     if(who == 1){
-        if(ui->playerHp->value()<atk){
+        if(player_note->hp<monster_atk){
+            player_note->hp=0;
             ui->playerHp->setValue(0);
         }else{
-            ui->playerHp->setValue(ui->playerHp->value()-atk);
+            player_note->hp-=monster_atk+player_def;
+            ui->playerHp->setValue(player_note->gethp());
         }
     }else if(who > 3){
-        if(ui->monsterHp->value()<atk){
+        if(ui->monsterHp->value()<player_atk){
+            monster_note->hp=0;
             ui->monsterHp->setValue(0);
         }else{
-            ui->monsterHp->setValue(ui->monsterHp->value()-atk);
+            monster_note->hp-=player_atk;
+            ui->monsterHp->setValue(monster_note->gethp());
         }
-        if(ui->monsterHp->value()<=0){
-            _sleep(500);
-            killcount +=1;
-            ui->exp_bar->setValue(ui->exp_bar->value()+rand()%5+1);
-            ui->monsterHp->setValue(100);
-            ui->playerHp->setValue(ui->playerHp->value()+rand()%10+1);
-            _sleep(500);
-        }
+    }
+    if(ui->monsterHp->value()<=0){
+        QThread::msleep(500);
+        killcount +=1;
+        ui->exp_bar->setValue(ui->exp_bar->value()+rand()%20+5);
+        monster_note->hp=monster_note->default_hp;
+        ui->monsterHp->setValue(100);
+        player_note->hp = player_note->default_hp;
+        ui->playerHp->setValue(player_note->hp*100/player_note->default_hp);
+        QThread::msleep(500);
     }
 }
 
@@ -121,4 +132,3 @@ void UI_Test_Project::on_endgame_clicked()
 {
     close();
 }
-

@@ -14,5 +14,6 @@
         <file>images/play-button2.png</file>
         <file>images/stop.png</file>
         <file>images/stop2.png</file>
+        <file>images/play_icon.png</file>
     </qresource>
 </RCC>
