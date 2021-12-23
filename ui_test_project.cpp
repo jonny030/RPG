@@ -89,7 +89,6 @@ void UI_Test_Project::timerEvent(QTimerEvent *event){
         ui->monsterHp->setValue(100);
         player_note->hp = player_note->default_hp;
         ui->playerHp->setValue(player_note->hp*100/player_note->default_hp);
-        QThread::msleep(500);
     }
 }
 
