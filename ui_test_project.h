@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QMovie>
+#include <QFile>
+#include <QDir>
 #include "play_item.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class UI_Test_Project; }
@@ -16,9 +18,9 @@ class UI_Test_Project : public QMainWindow
 public:
     UI_Test_Project(QWidget *parent = nullptr);
     ~UI_Test_Project();
-    virtual void timerEvent(QTimerEvent *event);
     int m_nTimerID;
     int killcount=0;
+    Equilist itemlist;
     player *player_note=new player(100,1);
     player *monster_note=new player(100);
 private slots:
@@ -38,10 +40,15 @@ private slots:
 
     void on_shop_close_panel_clicked();
 
-
     void on_endgame_clicked();
 
+    void on_select_item_activated(const QString &arg1);
+
+    void on_equi_clicked();
+
+    void timerEvent(QTimerEvent *event);
 private:
     Ui::UI_Test_Project *ui;
 };
+
 #endif // UI_TEST_PROJECT_H

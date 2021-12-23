@@ -1,6 +1,7 @@
 ﻿#ifndef PLAY_ITEM_H
 #define PLAY_ITEM_H
 #include<QString>
+
 class Equi{
 public:
     QString name;
@@ -17,6 +18,15 @@ public:
         this->def=def;
     };
 };
+class Equilist{
+public:
+    Equi item[999];
+    Equilist(){
+        item[0].name="";
+        item[0].atk =0;
+        item[0].def =0;
+    }
+};
 class player{
 public:
     int hp;
@@ -32,8 +42,8 @@ public:
         this->killcount=0;
         weapons_1 = new Equi();
         weapons_2= new Equi();
-        armor_1= new Equi();
-        armor_2= new Equi();
+        armor_1 = new Equi();
+        armor_2 = new Equi();
     }
     player(int hp){
         this->hp=hp;

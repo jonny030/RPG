@@ -206,7 +206,7 @@ public:
 
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(7, 22, 161, 66));
+        layoutWidget->setGeometry(QRect(7, 22, 161, 61));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -325,7 +325,7 @@ public:
         stopButton->setIconSize(QSize(25, 25));
         backpack_gui = new QFrame(centralwidget);
         backpack_gui->setObjectName(QString::fromUtf8("backpack_gui"));
-        backpack_gui->setGeometry(QRect(30, 1000, 741, 381));
+        backpack_gui->setGeometry(QRect(30, 40, 741, 381));
         backpack_gui->setMinimumSize(QSize(741, 381));
         backpack_gui->setBaseSize(QSize(0, 0));
         backpack_gui->setLayoutDirection(Qt::LeftToRight);

@@ -1,0 +1,3 @@
+NormalSword
+5
+0

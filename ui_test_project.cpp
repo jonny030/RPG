@@ -17,14 +17,38 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->monster->setMovie(movie);
     ui->monster->setScaledContents(true);
 
+    ui->select_item->addItem("");
+
     ui->backpack_gui->setVisible(false);
     ui->shop_gui->setVisible(false);
     ui->setting_gui->setVisible(false);
 
-    ui->select_item->addItem(QStringLiteral("測試物品"));
-    ui->select_item->addItem(QStringLiteral("測試裝備"));
-}
+    //getitem
+    QFile mFile;
+    QString path="./item";
+    QDir *dir=new QDir(path);
+    QStringList filter;
+    filter<<"*.txt";
+    dir->setNameFilters(filter);
+    QList<QFileInfo> *fileInfo=new QList<QFileInfo>(dir->entryInfoList(filter));
+    for(int n=1;n<=fileInfo->count();n++){
+        QString file=fileInfo->at(n-1).filePath();;
+        mFile.setFileName(file);
+        if(!mFile.open(QFile::ReadOnly | QFile::Text)){
+            qDebug()<<"無法開啟檔案";
+            return;
+        }
 
+        QStringList list= QString(mFile.readAll()).split("\n");
+        ui->select_item->addItem(list[0]);
+        itemlist.item[n].name=list[0];
+        itemlist.item[n].atk =list[1].toInt();
+        itemlist.item[n].def =list[2].toInt();
+
+    }
+    mFile.flush();
+    mFile.close();
+}
 UI_Test_Project::~UI_Test_Project()
 {
     delete ui;
@@ -51,10 +75,16 @@ void UI_Test_Project::timerEvent(QTimerEvent *event){
             ui->monsterHp->setValue(monster_note->gethp());
         }
     }
+    //exp
     if(ui->monsterHp->value()<=0){
         QThread::msleep(500);
         killcount +=1;
-        ui->exp_bar->setValue(ui->exp_bar->value()+rand()%20+5);
+        int plusexp=ui->exp_bar->value()+rand()%20+5;
+        if(plusexp<=100){
+            ui->exp_bar->setValue(plusexp);
+        }else{
+            ui->exp_bar->setValue(0);
+        }
         monster_note->hp=monster_note->default_hp;
         ui->monsterHp->setValue(100);
         player_note->hp = player_note->default_hp;
@@ -132,3 +162,38 @@ void UI_Test_Project::on_endgame_clicked()
 {
     close();
 }
+
+void UI_Test_Project::on_select_item_activated(const QString &arg1)
+{
+    int n=1;
+    if(arg1 == ""){
+        ui->item_info_panel->setText("");
+    }else{
+        while(true){
+            if(arg1 == itemlist.item[n].name){
+                ui->item_info_panel->setText("name:"+itemlist.item[n].name+"\nAtk:"+QString::number(itemlist.item[n].atk)+"\nDef:"+QString::number(itemlist.item[n].def));
+                break;
+            }
+            n++;
+        }
+    }
+}
+
+
+void UI_Test_Project::on_equi_clicked()
+{
+    int n=1;
+    QString arg1=ui->select_item->currentText();
+    if(arg1 == ""){
+        ui->item_info_panel->setText("");
+    }else{
+        while(true){
+            if(arg1 == itemlist.item[n].name){
+                player_note->set_weapons_1(&itemlist.item[n]);
+                break;
+            }
+            n++;
+        }
+    }
+}
+
