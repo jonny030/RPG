@@ -15,9 +15,9 @@
         <file>images/stop.png</file>
         <file>images/stop2.png</file>
         <file>images/play_icon.png</file>
-        <file>images/sword_1.png</file>
-        <file>images/sword_2.png</file>
         <file>images/armor_1.png</file>
         <file>images/armor_2.png</file>
+        <file>images/GodSword.png</file>
+        <file>images/NormalSword.png</file>
     </qresource>
 </RCC>

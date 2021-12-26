@@ -40,7 +40,9 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
         }
         QStringList list= QString(mFile.readAll()).split("\n");
         QIcon icon;
-        icon.addFile(":/assets/images/"+file.mid(7,7)+".png");
+        file = file.remove("./item/");
+        file = file.remove(".txt");
+        icon.addFile(":/assets/images/"+file+".png");
         ui->select_item->addItem(icon,list[0]);
         itemlist.item[n].name=list[0];
         itemlist.item[n].atk =list[1].toInt();
