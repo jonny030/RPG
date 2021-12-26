@@ -17,5 +17,7 @@
         <file>images/play_icon.png</file>
         <file>images/sword_1.png</file>
         <file>images/sword_2.png</file>
+        <file>images/armor_1.png</file>
+        <file>images/armor_2.png</file>
     </qresource>
 </RCC>
