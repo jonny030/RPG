@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/assets" lang="img">
+    <qresource prefix="/assets">
         <file>images/backpack_black_24dp.png</file>
         <file>images/backpack_black_24dp.svg</file>
         <file>images/btnbg.png</file>
@@ -15,5 +15,7 @@
         <file>images/stop.png</file>
         <file>images/stop2.png</file>
         <file>images/play_icon.png</file>
+        <file>images/weapons_1.png</file>
+        <file>images/weapons_2.png</file>
     </qresource>
 </RCC>
