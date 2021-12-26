@@ -1,3 +1,4 @@
 NormalSword
 5
 0
+weapons

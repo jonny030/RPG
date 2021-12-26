@@ -2,6 +2,9 @@
 #include "ui_ui_test_project.h"
 #include <QMessageBox>
 #include <QThread>
+QIcon icon;
+int setIcon_n;
+bool setIcon_weapons=false,setIcon_armors=false,setIcon_leg=false;
 UI_Test_Project::UI_Test_Project(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::UI_Test_Project)
@@ -39,14 +42,14 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
             return;
         }
         QStringList list= QString(mFile.readAll()).split("\n");
-        QIcon icon;
         file = file.remove("./item/");
         file = file.remove(".txt");
-        icon.addFile(":/assets/images/"+file+".png");
-        ui->select_item->addItem(icon,list[0]);
+        itemlist.item[n].icon.addFile(":/assets/images/"+file+".png");
         itemlist.item[n].name=list[0];
         itemlist.item[n].atk =list[1].toInt();
         itemlist.item[n].def =list[2].toInt();
+        itemlist.item[n].kind=list[3];
+        ui->select_item->addItem(itemlist.item[n].icon,list[0]);
     }
     mFile.flush();
     mFile.close();
@@ -172,7 +175,7 @@ void UI_Test_Project::on_select_item_activated(const QString &arg1)
     }else{
         while(true){
             if(arg1 == itemlist.item[n].name){
-                ui->item_info_panel->setText("name:"+itemlist.item[n].name+"\nAtk:"+QString::number(itemlist.item[n].atk)+"\nDef:"+QString::number(itemlist.item[n].def));
+                ui->item_info_panel->setText(QStringLiteral("Name：")+itemlist.item[n].name+QStringLiteral("\nAtk：")+QString::number(itemlist.item[n].atk)+QStringLiteral("\nDef：")+QString::number(itemlist.item[n].def));
                 break;
             }
             n++;
@@ -190,10 +193,129 @@ void UI_Test_Project::on_equi_clicked()
     }else{
         while(true){
             if(arg1 == itemlist.item[n].name){
-                player_note->set_weapons_1(&itemlist.item[n]);
+                setIcon_n = n;
+                if(itemlist.item[n].kind == "weapons"){
+                    setIcon_weapons = true;
+                    ui->weapons_1->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
+                    ui->weapons_2->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
+                }else if(itemlist.item[n].kind == "armor"){
+                    setIcon_armors = true;
+                    ui->armor->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
+                }else if(itemlist.item[n].kind == "leg"){
+                    setIcon_leg = true;
+                    ui->leg->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
+                }
                 break;
             }
             n++;
+        }
+    }
+}
+
+
+void UI_Test_Project::on_weapons_1_clicked()
+{
+    if(setIcon_weapons){
+        setIcon_weapons = false;
+        player_note->set_weapons_1(&itemlist.item[setIcon_n]);
+        icon = player_note->weapons_1->icon;
+        ui->weapons_1->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
+        ui->weapons_2->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
+        ui->weapons_1->setText("");
+        ui->weapons_1->setIcon(icon);
+    }else{
+        QMessageBox *msgBox = new QMessageBox();
+        msgBox->setWindowTitle(QStringLiteral("系統訊息"));
+        msgBox->setText(QStringLiteral("要解除武器嗎?"));
+        QPushButton *btn_sure = msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
+         msgBox->addButton(QStringLiteral("取消"), QMessageBox::RejectRole);
+        msgBox->setStyleSheet("background-color:white");
+        msgBox->exec();
+        if(msgBox->clickedButton() == btn_sure){
+            player_note->set_weapons_1(new Equi());
+            ui->weapons_1->setText(QStringLiteral("主手武器"));
+            ui->weapons_1->setIcon(QIcon());
+        }
+    }
+}
+
+
+void UI_Test_Project::on_weapons_2_clicked()
+{
+    if(setIcon_weapons){
+        setIcon_weapons = false;
+        player_note->set_weapons_2(&itemlist.item[setIcon_n]);
+        icon = player_note->weapons_2->icon;
+        ui->weapons_1->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
+        ui->weapons_2->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
+        ui->weapons_2->setText("");
+        ui->weapons_2->setIcon(icon);
+    }else{
+       QMessageBox *msgBox = new QMessageBox();
+       msgBox->setWindowTitle(QStringLiteral("系統訊息"));
+       msgBox->setText(QStringLiteral("要解除武器嗎?"));
+       QPushButton *btn_sure = msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
+       msgBox->addButton(QStringLiteral("取消"), QMessageBox::RejectRole);
+       msgBox->setStyleSheet("background-color:white");
+       msgBox->exec();
+       if(msgBox->clickedButton() == btn_sure){
+           player_note->set_weapons_2(new Equi());
+           ui->weapons_2->setText(QStringLiteral("副手武器"));
+           ui->weapons_2->setIcon(QIcon());
+       }
+    }
+}
+
+
+void UI_Test_Project::on_armor_clicked()
+{
+    if(setIcon_armors){
+        setIcon_armors = false;
+        player_note->set_armor(&itemlist.item[setIcon_n]);
+        icon = player_note->armor->icon;
+        ui->armor->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
+        ui->leg->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
+        ui->armor->setText("");
+        ui->armor->setIcon(icon);
+    }else{
+        QMessageBox *msgBox = new QMessageBox();
+        msgBox->setWindowTitle(QStringLiteral("系統訊息"));
+        msgBox->setText(QStringLiteral("要解除護甲嗎?"));
+        QPushButton *btn_sure = msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
+         msgBox->addButton(QStringLiteral("取消"), QMessageBox::RejectRole);
+        msgBox->setStyleSheet("background-color:white");
+        msgBox->exec();
+        if(msgBox->clickedButton() == btn_sure){
+            player_note->set_weapons_1(new Equi());
+            ui->armor->setText(QStringLiteral("護甲區塊"));
+            ui->armor->setIcon(QIcon());
+        }
+    }
+}
+
+
+void UI_Test_Project::on_leg_clicked()
+{
+    if(setIcon_leg){
+        setIcon_leg = false;
+        player_note->set_leg(&itemlist.item[setIcon_n]);
+        icon = player_note->leg->icon;
+        ui->armor->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
+        ui->leg->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
+        ui->leg->setText("");
+        ui->leg->setIcon(icon);
+    }else{
+        QMessageBox *msgBox = new QMessageBox();
+        msgBox->setWindowTitle(QStringLiteral("系統訊息"));
+        msgBox->setText(QStringLiteral("要解除護腿嗎?"));
+        QPushButton *btn_sure = msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
+         msgBox->addButton(QStringLiteral("取消"), QMessageBox::RejectRole);
+        msgBox->setStyleSheet("background-color:white");
+        msgBox->exec();
+        if(msgBox->clickedButton() == btn_sure){
+            player_note->set_weapons_1(new Equi());
+            ui->leg->setText(QStringLiteral("護腿區塊"));
+            ui->leg->setIcon(QIcon());
         }
     }
 }

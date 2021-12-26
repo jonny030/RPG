@@ -47,6 +47,14 @@ private slots:
     void on_equi_clicked();
 
     void timerEvent(QTimerEvent *event);
+    void on_weapons_1_clicked();
+
+    void on_weapons_2_clicked();
+
+    void on_armor_clicked();
+
+    void on_leg_clicked();
+
 private:
     Ui::UI_Test_Project *ui;
 };

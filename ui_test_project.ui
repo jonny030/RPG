@@ -389,7 +389,7 @@ QProgressBar::chunk {
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>40</y>
+      <y>1000</y>
       <width>741</width>
       <height>381</height>
      </rect>
@@ -433,9 +433,12 @@ border:solid black 3px;</string>
        </property>
        <layout class="QVBoxLayout" name="equipment">
         <item>
-         <widget class="QLabel" name="chest_item">
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
+         <widget class="QPushButton" name="armor">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="styleSheet">
            <string notr="true">border:3px solid black;
@@ -445,15 +448,21 @@ border-width:8px;</string>
           <property name="text">
            <string>胸甲區塊</string>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>60</height>
+           </size>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="leg_item">
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
+         <widget class="QPushButton" name="leg">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="styleSheet">
            <string notr="true">border:3px solid black;
@@ -463,15 +472,21 @@ border-width:8px;</string>
           <property name="text">
            <string>護腿區塊</string>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>60</height>
+           </size>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="hand">
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
+         <widget class="QPushButton" name="weapons_1">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="styleSheet">
            <string notr="true">border:3px solid black;
@@ -479,17 +494,23 @@ border-radius:16px;
 border-width:8px;</string>
           </property>
           <property name="text">
-           <string>手持武器</string>
+           <string>主手武器</string>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>60</height>
+           </size>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="offhand">
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
+         <widget class="QPushButton" name="weapons_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="styleSheet">
            <string notr="true">border:3px solid black;
@@ -499,8 +520,11 @@ border-width:8px;</string>
           <property name="text">
            <string>副手武器</string>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>60</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -608,6 +632,11 @@ border-width:2px;</string>
         </item>
         <item>
          <widget class="QLabel" name="item_info_panel">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">border:3px solid black;
 border-radius:16px;

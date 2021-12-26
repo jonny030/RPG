@@ -59,10 +59,10 @@ public:
     QHBoxLayout *_2;
     QFrame *equipment_layout;
     QVBoxLayout *equipment;
-    QLabel *chest_item;
-    QLabel *leg_item;
-    QLabel *hand;
-    QLabel *offhand;
+    QPushButton *armor;
+    QPushButton *leg;
+    QPushButton *weapons_1;
+    QPushButton *weapons_2;
     QFrame *item_info;
     QVBoxLayout *_3;
     QFrame *backpack_action_bar;
@@ -325,7 +325,7 @@ public:
         stopButton->setIconSize(QSize(25, 25));
         backpack_gui = new QFrame(centralwidget);
         backpack_gui->setObjectName(QString::fromUtf8("backpack_gui"));
-        backpack_gui->setGeometry(QRect(30, 40, 741, 381));
+        backpack_gui->setGeometry(QRect(30, 1000, 741, 381));
         backpack_gui->setMinimumSize(QSize(741, 381));
         backpack_gui->setBaseSize(QSize(0, 0));
         backpack_gui->setLayoutDirection(Qt::LeftToRight);
@@ -343,45 +343,49 @@ public:
 "border:solid black 3px;"));
         equipment = new QVBoxLayout(equipment_layout);
         equipment->setObjectName(QString::fromUtf8("equipment"));
-        chest_item = new QLabel(equipment_layout);
-        chest_item->setObjectName(QString::fromUtf8("chest_item"));
-        chest_item->setCursor(QCursor(Qt::PointingHandCursor));
-        chest_item->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+        armor = new QPushButton(equipment_layout);
+        armor->setObjectName(QString::fromUtf8("armor"));
+        sizePolicy.setHeightForWidth(armor->sizePolicy().hasHeightForWidth());
+        armor->setSizePolicy(sizePolicy);
+        armor->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
-        chest_item->setAlignment(Qt::AlignCenter);
+        armor->setIconSize(QSize(100, 60));
 
-        equipment->addWidget(chest_item);
+        equipment->addWidget(armor);
 
-        leg_item = new QLabel(equipment_layout);
-        leg_item->setObjectName(QString::fromUtf8("leg_item"));
-        leg_item->setCursor(QCursor(Qt::PointingHandCursor));
-        leg_item->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+        leg = new QPushButton(equipment_layout);
+        leg->setObjectName(QString::fromUtf8("leg"));
+        sizePolicy.setHeightForWidth(leg->sizePolicy().hasHeightForWidth());
+        leg->setSizePolicy(sizePolicy);
+        leg->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
-        leg_item->setAlignment(Qt::AlignCenter);
+        leg->setIconSize(QSize(100, 60));
 
-        equipment->addWidget(leg_item);
+        equipment->addWidget(leg);
 
-        hand = new QLabel(equipment_layout);
-        hand->setObjectName(QString::fromUtf8("hand"));
-        hand->setCursor(QCursor(Qt::PointingHandCursor));
-        hand->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+        weapons_1 = new QPushButton(equipment_layout);
+        weapons_1->setObjectName(QString::fromUtf8("weapons_1"));
+        sizePolicy.setHeightForWidth(weapons_1->sizePolicy().hasHeightForWidth());
+        weapons_1->setSizePolicy(sizePolicy);
+        weapons_1->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
-        hand->setAlignment(Qt::AlignCenter);
+        weapons_1->setIconSize(QSize(100, 60));
 
-        equipment->addWidget(hand);
+        equipment->addWidget(weapons_1);
 
-        offhand = new QLabel(equipment_layout);
-        offhand->setObjectName(QString::fromUtf8("offhand"));
-        offhand->setCursor(QCursor(Qt::PointingHandCursor));
-        offhand->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
+        weapons_2 = new QPushButton(equipment_layout);
+        weapons_2->setObjectName(QString::fromUtf8("weapons_2"));
+        sizePolicy.setHeightForWidth(weapons_2->sizePolicy().hasHeightForWidth());
+        weapons_2->setSizePolicy(sizePolicy);
+        weapons_2->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
-        offhand->setAlignment(Qt::AlignCenter);
+        weapons_2->setIconSize(QSize(100, 60));
 
-        equipment->addWidget(offhand);
+        equipment->addWidget(weapons_2);
 
 
         _2->addWidget(equipment_layout);
@@ -448,6 +452,9 @@ public:
 
         item_info_panel = new QLabel(item_info);
         item_info_panel->setObjectName(QString::fromUtf8("item_info_panel"));
+        QFont font1;
+        font1.setPointSize(15);
+        item_info_panel->setFont(font1);
         item_info_panel->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
@@ -699,10 +706,10 @@ public:
         monster->setText(QApplication::translate("UI_Test_Project", "\346\200\252\347\211\251", nullptr));
         startButton->setText(QString());
         stopButton->setText(QString());
-        chest_item->setText(QApplication::translate("UI_Test_Project", "\350\203\270\347\224\262\345\215\200\345\241\212", nullptr));
-        leg_item->setText(QApplication::translate("UI_Test_Project", "\350\255\267\350\205\277\345\215\200\345\241\212", nullptr));
-        hand->setText(QApplication::translate("UI_Test_Project", "\346\211\213\346\214\201\346\255\246\345\231\250", nullptr));
-        offhand->setText(QApplication::translate("UI_Test_Project", "\345\211\257\346\211\213\346\255\246\345\231\250", nullptr));
+        armor->setText(QApplication::translate("UI_Test_Project", "\350\203\270\347\224\262\345\215\200\345\241\212", nullptr));
+        leg->setText(QApplication::translate("UI_Test_Project", "\350\255\267\350\205\277\345\215\200\345\241\212", nullptr));
+        weapons_1->setText(QApplication::translate("UI_Test_Project", "\344\270\273\346\211\213\346\255\246\345\231\250", nullptr));
+        weapons_2->setText(QApplication::translate("UI_Test_Project", "\345\211\257\346\211\213\346\255\246\345\231\250", nullptr));
         close_backpack->setText(QApplication::translate("UI_Test_Project", "X", nullptr));
         item_info_panel->setText(QApplication::translate("UI_Test_Project", "\346\255\246\345\231\250\344\273\213\347\264\271\345\217\212\346\255\246\345\231\250\345\274\267\345\214\226\347\255\211\345\212\237\350\203\275", nullptr));
         equi->setText(QApplication::translate("UI_Test_Project", "\350\243\235\345\202\231", nullptr));

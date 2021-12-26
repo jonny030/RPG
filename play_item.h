@@ -1,10 +1,12 @@
 ﻿#ifndef PLAY_ITEM_H
 #define PLAY_ITEM_H
 #include<QString>
-
+#include<QIcon>
 class Equi{
 public:
+    QIcon icon;
     QString name;
+    QString kind;
     int atk;
     int def;
     Equi(){
@@ -34,7 +36,7 @@ public:
     int atk;
     int killcount;
     Equi *weapons_1,*weapons_2;
-    Equi *armor_1,*armor_2;
+    Equi *armor,*leg;
     player(int hp,int atk){
         this->hp=hp;
         this->default_hp=hp;
@@ -42,8 +44,8 @@ public:
         this->killcount=0;
         weapons_1 = new Equi();
         weapons_2= new Equi();
-        armor_1 = new Equi();
-        armor_2 = new Equi();
+        armor = new Equi();
+        leg = new Equi();
     }
     player(int hp){
         this->hp=hp;
@@ -57,7 +59,7 @@ public:
         return atk+weapons_1->atk+weapons_2->atk;
     }
     int getdef(){
-        return armor_1->def+armor_2->def;
+        return armor->def+leg->def;
     }
     void set_weapons_1(Equi *weapons){
         weapons_1=weapons;
@@ -65,11 +67,11 @@ public:
     void set_weapons_2(Equi *weapons){
         weapons_2=weapons;
     }
-    void set_armor_1(Equi *armor){
-        armor_1=armor;
+    void set_armor(Equi *armor){
+        this->armor=armor;
     }
-    void set_armor_2(Equi *armor){
-        armor_2=armor;
+    void set_leg(Equi *leg){
+        this->leg=leg;
     }
 };
 #endif // PLAY_ITEM_H

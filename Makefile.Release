@@ -149,23 +149,25 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_images_list.cpp
 release\qrc_images_list.cpp: images_list.qrc \
 		C:\Qt\5.12.11\msvc2017_64\bin\rcc.exe \
-		images\tumblr_p7k8f3fMWS1wvbydeo1_1280.png \
-		images\stop.png \
-		images\sword_1.png \
-		images\backpack_black_24dp.png \
+		images\GodSword.png \
+		images\monster1.gif \
+		images\armor.png \
 		images\btnbg.png \
-		images\cog-solid.png \
-		images\backpack_black_24dp.svg \
-		images\play-button2.png \
-		images\cog-solid.svg \
-		images\play-button.png \
-		images\profile.png \
-		images\store-solid.png \
+		images\backpack_black_24dp.png \
 		images\store-solid.svg \
 		images\stop2.png \
-		images\monster1.gif \
+		images\play-button.png \
+		images\cog-solid.png \
+		images\play-button2.png \
 		images\play_icon.png \
-		images\sword_2.png
+		images\NormalSword.png \
+		images\tumblr_p7k8f3fMWS1wvbydeo1_1280.png \
+		images\store-solid.png \
+		images\leg.png \
+		images\backpack_black_24dp.svg \
+		images\profile.png \
+		images\cog-solid.svg \
+		images\stop.png
 	C:\Qt\5.12.11\msvc2017_64\bin\rcc.exe -name images_list images_list.qrc -o release\qrc_images_list.cpp
 
 compiler_moc_predefs_make_all: release\moc_predefs.h
@@ -302,6 +304,7 @@ release\moc_ui_test_project.cpp: ui_test_project.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtCore\qfileinfo.h \
 		play_item.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtCore\QString \
+		C:\Qt\5.12.11\msvc2017_64\include\QtGui\QIcon \
 		release\moc_predefs.h \
 		C:\Qt\5.12.11\msvc2017_64\bin\moc.exe
 	C:\Qt\5.12.11\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/CodeWork/Qt/Final_topic_ui_test_project/release/moc_predefs.h -IC:/Qt/5.12.11/msvc2017_64/mkspecs/win32-msvc -ID:/CodeWork/Qt/Final_topic_ui_test_project -IC:/Qt/5.12.11/msvc2017_64/include -IC:/Qt/5.12.11/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.11/msvc2017_64/include/QtGui -IC:/Qt/5.12.11/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.11/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" ui_test_project.h -o release\moc_ui_test_project.cpp
@@ -454,6 +457,7 @@ release\main.obj: main.cpp ui_test_project.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtCore\qfileinfo.h \
 		play_item.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtCore\QString \
+		C:\Qt\5.12.11\msvc2017_64\include\QtGui\QIcon \
 		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\QApplication \
 		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\qapplication.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
@@ -585,9 +589,9 @@ release\ui_test_project.obj: ui_test_project.cpp ui_test_project.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtCore\qfileinfo.h \
 		play_item.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtCore\QString \
+		C:\Qt\5.12.11\msvc2017_64\include\QtGui\QIcon \
 		ui_ui_test_project.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtCore\QVariant \
-		C:\Qt\5.12.11\msvc2017_64\include\QtGui\QIcon \
 		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\QApplication \
 		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\qapplication.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\qdesktopwidget.h \

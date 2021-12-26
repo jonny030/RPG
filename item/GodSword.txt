@@ -1,3 +1,4 @@
 GodSword
 9999
 0
+weapons
