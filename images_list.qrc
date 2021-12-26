@@ -15,7 +15,7 @@
         <file>images/stop.png</file>
         <file>images/stop2.png</file>
         <file>images/play_icon.png</file>
-        <file>images/weapons_1.png</file>
-        <file>images/weapons_2.png</file>
+        <file>images/sword_1.png</file>
+        <file>images/sword_2.png</file>
     </qresource>
 </RCC>

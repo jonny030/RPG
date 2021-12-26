@@ -30,7 +30,6 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     QStringList filter;
     filter<<"*.txt";
     dir->setNameFilters(filter);
-    qDebug() << dir;
     QList<QFileInfo> *fileInfo=new QList<QFileInfo>(dir->entryInfoList(filter));
     for(int n=1;n<=fileInfo->count();n++){
         QString file=fileInfo->at(n-1).filePath();;
@@ -39,10 +38,9 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
             qDebug()<<"無法開啟檔案";
             return;
         }
-
         QStringList list= QString(mFile.readAll()).split("\n");
         QIcon icon;
-        icon.addFile(":/assets/images/weapons_"+QString::number(n)+".png");
+        icon.addFile(":/assets/images/sword_"+QString::number(n)+".png");
         ui->select_item->addItem(icon,list[0]);
         itemlist.item[n].name=list[0];
         itemlist.item[n].atk =list[1].toInt();
