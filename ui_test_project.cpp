@@ -309,7 +309,7 @@ void UI_Test_Project::on_leg_clicked()
         msgBox->setWindowTitle(QStringLiteral("系統訊息"));
         msgBox->setText(QStringLiteral("要解除護腿嗎?"));
         QPushButton *btn_sure = msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
-         msgBox->addButton(QStringLiteral("取消"), QMessageBox::RejectRole);
+        msgBox->addButton(QStringLiteral("取消"), QMessageBox::RejectRole);
         msgBox->setStyleSheet("background-color:white");
         msgBox->exec();
         if(msgBox->clickedButton() == btn_sure){
