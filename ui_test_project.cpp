@@ -192,9 +192,6 @@ void UI_Test_Project::on_endgame_clicked()
     player->setMedia(QUrl::fromLocalFile("./sounds/gameend.mp3"));
     player->setVolume(100);
     player->play();
-    if(player->PlayingState == 0){
-        close();
-    }
 }
 
 void UI_Test_Project::on_select_item_activated(const QString &arg1)
