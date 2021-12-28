@@ -35,6 +35,7 @@ public:
     int default_hp;
     int atk;
     int killcount;
+    int level;
     Equi *weapons_1,*weapons_2;
     Equi *armor,*leg;
     player(int hp,int atk){
@@ -42,6 +43,7 @@ public:
         this->default_hp=hp;
         this->atk=atk;
         this->killcount=0;
+        this->level=0;
         weapons_1 = new Equi();
         weapons_2= new Equi();
         armor = new Equi();

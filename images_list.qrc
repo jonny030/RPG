@@ -19,5 +19,6 @@
         <file>images/NormalSword.png</file>
         <file>images/armor.png</file>
         <file>images/leg.png</file>
+        <file>images/meme.png</file>
     </qresource>
 </RCC>

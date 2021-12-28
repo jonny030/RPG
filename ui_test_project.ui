@@ -183,7 +183,7 @@ min-height:100px;</string>
       <height>61</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <layout class="QVBoxLayout" name="nameLayout">
      <item>
       <widget class="QLabel" name="username">
        <property name="font">
@@ -235,7 +235,7 @@ QProgressBar::chunk {
       <height>221</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
+    <layout class="QGridLayout" name="playerLayout">
      <item row="0" column="1">
       <widget class="QProgressBar" name="playerHp">
        <property name="styleSheet">
@@ -277,7 +277,7 @@ QProgressBar::chunk {
       <height>231</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout_2">
+    <layout class="QGridLayout" name="monsterLayout">
      <item row="0" column="1">
       <widget class="QProgressBar" name="monsterHp">
        <property name="styleSheet">
@@ -446,7 +446,7 @@ border-radius:16px;
 border-width:8px;</string>
           </property>
           <property name="text">
-           <string>胸甲區塊</string>
+           <string>護甲區塊</string>
           </property>
           <property name="iconSize">
            <size>
@@ -634,7 +634,10 @@ border-width:2px;</string>
          <widget class="QLabel" name="item_info_panel">
           <property name="font">
            <font>
+            <family>Arial</family>
             <pointsize>15</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -643,7 +646,7 @@ border-radius:16px;
 border-width:8px;</string>
           </property>
           <property name="text">
-           <string>武器介紹及武器強化等功能</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -794,6 +797,12 @@ border-width:8px;</string>
        </item>
        <item>
         <widget class="QFrame" name="shop_item_panel">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: gray;
 border:solid black 3px;</string>
@@ -801,13 +810,19 @@ border:solid black 3px;</string>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QLabel" name="shop_item_info">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
             <property name="styleSheet">
              <string notr="true">border:3px solid black;
 border-radius:16px;
 border-width:8px;</string>
             </property>
             <property name="text">
-             <string>武器介紹及武器強化等功能價錢</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -862,7 +877,7 @@ border-width:8px;</string>
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>1000</y>
+      <y>40</y>
       <width>250</width>
       <height>300</height>
      </rect>
@@ -989,6 +1004,36 @@ QPushButton:hover{
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="level">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>140</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>LV.0</string>
+    </property>
+   </widget>
+   <zorder>level</zorder>
+   <zorder>verticalLayoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>gridLayoutWidget_2</zorder>
+   <zorder>exp_bar</zorder>
+   <zorder>startButton</zorder>
+   <zorder>stopButton</zorder>
+   <zorder>backpack_gui</zorder>
+   <zorder>setting_gui</zorder>
+   <zorder>shop_gui</zorder>
   </widget>
  </widget>
  <resources>

@@ -40,16 +40,16 @@ public:
     QPushButton *back;
     QPushButton *settingButton;
     QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *nameLayout;
     QLabel *username;
     QLabel *status;
     QProgressBar *progressBar;
     QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout;
+    QGridLayout *playerLayout;
     QProgressBar *playerHp;
     QLabel *player;
     QWidget *gridLayoutWidget_2;
-    QGridLayout *gridLayout_2;
+    QGridLayout *monsterLayout;
     QProgressBar *monsterHp;
     QLabel *monster;
     QProgressBar *exp_bar;
@@ -96,6 +96,7 @@ public:
     QPushButton *gamesaves;
     QPushButton *volumesetting;
     QPushButton *endgame;
+    QLabel *level;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -207,9 +208,9 @@ public:
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(7, 22, 161, 61));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        nameLayout = new QVBoxLayout(layoutWidget);
+        nameLayout->setObjectName(QString::fromUtf8("nameLayout"));
+        nameLayout->setContentsMargins(0, 0, 0, 0);
         username = new QLabel(layoutWidget);
         username->setObjectName(QString::fromUtf8("username"));
         QFont font;
@@ -218,12 +219,12 @@ public:
         username->setFont(font);
         username->setTextFormat(Qt::AutoText);
 
-        verticalLayout_2->addWidget(username);
+        nameLayout->addWidget(username);
 
         status = new QLabel(layoutWidget);
         status->setObjectName(QString::fromUtf8("status"));
 
-        verticalLayout_2->addWidget(status);
+        nameLayout->addWidget(status);
 
         progressBar = new QProgressBar(layoutWidget);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
@@ -237,14 +238,14 @@ public:
 "}"));
         progressBar->setValue(100);
 
-        verticalLayout_2->addWidget(progressBar);
+        nameLayout->addWidget(progressBar);
 
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(50, 160, 171, 221));
-        gridLayout = new QGridLayout(gridLayoutWidget);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
+        playerLayout = new QGridLayout(gridLayoutWidget);
+        playerLayout->setObjectName(QString::fromUtf8("playerLayout"));
+        playerLayout->setContentsMargins(0, 0, 0, 0);
         playerHp = new QProgressBar(gridLayoutWidget);
         playerHp->setObjectName(QString::fromUtf8("playerHp"));
         playerHp->setStyleSheet(QString::fromUtf8("QProgressBar {\n"
@@ -258,20 +259,20 @@ public:
         playerHp->setValue(100);
         playerHp->setAlignment(Qt::AlignCenter);
 
-        gridLayout->addWidget(playerHp, 0, 1, 1, 1);
+        playerLayout->addWidget(playerHp, 0, 1, 1, 1);
 
         player = new QLabel(gridLayoutWidget);
         player->setObjectName(QString::fromUtf8("player"));
         player->setAlignment(Qt::AlignCenter);
 
-        gridLayout->addWidget(player, 1, 1, 1, 1);
+        playerLayout->addWidget(player, 1, 1, 1, 1);
 
         gridLayoutWidget_2 = new QWidget(centralwidget);
         gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
         gridLayoutWidget_2->setGeometry(QRect(590, 160, 163, 231));
-        gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
-        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        gridLayout_2->setContentsMargins(0, 0, 0, 0);
+        monsterLayout = new QGridLayout(gridLayoutWidget_2);
+        monsterLayout->setObjectName(QString::fromUtf8("monsterLayout"));
+        monsterLayout->setContentsMargins(0, 0, 0, 0);
         monsterHp = new QProgressBar(gridLayoutWidget_2);
         monsterHp->setObjectName(QString::fromUtf8("monsterHp"));
         monsterHp->setStyleSheet(QString::fromUtf8("QProgressBar {\n"
@@ -285,13 +286,13 @@ public:
         monsterHp->setValue(100);
         monsterHp->setAlignment(Qt::AlignCenter);
 
-        gridLayout_2->addWidget(monsterHp, 0, 1, 1, 1);
+        monsterLayout->addWidget(monsterHp, 0, 1, 1, 1);
 
         monster = new QLabel(gridLayoutWidget_2);
         monster->setObjectName(QString::fromUtf8("monster"));
         monster->setAlignment(Qt::AlignCenter);
 
-        gridLayout_2->addWidget(monster, 1, 1, 1, 1);
+        monsterLayout->addWidget(monster, 1, 1, 1, 1);
 
         exp_bar = new QProgressBar(centralwidget);
         exp_bar->setObjectName(QString::fromUtf8("exp_bar"));
@@ -453,7 +454,10 @@ public:
         item_info_panel = new QLabel(item_info);
         item_info_panel->setObjectName(QString::fromUtf8("item_info_panel"));
         QFont font1;
+        font1.setFamily(QString::fromUtf8("Arial"));
         font1.setPointSize(15);
+        font1.setBold(false);
+        font1.setWeight(50);
         item_info_panel->setFont(font1);
         item_info_panel->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
@@ -553,12 +557,17 @@ public:
 
         shop_item_panel = new QFrame(shop_gui);
         shop_item_panel->setObjectName(QString::fromUtf8("shop_item_panel"));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Arial"));
+        font2.setPointSize(15);
+        shop_item_panel->setFont(font2);
         shop_item_panel->setStyleSheet(QString::fromUtf8("background-color: gray;\n"
 "border:solid black 3px;"));
         verticalLayout_4 = new QVBoxLayout(shop_item_panel);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         shop_item_info = new QLabel(shop_item_panel);
         shop_item_info->setObjectName(QString::fromUtf8("shop_item_info"));
+        shop_item_info->setFont(font2);
         shop_item_info->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
@@ -599,7 +608,7 @@ public:
 
         setting_gui = new QFrame(centralwidget);
         setting_gui->setObjectName(QString::fromUtf8("setting_gui"));
-        setting_gui->setGeometry(QRect(280, 1000, 250, 300));
+        setting_gui->setGeometry(QRect(280, 40, 250, 300));
         setting_gui->setMinimumSize(QSize(250, 300));
         setting_gui->setMaximumSize(QSize(0, 0));
         setting_gui->setBaseSize(QSize(0, 0));
@@ -683,7 +692,25 @@ public:
 
         _6->addWidget(verticalFrame_3);
 
+        level = new QLabel(centralwidget);
+        level->setObjectName(QString::fromUtf8("level"));
+        level->setGeometry(QRect(120, 140, 61, 16));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Arial"));
+        font3.setPointSize(12);
+        level->setFont(font3);
         UI_Test_Project->setCentralWidget(centralwidget);
+        level->raise();
+        verticalLayoutWidget->raise();
+        layoutWidget->raise();
+        gridLayoutWidget->raise();
+        gridLayoutWidget_2->raise();
+        exp_bar->raise();
+        startButton->raise();
+        stopButton->raise();
+        backpack_gui->raise();
+        setting_gui->raise();
+        shop_gui->raise();
 
         retranslateUi(UI_Test_Project);
 
@@ -706,22 +733,23 @@ public:
         monster->setText(QApplication::translate("UI_Test_Project", "\346\200\252\347\211\251", nullptr));
         startButton->setText(QString());
         stopButton->setText(QString());
-        armor->setText(QApplication::translate("UI_Test_Project", "\350\203\270\347\224\262\345\215\200\345\241\212", nullptr));
+        armor->setText(QApplication::translate("UI_Test_Project", "\350\255\267\347\224\262\345\215\200\345\241\212", nullptr));
         leg->setText(QApplication::translate("UI_Test_Project", "\350\255\267\350\205\277\345\215\200\345\241\212", nullptr));
         weapons_1->setText(QApplication::translate("UI_Test_Project", "\344\270\273\346\211\213\346\255\246\345\231\250", nullptr));
         weapons_2->setText(QApplication::translate("UI_Test_Project", "\345\211\257\346\211\213\346\255\246\345\231\250", nullptr));
         close_backpack->setText(QApplication::translate("UI_Test_Project", "X", nullptr));
-        item_info_panel->setText(QApplication::translate("UI_Test_Project", "\346\255\246\345\231\250\344\273\213\347\264\271\345\217\212\346\255\246\345\231\250\345\274\267\345\214\226\347\255\211\345\212\237\350\203\275", nullptr));
+        item_info_panel->setText(QString());
         equi->setText(QApplication::translate("UI_Test_Project", "\350\243\235\345\202\231", nullptr));
         levelup->setText(QApplication::translate("UI_Test_Project", "\345\215\207\347\264\232(+1)", nullptr));
         resetshop->setText(QApplication::translate("UI_Test_Project", "\345\210\267\346\226\260\345\225\206\345\272\227", nullptr));
-        shop_item_info->setText(QApplication::translate("UI_Test_Project", "\346\255\246\345\231\250\344\273\213\347\264\271\345\217\212\346\255\246\345\231\250\345\274\267\345\214\226\347\255\211\345\212\237\350\203\275\345\203\271\351\214\242", nullptr));
+        shop_item_info->setText(QString());
         buy->setText(QApplication::translate("UI_Test_Project", "\350\263\274\350\262\267", nullptr));
         shop_close_panel->setText(QApplication::translate("UI_Test_Project", "\351\227\234\351\226\211", nullptr));
         backtogame->setText(QApplication::translate("UI_Test_Project", "\350\277\224\345\233\236\351\201\212\346\210\262", nullptr));
         gamesaves->setText(QApplication::translate("UI_Test_Project", "\351\201\212\346\210\262\347\264\200\351\214\204", nullptr));
         volumesetting->setText(QApplication::translate("UI_Test_Project", "\350\201\262\351\237\263\350\250\255\345\256\232", nullptr));
         endgame->setText(QApplication::translate("UI_Test_Project", "\347\265\220\346\235\237\351\201\212\346\210\262", nullptr));
+        level->setText(QApplication::translate("UI_Test_Project", "LV.0", nullptr));
     } // retranslateUi
 
 };

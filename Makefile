@@ -247,8 +247,10 @@ Makefile: Final_topic_ui_test_project.pro C:\Qt\5.12.11\msvc2017_64\mkspecs\win3
 		C:\Qt\5.12.11\msvc2017_64\mkspecs\features\yacc.prf \
 		C:\Qt\5.12.11\msvc2017_64\mkspecs\features\lex.prf \
 		Final_topic_ui_test_project.pro \
+		C:\Qt\5.12.11\msvc2017_64\lib\Qt5Multimedia.prl \
 		C:\Qt\5.12.11\msvc2017_64\lib\Qt5Widgets.prl \
 		C:\Qt\5.12.11\msvc2017_64\lib\Qt5Gui.prl \
+		C:\Qt\5.12.11\msvc2017_64\lib\Qt5Network.prl \
 		C:\Qt\5.12.11\msvc2017_64\lib\Qt5Core.prl \
 		C:\Qt\5.12.11\msvc2017_64\lib\qtmain.prl
 	$(QMAKE) -o Makefile Final_topic_ui_test_project.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -422,8 +424,10 @@ C:\Qt\5.12.11\msvc2017_64\mkspecs\features\exceptions.prf:
 C:\Qt\5.12.11\msvc2017_64\mkspecs\features\yacc.prf:
 C:\Qt\5.12.11\msvc2017_64\mkspecs\features\lex.prf:
 Final_topic_ui_test_project.pro:
+C:\Qt\5.12.11\msvc2017_64\lib\Qt5Multimedia.prl:
 C:\Qt\5.12.11\msvc2017_64\lib\Qt5Widgets.prl:
 C:\Qt\5.12.11\msvc2017_64\lib\Qt5Gui.prl:
+C:\Qt\5.12.11\msvc2017_64\lib\Qt5Network.prl:
 C:\Qt\5.12.11\msvc2017_64\lib\Qt5Core.prl:
 C:\Qt\5.12.11\msvc2017_64\lib\qtmain.prl:
 qmake: FORCE

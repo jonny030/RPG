@@ -1,15 +1,19 @@
 ﻿#include "ui_test_project.h"
 #include "ui_ui_test_project.h"
 #include <QMessageBox>
-#include <QThread>
+#include <QPixmap>
 QIcon icon;
-int setIcon_n;
-bool setIcon_weapons=false,setIcon_armors=false,setIcon_leg=false;
+int setIcon_n=0,bigegg_count=0;
+bool setIcon_weapons=false,setIcon_armors=false,setIcon_leg=false,bigegg=false,end=false;
 UI_Test_Project::UI_Test_Project(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::UI_Test_Project)
 {
     ui->setupUi(this);
+    connect(sleepTimer, SIGNAL(timeout()), this, SLOT(sleep()));
+    connect(myTimer, SIGNAL(timeout()), this, SLOT(timerstart()));
+    connect(backmusic,SIGNAL(durationChanged(qint64)),this,SLOT(getduration()));
+
     srand( time(NULL) );
     QMovie *movie = new QMovie(":/assets/images/monster1.gif");
     QImage img;
@@ -20,8 +24,14 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->monster->setMovie(movie);
     ui->monster->setScaledContents(true);
 
-    ui->select_item->addItem("");
+    playlist->addMedia(QUrl("./sound/backmusic.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+    backmusic->setPlaylist(playlist);
+    backmusic->setVolume(50);
+    backmusic->play();
 
+    ui->select_item->addItem("");
+    ui->shop_select_item->addItem("");
     ui->backpack_gui->setVisible(false);
     ui->shop_gui->setVisible(false);
     ui->setting_gui->setVisible(false);
@@ -49,7 +59,7 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
         itemlist.item[n].atk =list[1].toInt();
         itemlist.item[n].def =list[2].toInt();
         itemlist.item[n].kind=list[3];
-        ui->select_item->addItem(itemlist.item[n].icon,list[0]);
+        ui->shop_select_item->addItem(itemlist.item[n].icon,list[0]);
     }
     mFile.flush();
     mFile.close();
@@ -58,48 +68,74 @@ UI_Test_Project::~UI_Test_Project()
 {
     delete ui;
 }
-void UI_Test_Project::timerEvent(QTimerEvent *event){
-    int who=rand()%10+1;
-    int monster_atk=monster_note->atk+rand()%5+1;
-    int player_atk=player_note->getatk();
-    int player_def=player_note->getdef();
-    if(who == 1){
-        if(player_note->hp<monster_atk){
-            player_note->hp=0;
-            ui->playerHp->setValue(0);
-        }else{
-            player_note->hp-=monster_atk+player_def;
-            ui->playerHp->setValue(player_note->gethp());
-        }
-    }else if(who > 3){
-        if(ui->monsterHp->value()<player_atk){
-            monster_note->hp=0;
-            ui->monsterHp->setValue(0);
-        }else{
-            monster_note->hp-=player_atk;
-            ui->monsterHp->setValue(monster_note->gethp());
+void UI_Test_Project::timerstart(){
+    if(!sleepTimer->isActive()){
+        int who=rand()%10+1;
+        int monster_atk=monster_note->atk+rand()%(int)(player_note->killcount/10+1)+1;
+        int player_atk=player_note->getatk();
+        int player_def=player_note->getdef();
+        if(who == 1){
+            if(player_note->hp<monster_atk){
+                playSound("playerdie");
+                player_note->hp=0;
+                ui->playerHp->setValue(0);
+            }else{
+                playSound("playerATT");
+                player_note->hp-=monster_atk+player_def;
+                ui->playerHp->setValue(player_note->gethp());
+            }
+        }else if(who > 3){
+            if(ui->monsterHp->value()<player_atk){
+                playSound("bonk");
+                monster_note->hp=0;
+                ui->monsterHp->setValue(0);
+            }else{
+                playSound("monsterdie");
+                monster_note->hp-=player_atk;
+                ui->monsterHp->setValue(monster_note->gethp());
+            }
         }
     }
     //exp
     if(ui->monsterHp->value()<=0){
-        QThread::msleep(500);
-        killcount +=1;
+        if(sleep_bool){
+            sleepTimer->start(300);
+            sleep_bool = false;
+        }
+        if(!sleepTimer->isActive()){
+            initHp();
+        }
+    }
+}
+
+void UI_Test_Project::initHp(){
+    if(ui->monsterHp->value()<=0){
+        player_note->killcount +=1;
         int plusexp=ui->exp_bar->value()+rand()%20+5;
         if(plusexp<=100){
             ui->exp_bar->setValue(plusexp);
         }else{
+            playSound("levelup");
+            player_note->level +=1;
+            ui->level->setText("LV."+QString::number(player_note->level));
             ui->exp_bar->setValue(0);
         }
         monster_note->hp=monster_note->default_hp;
         ui->monsterHp->setValue(100);
         player_note->hp = player_note->default_hp;
         ui->playerHp->setValue(player_note->hp*100/player_note->default_hp);
+        sleep_bool = true;
     }
+}
+
+void UI_Test_Project::sleep(){
+    sleepTimer->stop();
 }
 
 void UI_Test_Project::on_startButton_clicked()
 {
-    m_nTimerID = this->startTimer(300);
+    clickedButton();
+    myTimer->start(300);
     QIcon icon1,icon2;
     icon1.addFile(QString::fromUtf8(":/assets/images/stop.png"), QSize(), QIcon::Normal, QIcon::Off);
     ui->stopButton->setIcon(icon1);
@@ -110,16 +146,19 @@ void UI_Test_Project::on_startButton_clicked()
 
 void UI_Test_Project::on_stopButton_clicked()
 {
-    killTimer(m_nTimerID);
+    clickedButton();
+    myTimer->stop();
     QIcon icon1,icon2;
     icon1.addFile(QString::fromUtf8(":/assets/images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
     ui->stopButton->setIcon(icon1);
     icon2.addFile(QString::fromUtf8(":/assets/images/play-button.png"), QSize(), QIcon::Normal, QIcon::Off);
     ui->startButton->setIcon(icon2);
+    initHp();
 }
 
 void UI_Test_Project::on_back_clicked()
 {
+    clickedButton();
     ui->setting_gui->setVisible(false);
     ui->shop_gui->setVisible(false);
     ui->backpack_gui->setVisible(true);
@@ -129,12 +168,14 @@ void UI_Test_Project::on_back_clicked()
 
 void UI_Test_Project::on_close_backpack_clicked()
 {
+    clickedButton();
     ui->backpack_gui->setVisible(false);
 }
 
 
 void UI_Test_Project::on_shopButton_clicked()
 {
+    clickedButton();
     ui->setting_gui->setVisible(false);
     ui->backpack_gui->setVisible(false);
     ui->shop_gui->setVisible(true);
@@ -144,6 +185,7 @@ void UI_Test_Project::on_shopButton_clicked()
 
 void UI_Test_Project::on_settingButton_clicked()
 {
+    clickedButton();
     ui->shop_gui->setVisible(false);
     ui->backpack_gui->setVisible(false);
     ui->setting_gui->setVisible(true);
@@ -153,22 +195,29 @@ void UI_Test_Project::on_settingButton_clicked()
 
 void UI_Test_Project::on_backtogame_clicked()
 {
+    clickedButton();
     ui->setting_gui->setVisible(false);
+    bigegg_count+=1;
+    if(bigegg_count>=5){
+        bigegg = true;
+    }
 }
 
 
 void UI_Test_Project::on_shop_close_panel_clicked()
 {
+    clickedButton();
     ui->shop_gui->setVisible(false);
 }
 
 void UI_Test_Project::on_endgame_clicked()
 {
-    close();
+    playSound("gameover");
 }
 
 void UI_Test_Project::on_select_item_activated(const QString &arg1)
 {
+    clickedButton();
     int n=1;
     if(arg1 == ""){
         ui->item_info_panel->setText("");
@@ -186,6 +235,7 @@ void UI_Test_Project::on_select_item_activated(const QString &arg1)
 
 void UI_Test_Project::on_equi_clicked()
 {
+    clickedButton();
     int n=1;
     QString arg1=ui->select_item->currentText();
     if(arg1 == ""){
@@ -215,6 +265,7 @@ void UI_Test_Project::on_equi_clicked()
 
 void UI_Test_Project::on_weapons_1_clicked()
 {
+    clickedButton();
     if(setIcon_weapons){
         setIcon_weapons = false;
         player_note->set_weapons_1(&itemlist.item[setIcon_n]);
@@ -228,7 +279,7 @@ void UI_Test_Project::on_weapons_1_clicked()
         msgBox->setWindowTitle(QStringLiteral("系統訊息"));
         msgBox->setText(QStringLiteral("要解除武器嗎?"));
         QPushButton *btn_sure = msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
-         msgBox->addButton(QStringLiteral("取消"), QMessageBox::RejectRole);
+        msgBox->addButton(QStringLiteral("取消"), QMessageBox::RejectRole);
         msgBox->setStyleSheet("background-color:white");
         msgBox->exec();
         if(msgBox->clickedButton() == btn_sure){
@@ -236,12 +287,14 @@ void UI_Test_Project::on_weapons_1_clicked()
             ui->weapons_1->setText(QStringLiteral("主手武器"));
             ui->weapons_1->setIcon(QIcon());
         }
+        clickedButton();
     }
 }
 
 
 void UI_Test_Project::on_weapons_2_clicked()
 {
+    clickedButton();
     if(setIcon_weapons){
         setIcon_weapons = false;
         player_note->set_weapons_2(&itemlist.item[setIcon_n]);
@@ -263,12 +316,14 @@ void UI_Test_Project::on_weapons_2_clicked()
            ui->weapons_2->setText(QStringLiteral("副手武器"));
            ui->weapons_2->setIcon(QIcon());
        }
+       clickedButton();
     }
 }
 
 
 void UI_Test_Project::on_armor_clicked()
 {
+    clickedButton();
     if(setIcon_armors){
         setIcon_armors = false;
         player_note->set_armor(&itemlist.item[setIcon_n]);
@@ -290,12 +345,14 @@ void UI_Test_Project::on_armor_clicked()
             ui->armor->setText(QStringLiteral("護甲區塊"));
             ui->armor->setIcon(QIcon());
         }
+        clickedButton();
     }
 }
 
 
 void UI_Test_Project::on_leg_clicked()
 {
+    clickedButton();
     if(setIcon_leg){
         setIcon_leg = false;
         player_note->set_leg(&itemlist.item[setIcon_n]);
@@ -317,6 +374,82 @@ void UI_Test_Project::on_leg_clicked()
             ui->leg->setText(QStringLiteral("護腿區塊"));
             ui->leg->setIcon(QIcon());
         }
+        clickedButton();
+    }
+}
+
+
+void UI_Test_Project::on_shop_select_item_activated(const QString &arg1)
+{
+    clickedButton();
+    int n=1;
+    if(arg1 == ""){
+        ui->item_info_panel->setText("");
+    }else{
+        while(true){
+            if(arg1 == itemlist.item[n].name){
+                ui->shop_item_info->setText(QStringLiteral("Name：")+itemlist.item[n].name+QStringLiteral("\nAtk：")+QString::number(itemlist.item[n].atk)+QStringLiteral("\nDef：")+QString::number(itemlist.item[n].def));
+                break;
+            }
+            n++;
+        }
+    }
+}
+
+
+void UI_Test_Project::on_buy_clicked()
+{
+    clickedButton();
+    int n=1;
+    if(ui->shop_select_item->currentText() == ""){
+    }else{
+        while(true){
+            if(ui->shop_select_item->currentText() == itemlist.item[n].name){
+                ui->select_item->addItem(itemlist.item[n].icon,itemlist.item[n].name);
+                if(itemlist.item[n].name == "GodSword")
+                       playSound("GodSword");
+                break;
+            }
+            n++;
+        }
+    }
+}
+void UI_Test_Project::playSound(QString url){
+    if(url == "gameover"){
+
+        if(bigegg){
+            backmusic->setMedia(QUrl("./sound/boss.mp3"));
+            QImage img;
+            img.load(":/assets/images/meme.png");
+            Win->setPixmap(QPixmap::fromImage(img));
+            Win->setWindowTitle("meme");
+            Win->show();
+        }else{
+            backmusic->setMedia(QUrl("./sound/"+url+".mp3"));
+        }
+        backmusic->play();
+        end=true;
+    }else{
+        QMediaPlayer *sound = new QMediaPlayer();
+        sound->setMedia(QUrl("./sound/"+url+".mp3"));
+        sound->setVolume(100);
+        sound->play();
+    }
+}
+void UI_Test_Project::getduration(){
+    if(backmusic->duration()!=0){
+        if(end){
+            _sleep(backmusic->duration());
+            close();
+            Win->close();
+        }
+    }
+}
+void UI_Test_Project::clickedButton(){
+    if(bigegg){
+        playSound("a");
+    }else{
+        playSound("click");
     }
 }
 
