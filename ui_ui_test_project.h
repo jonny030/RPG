@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
@@ -20,7 +21,9 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -40,16 +43,16 @@ public:
     QPushButton *back;
     QPushButton *settingButton;
     QWidget *layoutWidget;
-    QVBoxLayout *nameLayout;
+    QVBoxLayout *verticalLayout_2;
     QLabel *username;
     QLabel *status;
     QProgressBar *progressBar;
     QWidget *gridLayoutWidget;
-    QGridLayout *playerLayout;
+    QGridLayout *gridLayout;
     QProgressBar *playerHp;
     QLabel *player;
     QWidget *gridLayoutWidget_2;
-    QGridLayout *monsterLayout;
+    QGridLayout *gridLayout_2;
     QProgressBar *monsterHp;
     QLabel *monster;
     QProgressBar *exp_bar;
@@ -96,6 +99,22 @@ public:
     QPushButton *gamesaves;
     QPushButton *volumesetting;
     QPushButton *endgame;
+    QFrame *volume_gui;
+    QHBoxLayout *_7;
+    QFrame *volume_main;
+    QVBoxLayout *_8;
+    QHBoxLayout *volume_sounds_frame;
+    QLabel *volume_sounds_text;
+    QCheckBox *soundmute;
+    QSpinBox *volume_sounds_spinBox;
+    QSlider *volume_sounds_silderbar;
+    QHBoxLayout *volume_body_frame;
+    QLabel *volume_body_text;
+    QCheckBox *backmute;
+    QSpinBox *volume_body_spinBox;
+    QSlider *volume_body_silderbar;
+    QHBoxLayout *horizontalLayout_6;
+    QPushButton *volume_close_btn;
     QLabel *level;
 
     void setupUi(QMainWindow *UI_Test_Project)
@@ -207,24 +226,23 @@ public:
 
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(7, 22, 161, 61));
-        nameLayout = new QVBoxLayout(layoutWidget);
-        nameLayout->setObjectName(QString::fromUtf8("nameLayout"));
-        nameLayout->setContentsMargins(0, 0, 0, 0);
+        layoutWidget->setGeometry(QRect(7, 22, 161, 62));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         username = new QLabel(layoutWidget);
         username->setObjectName(QString::fromUtf8("username"));
         QFont font;
-        font.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
         font.setPointSize(12);
         username->setFont(font);
         username->setTextFormat(Qt::AutoText);
 
-        nameLayout->addWidget(username);
+        verticalLayout_2->addWidget(username);
 
         status = new QLabel(layoutWidget);
         status->setObjectName(QString::fromUtf8("status"));
 
-        nameLayout->addWidget(status);
+        verticalLayout_2->addWidget(status);
 
         progressBar = new QProgressBar(layoutWidget);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
@@ -238,14 +256,14 @@ public:
 "}"));
         progressBar->setValue(100);
 
-        nameLayout->addWidget(progressBar);
+        verticalLayout_2->addWidget(progressBar);
 
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(50, 160, 171, 221));
-        playerLayout = new QGridLayout(gridLayoutWidget);
-        playerLayout->setObjectName(QString::fromUtf8("playerLayout"));
-        playerLayout->setContentsMargins(0, 0, 0, 0);
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
         playerHp = new QProgressBar(gridLayoutWidget);
         playerHp->setObjectName(QString::fromUtf8("playerHp"));
         playerHp->setStyleSheet(QString::fromUtf8("QProgressBar {\n"
@@ -259,20 +277,20 @@ public:
         playerHp->setValue(100);
         playerHp->setAlignment(Qt::AlignCenter);
 
-        playerLayout->addWidget(playerHp, 0, 1, 1, 1);
+        gridLayout->addWidget(playerHp, 0, 1, 1, 1);
 
         player = new QLabel(gridLayoutWidget);
         player->setObjectName(QString::fromUtf8("player"));
         player->setAlignment(Qt::AlignCenter);
 
-        playerLayout->addWidget(player, 1, 1, 1, 1);
+        gridLayout->addWidget(player, 1, 1, 1, 1);
 
         gridLayoutWidget_2 = new QWidget(centralwidget);
         gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
         gridLayoutWidget_2->setGeometry(QRect(590, 160, 163, 231));
-        monsterLayout = new QGridLayout(gridLayoutWidget_2);
-        monsterLayout->setObjectName(QString::fromUtf8("monsterLayout"));
-        monsterLayout->setContentsMargins(0, 0, 0, 0);
+        gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
         monsterHp = new QProgressBar(gridLayoutWidget_2);
         monsterHp->setObjectName(QString::fromUtf8("monsterHp"));
         monsterHp->setStyleSheet(QString::fromUtf8("QProgressBar {\n"
@@ -286,13 +304,13 @@ public:
         monsterHp->setValue(100);
         monsterHp->setAlignment(Qt::AlignCenter);
 
-        monsterLayout->addWidget(monsterHp, 0, 1, 1, 1);
+        gridLayout_2->addWidget(monsterHp, 0, 1, 1, 1);
 
         monster = new QLabel(gridLayoutWidget_2);
         monster->setObjectName(QString::fromUtf8("monster"));
         monster->setAlignment(Qt::AlignCenter);
 
-        monsterLayout->addWidget(monster, 1, 1, 1, 1);
+        gridLayout_2->addWidget(monster, 1, 1, 1, 1);
 
         exp_bar = new QProgressBar(centralwidget);
         exp_bar->setObjectName(QString::fromUtf8("exp_bar"));
@@ -437,14 +455,21 @@ public:
 
         close_backpack = new QPushButton(backpack_action_bar);
         close_backpack->setObjectName(QString::fromUtf8("close_backpack"));
-        close_backpack->setMinimumSize(QSize(36, 36));
-        close_backpack->setMaximumSize(QSize(32, 32));
-        close_backpack->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"min-width:32px;min-height:32px;\n"
-"background:rgb(0, 0, 0);\n"
-"color:white;\n"
-"border-radius:16px;\n"
-"border-width:2px;"));
+        close_backpack->setMinimumSize(QSize(72, 40));
+        close_backpack->setMaximumSize(QSize(72, 32));
+        close_backpack->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 4px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"	min-width:24px;\n"
+"	min-height:24px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         _4->addWidget(close_backpack);
 
@@ -455,9 +480,7 @@ public:
         item_info_panel->setObjectName(QString::fromUtf8("item_info_panel"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Arial"));
-        font1.setPointSize(15);
-        font1.setBold(false);
-        font1.setWeight(50);
+        font1.setPointSize(16);
         item_info_panel->setFont(font1);
         item_info_panel->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
@@ -468,23 +491,39 @@ public:
 
         item_action_btn = new QFrame(item_info);
         item_action_btn->setObjectName(QString::fromUtf8("item_action_btn"));
-        item_action_btn->setMaximumSize(QSize(16777215, 52));
+        item_action_btn->setMaximumSize(QSize(16777215, 55));
         item_action_btn->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout_2 = new QHBoxLayout(item_action_btn);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         equi = new QPushButton(item_action_btn);
         equi->setObjectName(QString::fromUtf8("equi"));
-        equi->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        equi->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_2->addWidget(equi);
 
         levelup = new QPushButton(item_action_btn);
         levelup->setObjectName(QString::fromUtf8("levelup"));
-        levelup->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        levelup->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_2->addWidget(levelup);
 
@@ -545,10 +584,18 @@ public:
 
         resetshop = new QPushButton(shop_select_bar);
         resetshop->setObjectName(QString::fromUtf8("resetshop"));
-        resetshop->setMaximumSize(QSize(100, 16777215));
-        resetshop->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        resetshop->setMaximumSize(QSize(126, 16777215));
+        resetshop->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:6px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_3->addWidget(resetshop);
 
@@ -557,17 +604,13 @@ public:
 
         shop_item_panel = new QFrame(shop_gui);
         shop_item_panel->setObjectName(QString::fromUtf8("shop_item_panel"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Arial"));
-        font2.setPointSize(15);
-        shop_item_panel->setFont(font2);
         shop_item_panel->setStyleSheet(QString::fromUtf8("background-color: gray;\n"
 "border:solid black 3px;"));
         verticalLayout_4 = new QVBoxLayout(shop_item_panel);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         shop_item_info = new QLabel(shop_item_panel);
         shop_item_info->setObjectName(QString::fromUtf8("shop_item_info"));
-        shop_item_info->setFont(font2);
+        shop_item_info->setFont(font1);
         shop_item_info->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
@@ -579,24 +622,40 @@ public:
 
         shop_action = new QFrame(shop_gui);
         shop_action->setObjectName(QString::fromUtf8("shop_action"));
-        shop_action->setMaximumSize(QSize(16777215, 50));
+        shop_action->setMaximumSize(QSize(16777215, 54));
         shop_action->setStyleSheet(QString::fromUtf8("background-color: gray;\n"
 "border:solid black 3px;"));
         horizontalLayout_5 = new QHBoxLayout(shop_action);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         buy = new QPushButton(shop_action);
         buy->setObjectName(QString::fromUtf8("buy"));
-        buy->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        buy->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_5->addWidget(buy);
 
         shop_close_panel = new QPushButton(shop_action);
         shop_close_panel->setObjectName(QString::fromUtf8("shop_close_panel"));
-        shop_close_panel->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        shop_close_panel->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_5->addWidget(shop_close_panel);
 
@@ -608,7 +667,7 @@ public:
 
         setting_gui = new QFrame(centralwidget);
         setting_gui->setObjectName(QString::fromUtf8("setting_gui"));
-        setting_gui->setGeometry(QRect(280, 40, 250, 300));
+        setting_gui->setGeometry(QRect(280, 1000, 250, 300));
         setting_gui->setMinimumSize(QSize(250, 300));
         setting_gui->setMaximumSize(QSize(0, 0));
         setting_gui->setBaseSize(QSize(0, 0));
@@ -692,13 +751,120 @@ public:
 
         _6->addWidget(verticalFrame_3);
 
+        volume_gui = new QFrame(centralwidget);
+        volume_gui->setObjectName(QString::fromUtf8("volume_gui"));
+        volume_gui->setGeometry(QRect(155, 40, 500, 381));
+        volume_gui->setMinimumSize(QSize(500, 381));
+        volume_gui->setMaximumSize(QSize(500, 381));
+        volume_gui->setBaseSize(QSize(0, 0));
+        volume_gui->setLayoutDirection(Qt::LeftToRight);
+        volume_gui->setAutoFillBackground(false);
+        volume_gui->setStyleSheet(QString::fromUtf8("background-color: rgb(255,255,255);\n"
+"border-radius:16px;\n"
+"border:solid black 3px;"));
+        _7 = new QHBoxLayout(volume_gui);
+        _7->setObjectName(QString::fromUtf8("_7"));
+        volume_main = new QFrame(volume_gui);
+        volume_main->setObjectName(QString::fromUtf8("volume_main"));
+        volume_main->setStyleSheet(QString::fromUtf8("border:solid 5px black;\n"
+"background:gray;\n"
+"color:white;"));
+        _8 = new QVBoxLayout(volume_main);
+        _8->setObjectName(QString::fromUtf8("_8"));
+        volume_sounds_frame = new QHBoxLayout();
+        volume_sounds_frame->setObjectName(QString::fromUtf8("volume_sounds_frame"));
+        volume_sounds_text = new QLabel(volume_main);
+        volume_sounds_text->setObjectName(QString::fromUtf8("volume_sounds_text"));
+        volume_sounds_text->setMinimumSize(QSize(120, 0));
+        volume_sounds_text->setAlignment(Qt::AlignCenter);
+
+        volume_sounds_frame->addWidget(volume_sounds_text);
+
+        soundmute = new QCheckBox(volume_main);
+        soundmute->setObjectName(QString::fromUtf8("soundmute"));
+
+        volume_sounds_frame->addWidget(soundmute);
+
+        volume_sounds_spinBox = new QSpinBox(volume_main);
+        volume_sounds_spinBox->setObjectName(QString::fromUtf8("volume_sounds_spinBox"));
+        volume_sounds_spinBox->setMaximum(100);
+        volume_sounds_spinBox->setValue(100);
+
+        volume_sounds_frame->addWidget(volume_sounds_spinBox);
+
+        volume_sounds_silderbar = new QSlider(volume_main);
+        volume_sounds_silderbar->setObjectName(QString::fromUtf8("volume_sounds_silderbar"));
+        volume_sounds_silderbar->setMaximum(100);
+        volume_sounds_silderbar->setValue(100);
+        volume_sounds_silderbar->setOrientation(Qt::Horizontal);
+
+        volume_sounds_frame->addWidget(volume_sounds_silderbar);
+
+
+        _8->addLayout(volume_sounds_frame);
+
+        volume_body_frame = new QHBoxLayout();
+        volume_body_frame->setObjectName(QString::fromUtf8("volume_body_frame"));
+        volume_body_text = new QLabel(volume_main);
+        volume_body_text->setObjectName(QString::fromUtf8("volume_body_text"));
+        volume_body_text->setMinimumSize(QSize(120, 0));
+        volume_body_text->setAlignment(Qt::AlignCenter);
+
+        volume_body_frame->addWidget(volume_body_text);
+
+        backmute = new QCheckBox(volume_main);
+        backmute->setObjectName(QString::fromUtf8("backmute"));
+
+        volume_body_frame->addWidget(backmute);
+
+        volume_body_spinBox = new QSpinBox(volume_main);
+        volume_body_spinBox->setObjectName(QString::fromUtf8("volume_body_spinBox"));
+        volume_body_spinBox->setMaximum(100);
+        volume_body_spinBox->setValue(100);
+
+        volume_body_frame->addWidget(volume_body_spinBox);
+
+        volume_body_silderbar = new QSlider(volume_main);
+        volume_body_silderbar->setObjectName(QString::fromUtf8("volume_body_silderbar"));
+        volume_body_silderbar->setMaximum(100);
+        volume_body_silderbar->setValue(100);
+        volume_body_silderbar->setSliderPosition(100);
+        volume_body_silderbar->setOrientation(Qt::Horizontal);
+
+        volume_body_frame->addWidget(volume_body_silderbar);
+
+
+        _8->addLayout(volume_body_frame);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        volume_close_btn = new QPushButton(volume_main);
+        volume_close_btn->setObjectName(QString::fromUtf8("volume_close_btn"));
+        volume_close_btn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"    color:black;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        horizontalLayout_6->addWidget(volume_close_btn);
+
+
+        _8->addLayout(horizontalLayout_6);
+
+
+        _7->addWidget(volume_main);
+
         level = new QLabel(centralwidget);
         level->setObjectName(QString::fromUtf8("level"));
-        level->setGeometry(QRect(120, 140, 61, 16));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Arial"));
-        font3.setPointSize(12);
-        level->setFont(font3);
+        level->setGeometry(QRect(110, 140, 61, 21));
+        level->setFont(font1);
         UI_Test_Project->setCentralWidget(centralwidget);
         level->raise();
         verticalLayoutWidget->raise();
@@ -709,10 +875,15 @@ public:
         startButton->raise();
         stopButton->raise();
         backpack_gui->raise();
-        setting_gui->raise();
         shop_gui->raise();
+        setting_gui->raise();
+        volume_gui->raise();
 
         retranslateUi(UI_Test_Project);
+        QObject::connect(volume_sounds_spinBox, SIGNAL(valueChanged(int)), volume_sounds_silderbar, SLOT(setValue(int)));
+        QObject::connect(volume_sounds_silderbar, SIGNAL(valueChanged(int)), volume_sounds_spinBox, SLOT(setValue(int)));
+        QObject::connect(volume_body_spinBox, SIGNAL(valueChanged(int)), volume_body_silderbar, SLOT(setValue(int)));
+        QObject::connect(volume_body_silderbar, SIGNAL(valueChanged(int)), volume_body_spinBox, SLOT(setValue(int)));
 
         playerButton->setDefault(false);
 
@@ -749,6 +920,11 @@ public:
         gamesaves->setText(QApplication::translate("UI_Test_Project", "\351\201\212\346\210\262\347\264\200\351\214\204", nullptr));
         volumesetting->setText(QApplication::translate("UI_Test_Project", "\350\201\262\351\237\263\350\250\255\345\256\232", nullptr));
         endgame->setText(QApplication::translate("UI_Test_Project", "\347\265\220\346\235\237\351\201\212\346\210\262", nullptr));
+        volume_sounds_text->setText(QApplication::translate("UI_Test_Project", "\351\237\263\346\225\210\350\250\255\345\256\232", nullptr));
+        soundmute->setText(QApplication::translate("UI_Test_Project", "\351\235\234\351\237\263", nullptr));
+        volume_body_text->setText(QApplication::translate("UI_Test_Project", "\350\203\214\346\231\257\350\250\255\345\256\232", nullptr));
+        backmute->setText(QApplication::translate("UI_Test_Project", "\351\235\234\351\237\263", nullptr));
+        volume_close_btn->setText(QApplication::translate("UI_Test_Project", "\351\227\234\351\226\211", nullptr));
         level->setText(QApplication::translate("UI_Test_Project", "LV.0", nullptr));
     } // retranslateUi
 

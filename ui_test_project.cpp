@@ -14,6 +14,9 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     connect(myTimer, SIGNAL(timeout()), this, SLOT(timerstart()));
     connect(backmusic,SIGNAL(durationChanged(qint64)),this,SLOT(getduration()));
 
+    connect(ui->volume_sounds_silderbar, SIGNAL(valueChanged(int)),this, SLOT(setsoundVolume()));
+    connect(ui->volume_body_silderbar, SIGNAL(valueChanged(int)),this, SLOT(setbackVolume()));
+
     srand( time(NULL) );
     QMovie *movie = new QMovie(":/assets/images/monster1.gif");
     QImage img;
@@ -27,7 +30,6 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     playlist->addMedia(QUrl("./sound/backmusic.mp3"));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
     backmusic->setPlaylist(playlist);
-    backmusic->setVolume(50);
     backmusic->play();
 
     ui->select_item->addItem("");
@@ -35,6 +37,7 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->backpack_gui->setVisible(false);
     ui->shop_gui->setVisible(false);
     ui->setting_gui->setVisible(false);
+    ui->volume_gui->setVisible(false);
 
     //getitem
     QFile mFile;
@@ -432,7 +435,7 @@ void UI_Test_Project::playSound(QString url){
     }else{
         QMediaPlayer *sound = new QMediaPlayer();
         sound->setMedia(QUrl("./sound/"+url+".mp3"));
-        sound->setVolume(100);
+        sound->setVolume(soundVolume);
         sound->play();
     }
 }
@@ -451,5 +454,54 @@ void UI_Test_Project::clickedButton(){
     }else{
         playSound("click");
     }
+}
+
+
+void UI_Test_Project::on_volumesetting_clicked(){
+    clickedButton();
+    ui->shop_gui->setVisible(false);
+    ui->backpack_gui->setVisible(false);
+    ui->volume_gui->setVisible(true);
+    ui->volume_gui->setGeometry(155,45,500,381);
+}
+
+void UI_Test_Project::on_volume_close_btn_clicked(){
+    clickedButton();
+    ui->volume_gui->setVisible(false);
+}
+
+void UI_Test_Project::setsoundVolume(){
+    clickedButton();
+    if(!ui->soundmute->checkState()){
+        soundVolume = ui->volume_sounds_silderbar->value();
+    }
+}
+
+void UI_Test_Project::setbackVolume(){
+    clickedButton();
+    if(!ui->backmute->checkState()){
+        backVolume = ui->volume_body_silderbar->value();
+    }
+    backmusic->setVolume(backVolume);
+}
+
+void UI_Test_Project::on_soundmute_stateChanged(int arg1)
+{
+    clickedButton();
+    if(ui->soundmute->checkState()){
+        soundVolume = 0;
+    }
+}
+
+
+void UI_Test_Project::on_backmute_stateChanged(int arg1)
+{
+    clickedButton();
+    if(ui->backmute->checkState()){
+        backVolume = 0;
+    }else{
+        backVolume = ui->volume_body_silderbar->value();
+    }
+    backmusic->setVolume(backVolume);
 }
 
