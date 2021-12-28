@@ -180,7 +180,7 @@ min-height:100px;</string>
       <x>7</x>
       <y>22</y>
       <width>161</width>
-      <height>61</height>
+      <height>75</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -188,7 +188,6 @@ min-height:100px;</string>
       <widget class="QLabel" name="username">
        <property name="font">
         <font>
-         <family>微軟正黑體</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -604,23 +603,30 @@ border-left: 1px solid #ffffff;
             <widget class="QPushButton" name="close_backpack">
              <property name="minimumSize">
               <size>
-               <width>36</width>
-               <height>36</height>
+               <width>72</width>
+               <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>32</width>
+               <width>72</width>
                <height>32</height>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">border:3px solid black;
-min-width:32px;min-height:32px;
-background:rgb(0, 0, 0);
-color:white;
-border-radius:16px;
-border-width:2px;</string>
+              <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 4px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:4px;
+	min-width:24px;
+	min-height:24px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
              </property>
              <property name="text">
               <string>X</string>
@@ -655,7 +661,7 @@ border-width:8px;</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>52</height>
+            <height>55</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -665,9 +671,17 @@ border-width:8px;</string>
            <item>
             <widget class="QPushButton" name="equi">
              <property name="styleSheet">
-              <string notr="true">border:3px solid black;
-border-radius:16px;
-border-width:8px;</string>
+              <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:8px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
              </property>
              <property name="text">
               <string>裝備</string>
@@ -677,9 +691,17 @@ border-width:8px;</string>
            <item>
             <widget class="QPushButton" name="levelup">
              <property name="styleSheet">
-              <string notr="true">border:3px solid black;
-border-radius:16px;
-border-width:8px;</string>
+              <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:8px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
              </property>
              <property name="text">
               <string>升級(+1)</string>
@@ -775,14 +797,22 @@ border-left: 1px solid #ffffff;
            <widget class="QPushButton" name="resetshop">
             <property name="maximumSize">
              <size>
-              <width>100</width>
+              <width>126</width>
               <height>16777215</height>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">border:3px solid black;
-border-radius:16px;
-border-width:8px;</string>
+             <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:6px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
             </property>
             <property name="text">
              <string>刷新商店</string>
@@ -819,7 +849,7 @@ border-width:8px;</string>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>50</height>
+           <height>54</height>
           </size>
          </property>
          <property name="styleSheet">
@@ -830,9 +860,17 @@ border:solid black 3px;</string>
           <item>
            <widget class="QPushButton" name="buy">
             <property name="styleSheet">
-             <string notr="true">border:3px solid black;
-border-radius:16px;
-border-width:8px;</string>
+             <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:8px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
             </property>
             <property name="text">
              <string>購買</string>
@@ -842,9 +880,17 @@ border-width:8px;</string>
           <item>
            <widget class="QPushButton" name="shop_close_panel">
             <property name="styleSheet">
-             <string notr="true">border:3px solid black;
-border-radius:16px;
-border-width:8px;</string>
+             <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:8px;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
             </property>
             <property name="text">
              <string>關閉</string>
@@ -989,10 +1035,337 @@ QPushButton:hover{
      </item>
     </layout>
    </widget>
+   <widget class="QFrame" name="volume_gui">
+    <property name="geometry">
+     <rect>
+      <x>155</x>
+      <y>50</y>
+      <width>500</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>500</width>
+      <height>381</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>500</width>
+      <height>381</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255,255,255);
+border-radius:16px;
+border:solid black 3px;</string>
+    </property>
+    <layout class="QHBoxLayout" name="_7">
+     <item>
+      <widget class="QFrame" name="volume_main">
+       <property name="styleSheet">
+        <string notr="true">border:solid 5px black;
+background:gray;
+color:white;</string>
+       </property>
+       <layout class="QVBoxLayout" name="_8">
+        <item>
+         <layout class="QHBoxLayout" name="volume_all_frame">
+          <item>
+           <widget class="QLabel" name="volume_all_text">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>全域聲音</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="volume_all_spinBox">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="volume_all_sliderbar">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>100</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="volume_sounds_frame">
+          <item>
+           <widget class="QLabel" name="volume_sounds_text">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>音效設定</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="volume_sounds_spinBox">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="volume_sounds_silderbar">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>100</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="volume_body_frame">
+          <item>
+           <widget class="QLabel" name="volume_body_text">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>背景設定</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="volume_body_spinBox">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="volume_body_silderbar">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>100</number>
+            </property>
+            <property name="sliderPosition">
+             <number>100</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QPushButton" name="volume_apply_btn">
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:8px;
+    color:black;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+            </property>
+            <property name="text">
+             <string>保存</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="volume_close_btn">
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255);
+	padding:4px 16px;
+	margin:0px 16px;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:8px;
+    color:black;
+}
+QPushButton:hover{
+	background:rgb(222, 222, 222);
+}</string>
+            </property>
+            <property name="text">
+             <string>關閉</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <resources>
   <include location="images_list.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>volume_all_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>volume_all_sliderbar</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>325</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>volume_all_sliderbar</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>volume_all_spinBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>397</x>
+     <y>111</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>110</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>volume_sounds_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>volume_sounds_silderbar</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>233</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>367</x>
+     <y>233</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>volume_sounds_silderbar</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>volume_sounds_spinBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>381</x>
+     <y>231</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>300</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>volume_body_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>volume_body_silderbar</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>361</x>
+     <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>volume_body_silderbar</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>volume_body_spinBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>368</x>
+     <y>348</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>305</x>
+     <y>355</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

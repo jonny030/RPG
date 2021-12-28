@@ -19,5 +19,16 @@
         <file>images/NormalSword.png</file>
         <file>images/armor.png</file>
         <file>images/leg.png</file>
+        <file>sounds/a-rat.mp3</file>
+        <file>sounds/BGM.mp3</file>
+        <file>sounds/BOSS出現.mp3</file>
+        <file>sounds/mamma-mia-marcello.mp3</file>
+        <file>sounds/niggar.mp3</file>
+        <file>sounds/取得很強的武器.mp3</file>
+        <file>sounds/受傷.mp3</file>
+        <file>sounds/重擊BONK.mp3</file>
+        <file>sounds/彩蛋法國迷因!.mp3</file>
+        <file>sounds/遊戲結束.mp3</file>
+        <file>sounds/敵人死掉.mp3</file>
     </qresource>
 </RCC>

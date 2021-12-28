@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ui_test_project.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.11
+** Created by: Qt User Interface Compiler version 5.12.12
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -20,7 +20,9 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -96,6 +98,25 @@ public:
     QPushButton *gamesaves;
     QPushButton *volumesetting;
     QPushButton *endgame;
+    QFrame *volume_gui;
+    QHBoxLayout *_7;
+    QFrame *volume_main;
+    QVBoxLayout *_8;
+    QHBoxLayout *volume_all_frame;
+    QLabel *volume_all_text;
+    QSpinBox *volume_all_spinBox;
+    QSlider *volume_all_sliderbar;
+    QHBoxLayout *volume_sounds_frame;
+    QLabel *volume_sounds_text;
+    QSpinBox *volume_sounds_spinBox;
+    QSlider *volume_sounds_silderbar;
+    QHBoxLayout *volume_body_frame;
+    QLabel *volume_body_text;
+    QSpinBox *volume_body_spinBox;
+    QSlider *volume_body_silderbar;
+    QHBoxLayout *horizontalLayout_6;
+    QPushButton *volume_apply_btn;
+    QPushButton *volume_close_btn;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -206,14 +227,13 @@ public:
 
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(7, 22, 161, 61));
+        layoutWidget->setGeometry(QRect(7, 22, 161, 75));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         username = new QLabel(layoutWidget);
         username->setObjectName(QString::fromUtf8("username"));
         QFont font;
-        font.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
         font.setPointSize(12);
         username->setFont(font);
         username->setTextFormat(Qt::AutoText);
@@ -436,14 +456,21 @@ public:
 
         close_backpack = new QPushButton(backpack_action_bar);
         close_backpack->setObjectName(QString::fromUtf8("close_backpack"));
-        close_backpack->setMinimumSize(QSize(36, 36));
-        close_backpack->setMaximumSize(QSize(32, 32));
-        close_backpack->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"min-width:32px;min-height:32px;\n"
-"background:rgb(0, 0, 0);\n"
-"color:white;\n"
-"border-radius:16px;\n"
-"border-width:2px;"));
+        close_backpack->setMinimumSize(QSize(72, 40));
+        close_backpack->setMaximumSize(QSize(72, 32));
+        close_backpack->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 4px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"	min-width:24px;\n"
+"	min-height:24px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         _4->addWidget(close_backpack);
 
@@ -464,23 +491,39 @@ public:
 
         item_action_btn = new QFrame(item_info);
         item_action_btn->setObjectName(QString::fromUtf8("item_action_btn"));
-        item_action_btn->setMaximumSize(QSize(16777215, 52));
+        item_action_btn->setMaximumSize(QSize(16777215, 55));
         item_action_btn->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout_2 = new QHBoxLayout(item_action_btn);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         equi = new QPushButton(item_action_btn);
         equi->setObjectName(QString::fromUtf8("equi"));
-        equi->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        equi->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_2->addWidget(equi);
 
         levelup = new QPushButton(item_action_btn);
         levelup->setObjectName(QString::fromUtf8("levelup"));
-        levelup->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        levelup->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_2->addWidget(levelup);
 
@@ -541,10 +584,18 @@ public:
 
         resetshop = new QPushButton(shop_select_bar);
         resetshop->setObjectName(QString::fromUtf8("resetshop"));
-        resetshop->setMaximumSize(QSize(100, 16777215));
-        resetshop->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        resetshop->setMaximumSize(QSize(126, 16777215));
+        resetshop->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:6px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_3->addWidget(resetshop);
 
@@ -570,24 +621,40 @@ public:
 
         shop_action = new QFrame(shop_gui);
         shop_action->setObjectName(QString::fromUtf8("shop_action"));
-        shop_action->setMaximumSize(QSize(16777215, 50));
+        shop_action->setMaximumSize(QSize(16777215, 54));
         shop_action->setStyleSheet(QString::fromUtf8("background-color: gray;\n"
 "border:solid black 3px;"));
         horizontalLayout_5 = new QHBoxLayout(shop_action);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         buy = new QPushButton(shop_action);
         buy->setObjectName(QString::fromUtf8("buy"));
-        buy->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        buy->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_5->addWidget(buy);
 
         shop_close_panel = new QPushButton(shop_action);
         shop_close_panel->setObjectName(QString::fromUtf8("shop_close_panel"));
-        shop_close_panel->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
-"border-radius:16px;\n"
-"border-width:8px;"));
+        shop_close_panel->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
 
         horizontalLayout_5->addWidget(shop_close_panel);
 
@@ -683,9 +750,159 @@ public:
 
         _6->addWidget(verticalFrame_3);
 
+        volume_gui = new QFrame(centralwidget);
+        volume_gui->setObjectName(QString::fromUtf8("volume_gui"));
+        volume_gui->setGeometry(QRect(155, 50, 500, 381));
+        volume_gui->setMinimumSize(QSize(500, 381));
+        volume_gui->setMaximumSize(QSize(500, 381));
+        volume_gui->setBaseSize(QSize(0, 0));
+        volume_gui->setLayoutDirection(Qt::LeftToRight);
+        volume_gui->setAutoFillBackground(false);
+        volume_gui->setStyleSheet(QString::fromUtf8("background-color: rgb(255,255,255);\n"
+"border-radius:16px;\n"
+"border:solid black 3px;"));
+        _7 = new QHBoxLayout(volume_gui);
+        _7->setObjectName(QString::fromUtf8("_7"));
+        volume_main = new QFrame(volume_gui);
+        volume_main->setObjectName(QString::fromUtf8("volume_main"));
+        volume_main->setStyleSheet(QString::fromUtf8("border:solid 5px black;\n"
+"background:gray;\n"
+"color:white;"));
+        _8 = new QVBoxLayout(volume_main);
+        _8->setObjectName(QString::fromUtf8("_8"));
+        volume_all_frame = new QHBoxLayout();
+        volume_all_frame->setObjectName(QString::fromUtf8("volume_all_frame"));
+        volume_all_text = new QLabel(volume_main);
+        volume_all_text->setObjectName(QString::fromUtf8("volume_all_text"));
+        volume_all_text->setMinimumSize(QSize(120, 0));
+        volume_all_text->setAlignment(Qt::AlignCenter);
+
+        volume_all_frame->addWidget(volume_all_text);
+
+        volume_all_spinBox = new QSpinBox(volume_main);
+        volume_all_spinBox->setObjectName(QString::fromUtf8("volume_all_spinBox"));
+        volume_all_spinBox->setMaximum(100);
+        volume_all_spinBox->setValue(100);
+
+        volume_all_frame->addWidget(volume_all_spinBox);
+
+        volume_all_sliderbar = new QSlider(volume_main);
+        volume_all_sliderbar->setObjectName(QString::fromUtf8("volume_all_sliderbar"));
+        volume_all_sliderbar->setMaximum(100);
+        volume_all_sliderbar->setValue(100);
+        volume_all_sliderbar->setOrientation(Qt::Horizontal);
+
+        volume_all_frame->addWidget(volume_all_sliderbar);
+
+
+        _8->addLayout(volume_all_frame);
+
+        volume_sounds_frame = new QHBoxLayout();
+        volume_sounds_frame->setObjectName(QString::fromUtf8("volume_sounds_frame"));
+        volume_sounds_text = new QLabel(volume_main);
+        volume_sounds_text->setObjectName(QString::fromUtf8("volume_sounds_text"));
+        volume_sounds_text->setMinimumSize(QSize(120, 0));
+        volume_sounds_text->setAlignment(Qt::AlignCenter);
+
+        volume_sounds_frame->addWidget(volume_sounds_text);
+
+        volume_sounds_spinBox = new QSpinBox(volume_main);
+        volume_sounds_spinBox->setObjectName(QString::fromUtf8("volume_sounds_spinBox"));
+        volume_sounds_spinBox->setMaximum(100);
+        volume_sounds_spinBox->setValue(100);
+
+        volume_sounds_frame->addWidget(volume_sounds_spinBox);
+
+        volume_sounds_silderbar = new QSlider(volume_main);
+        volume_sounds_silderbar->setObjectName(QString::fromUtf8("volume_sounds_silderbar"));
+        volume_sounds_silderbar->setMaximum(100);
+        volume_sounds_silderbar->setValue(100);
+        volume_sounds_silderbar->setOrientation(Qt::Horizontal);
+
+        volume_sounds_frame->addWidget(volume_sounds_silderbar);
+
+
+        _8->addLayout(volume_sounds_frame);
+
+        volume_body_frame = new QHBoxLayout();
+        volume_body_frame->setObjectName(QString::fromUtf8("volume_body_frame"));
+        volume_body_text = new QLabel(volume_main);
+        volume_body_text->setObjectName(QString::fromUtf8("volume_body_text"));
+        volume_body_text->setMinimumSize(QSize(120, 0));
+        volume_body_text->setAlignment(Qt::AlignCenter);
+
+        volume_body_frame->addWidget(volume_body_text);
+
+        volume_body_spinBox = new QSpinBox(volume_main);
+        volume_body_spinBox->setObjectName(QString::fromUtf8("volume_body_spinBox"));
+        volume_body_spinBox->setMaximum(100);
+        volume_body_spinBox->setValue(100);
+
+        volume_body_frame->addWidget(volume_body_spinBox);
+
+        volume_body_silderbar = new QSlider(volume_main);
+        volume_body_silderbar->setObjectName(QString::fromUtf8("volume_body_silderbar"));
+        volume_body_silderbar->setMaximum(100);
+        volume_body_silderbar->setValue(100);
+        volume_body_silderbar->setSliderPosition(100);
+        volume_body_silderbar->setOrientation(Qt::Horizontal);
+
+        volume_body_frame->addWidget(volume_body_silderbar);
+
+
+        _8->addLayout(volume_body_frame);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        volume_apply_btn = new QPushButton(volume_main);
+        volume_apply_btn->setObjectName(QString::fromUtf8("volume_apply_btn"));
+        volume_apply_btn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"    color:black;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        horizontalLayout_6->addWidget(volume_apply_btn);
+
+        volume_close_btn = new QPushButton(volume_main);
+        volume_close_btn->setObjectName(QString::fromUtf8("volume_close_btn"));
+        volume_close_btn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:8px;\n"
+"    color:black;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        horizontalLayout_6->addWidget(volume_close_btn);
+
+
+        _8->addLayout(horizontalLayout_6);
+
+
+        _7->addWidget(volume_main);
+
         UI_Test_Project->setCentralWidget(centralwidget);
 
         retranslateUi(UI_Test_Project);
+        QObject::connect(volume_all_spinBox, SIGNAL(valueChanged(int)), volume_all_sliderbar, SLOT(setValue(int)));
+        QObject::connect(volume_all_sliderbar, SIGNAL(valueChanged(int)), volume_all_spinBox, SLOT(setValue(int)));
+        QObject::connect(volume_sounds_spinBox, SIGNAL(valueChanged(int)), volume_sounds_silderbar, SLOT(setValue(int)));
+        QObject::connect(volume_sounds_silderbar, SIGNAL(valueChanged(int)), volume_sounds_spinBox, SLOT(setValue(int)));
+        QObject::connect(volume_body_spinBox, SIGNAL(valueChanged(int)), volume_body_silderbar, SLOT(setValue(int)));
+        QObject::connect(volume_body_silderbar, SIGNAL(valueChanged(int)), volume_body_spinBox, SLOT(setValue(int)));
 
         playerButton->setDefault(false);
 
@@ -722,6 +939,11 @@ public:
         gamesaves->setText(QApplication::translate("UI_Test_Project", "\351\201\212\346\210\262\347\264\200\351\214\204", nullptr));
         volumesetting->setText(QApplication::translate("UI_Test_Project", "\350\201\262\351\237\263\350\250\255\345\256\232", nullptr));
         endgame->setText(QApplication::translate("UI_Test_Project", "\347\265\220\346\235\237\351\201\212\346\210\262", nullptr));
+        volume_all_text->setText(QApplication::translate("UI_Test_Project", "\345\205\250\345\237\237\350\201\262\351\237\263", nullptr));
+        volume_sounds_text->setText(QApplication::translate("UI_Test_Project", "\351\237\263\346\225\210\350\250\255\345\256\232", nullptr));
+        volume_body_text->setText(QApplication::translate("UI_Test_Project", "\350\203\214\346\231\257\350\250\255\345\256\232", nullptr));
+        volume_apply_btn->setText(QApplication::translate("UI_Test_Project", "\344\277\235\345\255\230", nullptr));
+        volume_close_btn->setText(QApplication::translate("UI_Test_Project", "\351\227\234\351\226\211", nullptr));
     } // retranslateUi
 
 };

@@ -2,6 +2,10 @@
 #include "ui_ui_test_project.h"
 #include <QMessageBox>
 #include <QThread>
+#include <QSound>
+#include <QUrl>
+#include <QMediaPlayer>
+
 QIcon icon;
 int setIcon_n;
 bool setIcon_weapons=false,setIcon_armors=false,setIcon_leg=false;
@@ -25,6 +29,8 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->backpack_gui->setVisible(false);
     ui->shop_gui->setVisible(false);
     ui->setting_gui->setVisible(false);
+    ui->volume_gui->setVisible(false);
+
 
     //getitem
     QFile mFile;
@@ -120,6 +126,7 @@ void UI_Test_Project::on_stopButton_clicked()
 
 void UI_Test_Project::on_back_clicked()
 {
+    ui->volume_gui->setVisible(false);
     ui->setting_gui->setVisible(false);
     ui->shop_gui->setVisible(false);
     ui->backpack_gui->setVisible(true);
@@ -127,16 +134,12 @@ void UI_Test_Project::on_back_clicked()
 }
 
 
-void UI_Test_Project::on_close_backpack_clicked()
-{
-    ui->backpack_gui->setVisible(false);
-}
-
 
 void UI_Test_Project::on_shopButton_clicked()
 {
-    ui->setting_gui->setVisible(false);
     ui->backpack_gui->setVisible(false);
+    ui->volume_gui->setVisible(false);
+    ui->setting_gui->setVisible(false);
     ui->shop_gui->setVisible(true);
     ui->shop_gui->setGeometry(40,40,741,381);
 }
@@ -146,10 +149,25 @@ void UI_Test_Project::on_settingButton_clicked()
 {
     ui->shop_gui->setVisible(false);
     ui->backpack_gui->setVisible(false);
+    ui->volume_gui->setVisible(false);
     ui->setting_gui->setVisible(true);
     ui->setting_gui->setGeometry(280,80,250,300);
 }
 
+
+void UI_Test_Project::on_volumesetting_clicked()
+{
+    ui->shop_gui->setVisible(false);
+    ui->backpack_gui->setVisible(false);
+    ui->setting_gui->setVisible(false);
+    ui->volume_gui->setVisible(true);
+    ui->volume_gui->setGeometry(155,45,500,381);
+}
+
+void UI_Test_Project::on_close_backpack_clicked()
+{
+    ui->backpack_gui->setVisible(false);
+}
 
 void UI_Test_Project::on_backtogame_clicked()
 {
@@ -162,9 +180,21 @@ void UI_Test_Project::on_shop_close_panel_clicked()
     ui->shop_gui->setVisible(false);
 }
 
+void UI_Test_Project::on_volume_close_btn_clicked()
+{
+    ui->volume_gui->setVisible(false);
+}
+
 void UI_Test_Project::on_endgame_clicked()
 {
-    close();
+    QMediaPlayer *player = new QMediaPlayer;
+
+    player->setMedia(QUrl::fromLocalFile("./sounds/gameend.mp3"));
+    player->setVolume(100);
+    player->play();
+    if(player->PlayingState == 0){
+        close();
+    }
 }
 
 void UI_Test_Project::on_select_item_activated(const QString &arg1)
@@ -319,4 +349,7 @@ void UI_Test_Project::on_leg_clicked()
         }
     }
 }
+
+
+
 

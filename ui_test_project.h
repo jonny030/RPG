@@ -55,6 +55,10 @@ private slots:
 
     void on_leg_clicked();
 
+    void on_volume_close_btn_clicked();
+
+    void on_volumesetting_clicked();
+
 private:
     Ui::UI_Test_Project *ui;
 };
