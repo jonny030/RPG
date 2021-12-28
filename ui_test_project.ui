@@ -1039,7 +1039,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>155</x>
-      <y>50</y>
+      <y>1000</y>
       <width>500</width>
       <height>381</height>
      </rect>
