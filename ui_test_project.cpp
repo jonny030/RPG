@@ -3,7 +3,8 @@
 #include <QMessageBox>
 #include <QPixmap>
 QIcon icon;
-int setIcon_n=0,bigegg_count=0;
+Equi setIcon;
+int bigegg_count=0;
 bool setIcon_weapons=false,setIcon_armors=false,setIcon_leg=false,bigegg=false,end=false;
 UI_Test_Project::UI_Test_Project(QWidget *parent)
     : QMainWindow(parent)
@@ -57,12 +58,8 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
         QStringList list= QString(mFile.readAll()).split("\n");
         file = file.remove("./item/");
         file = file.remove(".txt");
-        itemlist.item[n].icon.addFile(":/assets/images/"+file+".png");
-        itemlist.item[n].name=list[0];
-        itemlist.item[n].atk =list[1].toInt();
-        itemlist.item[n].def =list[2].toInt();
-        itemlist.item[n].kind=list[3];
-        ui->shop_select_item->addItem(itemlist.item[n].icon,list[0]);
+        itemlist.push(file,list[0],list[3],list[1].toInt(),list[2].toInt());
+        ui->shop_select_item->addItem(QIcon(":/assets/images/"+file+".png"),list[0]);
     }
     mFile.flush();
     mFile.close();
@@ -72,6 +69,20 @@ UI_Test_Project::~UI_Test_Project()
     delete ui;
 }
 void UI_Test_Project::timerstart(){
+    //exp
+    if(ui->monsterHp->value()<=0){
+        if(sleep_bool){
+            sleepTimer->start(300);
+            sleep_bool = false;
+        }
+        if(!sleepTimer->isActive()){
+            initHp();
+            if(sleep_bool){
+                sleepTimer->start(30);
+                sleep_bool = false;
+            }
+        }
+    }
     if(!sleepTimer->isActive()){
         int who=rand()%10+1;
         int monster_atk=monster_note->atk+rand()%(int)(player_note->killcount/10+1)+1;
@@ -99,16 +110,6 @@ void UI_Test_Project::timerstart(){
             }
         }
     }
-    //exp
-    if(ui->monsterHp->value()<=0){
-        if(sleep_bool){
-            sleepTimer->start(300);
-            sleep_bool = false;
-        }
-        if(!sleepTimer->isActive()){
-            initHp();
-        }
-    }
 }
 
 void UI_Test_Project::initHp(){
@@ -124,9 +125,9 @@ void UI_Test_Project::initHp(){
             ui->exp_bar->setValue(0);
         }
         monster_note->hp=monster_note->default_hp;
-        ui->monsterHp->setValue(100);
+        ui->monsterHp->setValue(monster_note->gethp());
         player_note->hp = player_note->default_hp;
-        ui->playerHp->setValue(player_note->hp*100/player_note->default_hp);
+        ui->playerHp->setValue(player_note->gethp());
         sleep_bool = true;
     }
 }
@@ -221,17 +222,11 @@ void UI_Test_Project::on_endgame_clicked()
 void UI_Test_Project::on_select_item_activated(const QString &arg1)
 {
     clickedButton();
-    int n=1;
     if(arg1 == ""){
         ui->item_info_panel->setText("");
     }else{
-        while(true){
-            if(arg1 == itemlist.item[n].name){
-                ui->item_info_panel->setText(QStringLiteral("Name：")+itemlist.item[n].name+QStringLiteral("\nAtk：")+QString::number(itemlist.item[n].atk)+QStringLiteral("\nDef：")+QString::number(itemlist.item[n].def));
-                break;
-            }
-            n++;
-        }
+        Equi find = itemlist.find(arg1);
+        ui->item_info_panel->setText(QStringLiteral("Name：")+find.name+QStringLiteral("\nAtk：")+QString::number(find.atk)+QStringLiteral("\nDef：")+QString::number(find.def));
     }
 }
 
@@ -239,28 +234,22 @@ void UI_Test_Project::on_select_item_activated(const QString &arg1)
 void UI_Test_Project::on_equi_clicked()
 {
     clickedButton();
-    int n=1;
     QString arg1=ui->select_item->currentText();
     if(arg1 == ""){
         ui->item_info_panel->setText("");
     }else{
-        while(true){
-            if(arg1 == itemlist.item[n].name){
-                setIcon_n = n;
-                if(itemlist.item[n].kind == "weapons"){
-                    setIcon_weapons = true;
-                    ui->weapons_1->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
-                    ui->weapons_2->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
-                }else if(itemlist.item[n].kind == "armor"){
-                    setIcon_armors = true;
-                    ui->armor->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
-                }else if(itemlist.item[n].kind == "leg"){
-                    setIcon_leg = true;
-                    ui->leg->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
-                }
-                break;
-            }
-            n++;
+        Equi find = itemlist.find(arg1);
+        setIcon = find;
+        if(find.kind == "weapons"){
+            setIcon_weapons = true;
+            ui->weapons_1->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
+            ui->weapons_2->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
+        }else if(find.kind == "armor"){
+            setIcon_armors = true;
+            ui->armor->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
+        }else if(find.kind == "leg"){
+            setIcon_leg = true;
+            ui->leg->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
         }
     }
 }
@@ -271,7 +260,7 @@ void UI_Test_Project::on_weapons_1_clicked()
     clickedButton();
     if(setIcon_weapons){
         setIcon_weapons = false;
-        player_note->set_weapons_1(&itemlist.item[setIcon_n]);
+        player_note->set_weapons_1(&setIcon);
         icon = player_note->weapons_1->icon;
         ui->weapons_1->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->weapons_2->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
@@ -300,7 +289,7 @@ void UI_Test_Project::on_weapons_2_clicked()
     clickedButton();
     if(setIcon_weapons){
         setIcon_weapons = false;
-        player_note->set_weapons_2(&itemlist.item[setIcon_n]);
+        player_note->set_weapons_2(&setIcon);
         icon = player_note->weapons_2->icon;
         ui->weapons_1->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->weapons_2->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
@@ -329,7 +318,7 @@ void UI_Test_Project::on_armor_clicked()
     clickedButton();
     if(setIcon_armors){
         setIcon_armors = false;
-        player_note->set_armor(&itemlist.item[setIcon_n]);
+        player_note->set_armor(&setIcon);
         icon = player_note->armor->icon;
         ui->armor->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->leg->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
@@ -358,7 +347,7 @@ void UI_Test_Project::on_leg_clicked()
     clickedButton();
     if(setIcon_leg){
         setIcon_leg = false;
-        player_note->set_leg(&itemlist.item[setIcon_n]);
+        player_note->set_leg(&setIcon);
         icon = player_note->leg->icon;
         ui->armor->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->leg->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
@@ -385,17 +374,11 @@ void UI_Test_Project::on_leg_clicked()
 void UI_Test_Project::on_shop_select_item_activated(const QString &arg1)
 {
     clickedButton();
-    int n=1;
     if(arg1 == ""){
-        ui->item_info_panel->setText("");
+        ui->shop_item_info->setText("");
     }else{
-        while(true){
-            if(arg1 == itemlist.item[n].name){
-                ui->shop_item_info->setText(QStringLiteral("Name：")+itemlist.item[n].name+QStringLiteral("\nAtk：")+QString::number(itemlist.item[n].atk)+QStringLiteral("\nDef：")+QString::number(itemlist.item[n].def));
-                break;
-            }
-            n++;
-        }
+        Equi find = itemlist.find(arg1);
+        ui->shop_item_info->setText(QStringLiteral("Name：")+find.name+QStringLiteral("\nAtk：")+QString::number(find.atk)+QStringLiteral("\nDef：")+QString::number(find.def));
     }
 }
 
@@ -403,23 +386,15 @@ void UI_Test_Project::on_shop_select_item_activated(const QString &arg1)
 void UI_Test_Project::on_buy_clicked()
 {
     clickedButton();
-    int n=1;
-    if(ui->shop_select_item->currentText() == ""){
-    }else{
-        while(true){
-            if(ui->shop_select_item->currentText() == itemlist.item[n].name){
-                ui->select_item->addItem(itemlist.item[n].icon,itemlist.item[n].name);
-                if(itemlist.item[n].name == "GodSword")
-                       playSound("GodSword");
-                break;
-            }
-            n++;
-        }
+    if(ui->shop_select_item->currentText() != ""){
+        Equi find = itemlist.find(ui->shop_select_item->currentText());
+        ui->select_item->addItem(find.icon,find.name);
+        if(find.name == "GodSword")
+            playSound("GodSword");
     }
 }
 void UI_Test_Project::playSound(QString url){
     if(url == "gameover"){
-
         if(bigegg){
             backmusic->setMedia(QUrl("./sound/boss.mp3"));
             QImage img;
@@ -428,7 +403,12 @@ void UI_Test_Project::playSound(QString url){
             Win->setWindowTitle("meme");
             Win->show();
         }else{
-            backmusic->setMedia(QUrl("./sound/"+url+".mp3"));
+            if(!ui->backmute->checkState())
+                backmusic->setMedia(QUrl("./sound/"+url+".mp3"));
+            else{
+                backmusic->setMedia(QUrl("./sound/click.mp3"));
+                backmusic->setVolume(soundVolume);
+            }
         }
         backmusic->play();
         end=true;
@@ -485,7 +465,7 @@ void UI_Test_Project::setbackVolume(){
     backmusic->setVolume(backVolume);
 }
 
-void UI_Test_Project::on_soundmute_stateChanged(int arg1)
+void UI_Test_Project::on_soundmute_stateChanged()
 {
     clickedButton();
     if(ui->soundmute->checkState()){
@@ -494,14 +474,15 @@ void UI_Test_Project::on_soundmute_stateChanged(int arg1)
 }
 
 
-void UI_Test_Project::on_backmute_stateChanged(int arg1)
+void UI_Test_Project::on_backmute_stateChanged()
 {
     clickedButton();
     if(ui->backmute->checkState()){
         backVolume = 0;
+        backmusic->stop();
     }else{
         backVolume = ui->volume_body_silderbar->value();
+        backmusic->play();
     }
     backmusic->setVolume(backVolume);
 }
-

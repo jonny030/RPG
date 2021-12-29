@@ -76,7 +76,6 @@ public:
     QFrame *item_action_btn;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *equi;
-    QPushButton *levelup;
     QFrame *shop_gui;
     QHBoxLayout *_5;
     QVBoxLayout *verticalLayout_3;
@@ -175,13 +174,18 @@ public:
         shopButton = new QPushButton(verticalLayoutWidget);
         shopButton->setObjectName(QString::fromUtf8("shopButton"));
         shopButton->setCursor(QCursor(Qt::ArrowCursor));
-        shopButton->setStyleSheet(QString::fromUtf8("background-image: url(:/assets/images/btnbg.png);\n"
+        shopButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/assets/images/btnbg.png);\n"
 "background-repeat: no-repeat;\n"
 "background-attachment: fixed;\n"
 "background-position: center;\n"
 "border:unset;\n"
 "min-width:80px;\n"
-"min-height:100px;"));
+"min-height:100px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-image: url(:/assets/images/btnbg2.png);\n"
+"}"));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/assets/images/store-solid.png"), QSize(), QIcon::Normal, QIcon::Off);
         shopButton->setIcon(icon);
@@ -190,13 +194,18 @@ public:
 
         back = new QPushButton(verticalLayoutWidget);
         back->setObjectName(QString::fromUtf8("back"));
-        back->setStyleSheet(QString::fromUtf8("background-image: url(:/assets/images/btnbg.png);\n"
+        back->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/assets/images/btnbg.png);\n"
 "background-repeat: no-repeat;\n"
 "background-attachment: fixed;\n"
 "background-position: center;\n"
 "border:unset;\n"
 "min-width:80px;\n"
-"min-height:100px;"));
+"min-height:100px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-image: url(:/assets/images/btnbg2.png);\n"
+"}"));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/assets/images/backpack_black_24dp.png"), QSize(), QIcon::Normal, QIcon::Off);
         back->setIcon(icon1);
@@ -205,13 +214,18 @@ public:
 
         settingButton = new QPushButton(verticalLayoutWidget);
         settingButton->setObjectName(QString::fromUtf8("settingButton"));
-        settingButton->setStyleSheet(QString::fromUtf8("background-image: url(:/assets/images/btnbg.png);\n"
+        settingButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/assets/images/btnbg.png);\n"
 "background-repeat: no-repeat;\n"
 "background-attachment: fixed;\n"
 "background-position: center;\n"
 "border:unset;\n"
 "min-width:80px;\n"
-"min-height:100px;"));
+"min-height:100px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-image: url(:/assets/images/btnbg2.png);\n"
+"}"));
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/assets/images/cog-solid.png"), QSize(), QIcon::Normal, QIcon::Off);
         settingButton->setIcon(icon2);
@@ -510,22 +524,6 @@ public:
 "}"));
 
         horizontalLayout_2->addWidget(equi);
-
-        levelup = new QPushButton(item_action_btn);
-        levelup->setObjectName(QString::fromUtf8("levelup"));
-        levelup->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"	background-color: rgb(255, 255, 255);\n"
-"	padding:4px 16px;\n"
-"	margin:0px 16px;\n"
-"	border-radius:16px;\n"
-"	border:solid 3px black;\n"
-"	border-width:8px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background:rgb(222, 222, 222);\n"
-"}"));
-
-        horizontalLayout_2->addWidget(levelup);
 
 
         _3->addWidget(item_action_btn);
@@ -911,7 +909,6 @@ public:
         close_backpack->setText(QApplication::translate("UI_Test_Project", "X", nullptr));
         item_info_panel->setText(QString());
         equi->setText(QApplication::translate("UI_Test_Project", "\350\243\235\345\202\231", nullptr));
-        levelup->setText(QApplication::translate("UI_Test_Project", "\345\215\207\347\264\232(+1)", nullptr));
         resetshop->setText(QApplication::translate("UI_Test_Project", "\345\210\267\346\226\260\345\225\206\345\272\227", nullptr));
         shop_item_info->setText(QString());
         buy->setText(QApplication::translate("UI_Test_Project", "\350\263\274\350\262\267", nullptr));

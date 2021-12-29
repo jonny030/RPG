@@ -1,13 +1,10 @@
 <RCC>
     <qresource prefix="/assets">
         <file>images/backpack_black_24dp.png</file>
-        <file>images/backpack_black_24dp.svg</file>
         <file>images/btnbg.png</file>
         <file>images/cog-solid.png</file>
-        <file>images/cog-solid.svg</file>
         <file>images/profile.png</file>
         <file>images/store-solid.png</file>
-        <file>images/store-solid.svg</file>
         <file>images/tumblr_p7k8f3fMWS1wvbydeo1_1280.png</file>
         <file>images/monster1.gif</file>
         <file>images/play-button.png</file>
@@ -20,5 +17,6 @@
         <file>images/armor.png</file>
         <file>images/leg.png</file>
         <file>images/meme.png</file>
+        <file>images/btnbg2.png</file>
     </qresource>
 </RCC>

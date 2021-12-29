@@ -9,24 +9,48 @@ public:
     QString kind;
     int atk;
     int def;
+    Equi *next;
     Equi(){
+        this->icon.addFile("");
         this->name = "";
+        this->kind="";
         this->atk=0;
         this->def=0;
+        this->next=0;
     }
-    Equi(QString name,int atk,int def){
+    Equi(QString file,QString name,QString kind,int atk,int def){
+        this->icon.addFile(":/assets/images/"+file+".png");
         this->name = name;
+        this->kind=kind;
         this->atk=atk;
         this->def=def;
+        this->next=0;
     };
 };
 class Equilist{
 public:
-    Equi item[999];
+    Equi *item;
     Equilist(){
-        item[0].name="";
-        item[0].atk =0;
-        item[0].def =0;
+        item=0;
+    }
+    void push(QString file,QString name,QString kind,int atk,int def){
+        Equi *newNode = new Equi(file,name,kind,atk,def);
+        if(item == 0){
+            item = newNode;
+            return;
+        }
+        Equi *last = item;
+        while (last->next != 0){
+            last = last->next;
+        }
+        last->next = newNode;
+    }
+    Equi find(QString find){
+        Equi *f_item = item;
+        while(f_item != 0 && f_item->name != find){
+            f_item = f_item->next;
+        }
+        return *f_item;
     }
 };
 class player{

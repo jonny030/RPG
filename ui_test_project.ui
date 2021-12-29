@@ -111,13 +111,18 @@ position: relative;</string>
             <cursorShape>ArrowCursor</cursorShape>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-image: url(:/assets/images/btnbg.png);
+            <string notr="true">QPushButton{
+background-image: url(:/assets/images/btnbg.png);
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-position: center;
 border:unset;
 min-width:80px;
-min-height:100px;</string>
+min-height:100px;
+}
+QPushButton:hover{
+background-image: url(:/assets/images/btnbg2.png);
+}</string>
            </property>
            <property name="text">
             <string/>
@@ -131,13 +136,18 @@ min-height:100px;</string>
          <item>
           <widget class="QPushButton" name="back">
            <property name="styleSheet">
-            <string notr="true">background-image: url(:/assets/images/btnbg.png);
+            <string notr="true">QPushButton{
+background-image: url(:/assets/images/btnbg.png);
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-position: center;
 border:unset;
 min-width:80px;
-min-height:100px;</string>
+min-height:100px;
+}
+QPushButton:hover{
+background-image: url(:/assets/images/btnbg2.png);
+}</string>
            </property>
            <property name="text">
             <string/>
@@ -151,13 +161,18 @@ min-height:100px;</string>
          <item>
           <widget class="QPushButton" name="settingButton">
            <property name="styleSheet">
-            <string notr="true">background-image: url(:/assets/images/btnbg.png);
+            <string notr="true">QPushButton{
+background-image: url(:/assets/images/btnbg.png);
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-position: center;
 border:unset;
 min-width:80px;
-min-height:100px;</string>
+min-height:100px;
+}
+QPushButton:hover{
+background-image: url(:/assets/images/btnbg2.png);
+}</string>
            </property>
            <property name="text">
             <string/>
@@ -686,26 +701,6 @@ QPushButton:hover{
              </property>
              <property name="text">
               <string>裝備</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="levelup">
-             <property name="styleSheet">
-              <string notr="true">QPushButton{
-	background-color: rgb(255, 255, 255);
-	padding:4px 16px;
-	margin:0px 16px;
-	border-radius:16px;
-	border:solid 3px black;
-	border-width:8px;
-}
-QPushButton:hover{
-	background:rgb(222, 222, 222);
-}</string>
-             </property>
-             <property name="text">
-              <string>升級(+1)</string>
              </property>
             </widget>
            </item>

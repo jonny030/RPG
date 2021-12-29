@@ -125,8 +125,8 @@ static const uint qt_meta_data_UI_Test_Project[] = {
       28,    0,  189,    2, 0x08 /* Private */,
       29,    0,  190,    2, 0x08 /* Private */,
       30,    0,  191,    2, 0x08 /* Private */,
-      31,    1,  192,    2, 0x08 /* Private */,
-      32,    1,  195,    2, 0x08 /* Private */,
+      31,    0,  192,    2, 0x08 /* Private */,
+      32,    0,  193,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -156,8 +156,8 @@ static const uint qt_meta_data_UI_Test_Project[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   12,
-    QMetaType::Void, QMetaType::Int,   12,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -195,8 +195,8 @@ void UI_Test_Project::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 24: _t->on_volume_close_btn_clicked(); break;
         case 25: _t->setsoundVolume(); break;
         case 26: _t->setbackVolume(); break;
-        case 27: _t->on_soundmute_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 28: _t->on_backmute_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 27: _t->on_soundmute_stateChanged(); break;
+        case 28: _t->on_backmute_stateChanged(); break;
         default: ;
         }
     }

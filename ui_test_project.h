@@ -90,10 +90,10 @@ private slots:
 
     void setbackVolume();
 
+    void on_soundmute_stateChanged();
 
-    void on_soundmute_stateChanged(int arg1);
+    void on_backmute_stateChanged();
 
-    void on_backmute_stateChanged(int arg1);
 
 private:
     Ui::UI_Test_Project *ui;
