@@ -39,6 +39,13 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->shop_gui->setVisible(false);
     ui->setting_gui->setVisible(false);
     ui->volume_gui->setVisible(false);
+    // ui->select_Professional->setVisible(false); 職業介面
+    // ui->select_Professional->setGeometry(0,0,810,487); 顯示職業介面
+    /**
+     * @todo 職業
+     * Line 497: 選擇劍士處理
+     * Line 503: 選擇牧師處理
+     */
 
     //getitem
     QFile mFile;
@@ -486,3 +493,15 @@ void UI_Test_Project::on_backmute_stateChanged()
     }
     backmusic->setVolume(backVolume);
 }
+
+void UI_Test_Project::on_Swordsman_clicked()
+{
+    qDebug() << QStringLiteral("劍士");
+}
+
+
+void UI_Test_Project::on_Priest_clicked()
+{
+    qDebug() << QStringLiteral("牧師");
+}
+

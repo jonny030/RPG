@@ -195,7 +195,7 @@ background-image: url(:/assets/images/btnbg2.png);
       <x>7</x>
       <y>22</y>
       <width>161</width>
-      <height>62</height>
+      <height>74</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -655,7 +655,6 @@ QPushButton:hover{
          <widget class="QLabel" name="item_info_panel">
           <property name="font">
            <font>
-            <family>Arial</family>
             <pointsize>16</pointsize>
            </font>
           </property>
@@ -829,7 +828,6 @@ border:solid black 3px;</string>
            <widget class="QLabel" name="shop_item_info">
             <property name="font">
              <font>
-              <family>Arial</family>
               <pointsize>16</pointsize>
              </font>
             </property>
@@ -1041,7 +1039,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>155</x>
-      <y>40</y>
+      <y>1000</y>
       <width>500</width>
       <height>381</height>
      </rect>
@@ -1228,13 +1226,88 @@ QPushButton:hover{
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
       <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">
      <string>LV.0</string>
     </property>
+   </widget>
+   <widget class="QFrame" name="select_Professional">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>1000</y>
+      <width>810</width>
+      <height>487</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>810</width>
+      <height>487</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/assets/images/select_bg.png);
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center;</string>
+    </property>
+    <layout class="QHBoxLayout" name="_9">
+     <item>
+      <widget class="QPushButton" name="Swordsman">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>487</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:unset;
+background: transparent;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Priest">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>487</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:unset;
+background: transparent;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
    <zorder>level</zorder>
    <zorder>verticalLayoutWidget</zorder>
@@ -1248,6 +1321,7 @@ QPushButton:hover{
    <zorder>shop_gui</zorder>
    <zorder>setting_gui</zorder>
    <zorder>volume_gui</zorder>
+   <zorder>select_Professional</zorder>
   </widget>
  </widget>
  <resources>

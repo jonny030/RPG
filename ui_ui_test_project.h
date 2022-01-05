@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ui_test_project.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.11
+** Created by: Qt User Interface Compiler version 5.12.12
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -115,6 +115,10 @@ public:
     QHBoxLayout *horizontalLayout_6;
     QPushButton *volume_close_btn;
     QLabel *level;
+    QFrame *select_Professional;
+    QHBoxLayout *_9;
+    QPushButton *Swordsman;
+    QPushButton *Priest;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -240,7 +244,7 @@ public:
 
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(7, 22, 161, 62));
+        layoutWidget->setGeometry(QRect(7, 22, 161, 74));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -493,7 +497,6 @@ public:
         item_info_panel = new QLabel(item_info);
         item_info_panel->setObjectName(QString::fromUtf8("item_info_panel"));
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Arial"));
         font1.setPointSize(16);
         item_info_panel->setFont(font1);
         item_info_panel->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
@@ -751,7 +754,7 @@ public:
 
         volume_gui = new QFrame(centralwidget);
         volume_gui->setObjectName(QString::fromUtf8("volume_gui"));
-        volume_gui->setGeometry(QRect(155, 40, 500, 381));
+        volume_gui->setGeometry(QRect(155, 1000, 500, 381));
         volume_gui->setMinimumSize(QSize(500, 381));
         volume_gui->setMaximumSize(QSize(500, 381));
         volume_gui->setBaseSize(QSize(0, 0));
@@ -863,6 +866,36 @@ public:
         level->setObjectName(QString::fromUtf8("level"));
         level->setGeometry(QRect(110, 140, 61, 21));
         level->setFont(font1);
+        select_Professional = new QFrame(centralwidget);
+        select_Professional->setObjectName(QString::fromUtf8("select_Professional"));
+        select_Professional->setGeometry(QRect(0, 1000, 810, 487));
+        select_Professional->setMinimumSize(QSize(810, 487));
+        select_Professional->setMaximumSize(QSize(0, 0));
+        select_Professional->setBaseSize(QSize(0, 0));
+        select_Professional->setLayoutDirection(Qt::LeftToRight);
+        select_Professional->setAutoFillBackground(false);
+        select_Professional->setStyleSheet(QString::fromUtf8("background-image: url(:/assets/images/select_bg.png);\n"
+"background-repeat: no-repeat;\n"
+"background-attachment: fixed;\n"
+"background-position: center;"));
+        _9 = new QHBoxLayout(select_Professional);
+        _9->setObjectName(QString::fromUtf8("_9"));
+        Swordsman = new QPushButton(select_Professional);
+        Swordsman->setObjectName(QString::fromUtf8("Swordsman"));
+        Swordsman->setMinimumSize(QSize(0, 487));
+        Swordsman->setStyleSheet(QString::fromUtf8("border:unset;\n"
+"background: transparent;"));
+
+        _9->addWidget(Swordsman);
+
+        Priest = new QPushButton(select_Professional);
+        Priest->setObjectName(QString::fromUtf8("Priest"));
+        Priest->setMinimumSize(QSize(0, 487));
+        Priest->setStyleSheet(QString::fromUtf8("border:unset;\n"
+"background: transparent;"));
+
+        _9->addWidget(Priest);
+
         UI_Test_Project->setCentralWidget(centralwidget);
         level->raise();
         verticalLayoutWidget->raise();
@@ -876,6 +909,7 @@ public:
         shop_gui->raise();
         setting_gui->raise();
         volume_gui->raise();
+        select_Professional->raise();
 
         retranslateUi(UI_Test_Project);
         QObject::connect(volume_sounds_spinBox, SIGNAL(valueChanged(int)), volume_sounds_silderbar, SLOT(setValue(int)));
@@ -923,6 +957,8 @@ public:
         backmute->setText(QApplication::translate("UI_Test_Project", "\351\235\234\351\237\263", nullptr));
         volume_close_btn->setText(QApplication::translate("UI_Test_Project", "\351\227\234\351\226\211", nullptr));
         level->setText(QApplication::translate("UI_Test_Project", "LV.0", nullptr));
+        Swordsman->setText(QString());
+        Priest->setText(QString());
     } // retranslateUi
 
 };

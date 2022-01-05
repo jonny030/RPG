@@ -18,5 +18,6 @@
         <file>images/leg.png</file>
         <file>images/meme.png</file>
         <file>images/btnbg2.png</file>
+        <file>images/select_bg.png</file>
     </qresource>
 </RCC>

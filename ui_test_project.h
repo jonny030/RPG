@@ -95,6 +95,10 @@ private slots:
     void on_backmute_stateChanged();
 
 
+    void on_Swordsman_clicked();
+
+    void on_Priest_clicked();
+
 private:
     Ui::UI_Test_Project *ui;
 };
