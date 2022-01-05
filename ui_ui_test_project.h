@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ui_test_project.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.12
+** Created by: Qt User Interface Compiler version 5.12.11
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -18,6 +18,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
@@ -117,8 +118,26 @@ public:
     QLabel *level;
     QFrame *select_Professional;
     QHBoxLayout *_9;
+    QFrame *horizontalFrame_3;
+    QHBoxLayout *horizontalLayout_12;
+    QVBoxLayout *space1;
+    QSpacerItem *verticalSpacer;
+    QLabel *label;
     QPushButton *Swordsman;
+    QFrame *horizontalFrame;
+    QHBoxLayout *horizontalLayout_7;
+    QVBoxLayout *verticalLayout_7;
+    QSpacerItem *verticalSpacer_3;
+    QLabel *label_3;
+    QLineEdit *nameEdit;
+    QLabel *label_4;
+    QSpacerItem *verticalSpacer_4;
+    QVBoxLayout *verticalLayout_6;
+    QSpacerItem *verticalSpacer_2;
+    QLabel *label_2;
     QPushButton *Priest;
+    QFrame *horizontalFrame_2;
+    QHBoxLayout *horizontalLayout_11;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -868,34 +887,156 @@ public:
         level->setFont(font1);
         select_Professional = new QFrame(centralwidget);
         select_Professional->setObjectName(QString::fromUtf8("select_Professional"));
-        select_Professional->setGeometry(QRect(0, 1000, 810, 487));
-        select_Professional->setMinimumSize(QSize(810, 487));
+        select_Professional->setGeometry(QRect(0, 0, 810, 498));
+        select_Professional->setMinimumSize(QSize(810, 498));
         select_Professional->setMaximumSize(QSize(0, 0));
         select_Professional->setBaseSize(QSize(0, 0));
         select_Professional->setLayoutDirection(Qt::LeftToRight);
         select_Professional->setAutoFillBackground(false);
         select_Professional->setStyleSheet(QString::fromUtf8("background-image: url(:/assets/images/select_bg.png);\n"
 "background-repeat: no-repeat;\n"
-"background-attachment: fixed;\n"
-"background-position: center;"));
+"background-attachment: local;\n"
+"background-position: center;\n"
+"  background-clip: border-box;  "));
         _9 = new QHBoxLayout(select_Professional);
         _9->setObjectName(QString::fromUtf8("_9"));
+        horizontalFrame_3 = new QFrame(select_Professional);
+        horizontalFrame_3->setObjectName(QString::fromUtf8("horizontalFrame_3"));
+        horizontalFrame_3->setMinimumSize(QSize(0, 0));
+        horizontalFrame_3->setMaximumSize(QSize(25, 16777215));
+        horizontalFrame_3->setStyleSheet(QString::fromUtf8("background:transparent;"));
+        horizontalLayout_12 = new QHBoxLayout(horizontalFrame_3);
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+
+        _9->addWidget(horizontalFrame_3);
+
+        space1 = new QVBoxLayout();
+        space1->setObjectName(QString::fromUtf8("space1"));
+        verticalSpacer = new QSpacerItem(20, 262, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        space1->addItem(verticalSpacer);
+
+        label = new QLabel(select_Professional);
+        label->setObjectName(QString::fromUtf8("label"));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("\346\250\231\346\245\267\351\253\224"));
+        font2.setPointSize(24);
+        font2.setBold(false);
+        font2.setWeight(50);
+        label->setFont(font2);
+        label->setStyleSheet(QString::fromUtf8("background:transparent;"));
+        label->setAlignment(Qt::AlignCenter);
+
+        space1->addWidget(label);
+
         Swordsman = new QPushButton(select_Professional);
         Swordsman->setObjectName(QString::fromUtf8("Swordsman"));
-        Swordsman->setMinimumSize(QSize(0, 487));
-        Swordsman->setStyleSheet(QString::fromUtf8("border:unset;\n"
-"background: transparent;"));
+        Swordsman->setMinimumSize(QSize(0, 214));
+        Swordsman->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background:transparent;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:6px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:transparent;\n"
+"}"));
 
-        _9->addWidget(Swordsman);
+        space1->addWidget(Swordsman);
+
+
+        _9->addLayout(space1);
+
+        horizontalFrame = new QFrame(select_Professional);
+        horizontalFrame->setObjectName(QString::fromUtf8("horizontalFrame"));
+        horizontalFrame->setMinimumSize(QSize(40, 0));
+        horizontalFrame->setMaximumSize(QSize(142, 16777215));
+        horizontalFrame->setStyleSheet(QString::fromUtf8("background:transparent;"));
+        horizontalLayout_7 = new QHBoxLayout(horizontalFrame);
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_7->addItem(verticalSpacer_3);
+
+        label_3 = new QLabel(horizontalFrame);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setMaximumSize(QSize(16777215, 50));
+        QFont font3;
+        font3.setPointSize(11);
+        font3.setBold(true);
+        font3.setWeight(75);
+        label_3->setFont(font3);
+        label_3->setStyleSheet(QString::fromUtf8("background:transparent;"));
+        label_3->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_7->addWidget(label_3);
+
+        nameEdit = new QLineEdit(horizontalFrame);
+        nameEdit->setObjectName(QString::fromUtf8("nameEdit"));
+        nameEdit->setMaxLength(5);
+        nameEdit->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_7->addWidget(nameEdit);
+
+        label_4 = new QLabel(horizontalFrame);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setMaximumSize(QSize(16777215, 50));
+        label_4->setStyleSheet(QString::fromUtf8("background:transparent;"));
+        label_4->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_7->addWidget(label_4);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_7->addItem(verticalSpacer_4);
+
+
+        horizontalLayout_7->addLayout(verticalLayout_7);
+
+
+        _9->addWidget(horizontalFrame);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_6->addItem(verticalSpacer_2);
+
+        label_2 = new QLabel(select_Professional);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setFont(font2);
+        label_2->setStyleSheet(QString::fromUtf8("background:transparent;"));
+        label_2->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_6->addWidget(label_2);
 
         Priest = new QPushButton(select_Professional);
         Priest->setObjectName(QString::fromUtf8("Priest"));
-        Priest->setMinimumSize(QSize(0, 487));
-        Priest->setStyleSheet(QString::fromUtf8("border:unset;\n"
-"background: transparent;"));
+        Priest->setMinimumSize(QSize(0, 214));
+        Priest->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background:transparent;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:6px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:transparent;\n"
+"}"));
 
-        _9->addWidget(Priest);
+        verticalLayout_6->addWidget(Priest);
 
+
+        _9->addLayout(verticalLayout_6);
+
+        horizontalFrame_2 = new QFrame(centralwidget);
+        horizontalFrame_2->setObjectName(QString::fromUtf8("horizontalFrame_2"));
+        horizontalFrame_2->setGeometry(QRect(510, 160, 142, 480));
+        horizontalFrame_2->setMinimumSize(QSize(40, 0));
+        horizontalFrame_2->setMaximumSize(QSize(142, 16777215));
+        horizontalLayout_11 = new QHBoxLayout(horizontalFrame_2);
+        horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
         UI_Test_Project->setCentralWidget(centralwidget);
         level->raise();
         verticalLayoutWidget->raise();
@@ -910,6 +1051,7 @@ public:
         setting_gui->raise();
         volume_gui->raise();
         select_Professional->raise();
+        horizontalFrame_2->raise();
 
         retranslateUi(UI_Test_Project);
         QObject::connect(volume_sounds_spinBox, SIGNAL(valueChanged(int)), volume_sounds_silderbar, SLOT(setValue(int)));
@@ -957,7 +1099,12 @@ public:
         backmute->setText(QApplication::translate("UI_Test_Project", "\351\235\234\351\237\263", nullptr));
         volume_close_btn->setText(QApplication::translate("UI_Test_Project", "\351\227\234\351\226\211", nullptr));
         level->setText(QApplication::translate("UI_Test_Project", "LV.0", nullptr));
+        label->setText(QApplication::translate("UI_Test_Project", "\345\210\272\345\256\242", nullptr));
         Swordsman->setText(QString());
+        label_3->setText(QApplication::translate("UI_Test_Project", "\350\253\213\350\274\270\345\205\245\347\216\251\345\256\266\345\220\215\347\250\261", nullptr));
+        nameEdit->setPlaceholderText(QApplication::translate("UI_Test_Project", "\351\240\220\350\250\255:\345\260\217\345\217\257\346\204\233", nullptr));
+        label_4->setText(QApplication::translate("UI_Test_Project", "(\346\234\200\345\244\232\344\272\224\345\200\213\345\255\227)", nullptr));
+        label_2->setText(QApplication::translate("UI_Test_Project", "\347\211\247\345\270\253", nullptr));
         Priest->setText(QString());
     } // retranslateUi
 

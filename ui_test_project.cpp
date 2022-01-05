@@ -496,7 +496,7 @@ void UI_Test_Project::on_backmute_stateChanged()
 
 void UI_Test_Project::on_Swordsman_clicked()
 {
-    qDebug() << QStringLiteral("劍士");
+    qDebug() << QStringLiteral("刺客");
 }
 
 
