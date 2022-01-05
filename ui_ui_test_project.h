@@ -346,11 +346,12 @@ public:
         startButton->setGeometry(QRect(310, 420, 61, 31));
         startButton->setAutoFillBackground(false);
         QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/assets/images/play-button.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QString::fromUtf8(":/assets/images/play-button2.png"), QSize(), QIcon::Normal, QIcon::Off);
         startButton->setIcon(icon3);
         startButton->setIconSize(QSize(20, 20));
         stopButton = new QPushButton(centralwidget);
         stopButton->setObjectName(QString::fromUtf8("stopButton"));
+        stopButton->setEnabled(false);
         stopButton->setGeometry(QRect(400, 420, 61, 31));
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/assets/images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -751,7 +752,7 @@ public:
 
         volume_gui = new QFrame(centralwidget);
         volume_gui->setObjectName(QString::fromUtf8("volume_gui"));
-        volume_gui->setGeometry(QRect(155, 40, 500, 381));
+        volume_gui->setGeometry(QRect(155, 1000, 500, 381));
         volume_gui->setMinimumSize(QSize(500, 381));
         volume_gui->setMaximumSize(QSize(500, 381));
         volume_gui->setBaseSize(QSize(0, 0));
@@ -786,14 +787,14 @@ public:
         volume_sounds_spinBox = new QSpinBox(volume_main);
         volume_sounds_spinBox->setObjectName(QString::fromUtf8("volume_sounds_spinBox"));
         volume_sounds_spinBox->setMaximum(100);
-        volume_sounds_spinBox->setValue(100);
+        volume_sounds_spinBox->setValue(50);
 
         volume_sounds_frame->addWidget(volume_sounds_spinBox);
 
         volume_sounds_silderbar = new QSlider(volume_main);
         volume_sounds_silderbar->setObjectName(QString::fromUtf8("volume_sounds_silderbar"));
         volume_sounds_silderbar->setMaximum(100);
-        volume_sounds_silderbar->setValue(100);
+        volume_sounds_silderbar->setValue(50);
         volume_sounds_silderbar->setOrientation(Qt::Horizontal);
 
         volume_sounds_frame->addWidget(volume_sounds_silderbar);
@@ -818,15 +819,15 @@ public:
         volume_body_spinBox = new QSpinBox(volume_main);
         volume_body_spinBox->setObjectName(QString::fromUtf8("volume_body_spinBox"));
         volume_body_spinBox->setMaximum(100);
-        volume_body_spinBox->setValue(100);
+        volume_body_spinBox->setValue(30);
 
         volume_body_frame->addWidget(volume_body_spinBox);
 
         volume_body_silderbar = new QSlider(volume_main);
         volume_body_silderbar->setObjectName(QString::fromUtf8("volume_body_silderbar"));
         volume_body_silderbar->setMaximum(100);
-        volume_body_silderbar->setValue(100);
-        volume_body_silderbar->setSliderPosition(100);
+        volume_body_silderbar->setValue(30);
+        volume_body_silderbar->setSliderPosition(30);
         volume_body_silderbar->setOrientation(Qt::Horizontal);
 
         volume_body_frame->addWidget(volume_body_silderbar);

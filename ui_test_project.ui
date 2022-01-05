@@ -367,7 +367,7 @@ QProgressBar::chunk {
     </property>
     <property name="icon">
      <iconset resource="images_list.qrc">
-      <normaloff>:/assets/images/play-button.png</normaloff>:/assets/images/play-button.png</iconset>
+      <normaloff>:/assets/images/play-button2.png</normaloff>:/assets/images/play-button2.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -377,6 +377,9 @@ QProgressBar::chunk {
     </property>
    </widget>
    <widget class="QPushButton" name="stopButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -1041,7 +1044,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>155</x>
-      <y>40</y>
+      <y>1000</y>
       <width>500</width>
       <height>381</height>
      </rect>
@@ -1115,7 +1118,7 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>100</number>
+             <number>50</number>
             </property>
            </widget>
           </item>
@@ -1125,7 +1128,7 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>100</number>
+             <number>50</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -1165,7 +1168,7 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>100</number>
+             <number>30</number>
             </property>
            </widget>
           </item>
@@ -1175,10 +1178,10 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>100</number>
+             <number>30</number>
             </property>
             <property name="sliderPosition">
-             <number>100</number>
+             <number>30</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -1261,12 +1264,12 @@ QPushButton:hover{
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>317</x>
-     <y>233</y>
+     <x>387</x>
+     <y>1080</y>
     </hint>
     <hint type="destinationlabel">
-     <x>367</x>
-     <y>233</y>
+     <x>606</x>
+     <y>1083</y>
     </hint>
    </hints>
   </connection>
@@ -1277,12 +1280,12 @@ QPushButton:hover{
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>381</x>
-     <y>231</y>
+     <x>620</x>
+     <y>1083</y>
     </hint>
     <hint type="destinationlabel">
-     <x>300</x>
-     <y>230</y>
+     <x>387</x>
+     <y>1080</y>
     </hint>
    </hints>
   </connection>
@@ -1293,12 +1296,12 @@ QPushButton:hover{
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>319</x>
-     <y>356</y>
+     <x>387</x>
+     <y>1197</y>
     </hint>
     <hint type="destinationlabel">
-     <x>361</x>
-     <y>358</y>
+     <x>600</x>
+     <y>1200</y>
     </hint>
    </hints>
   </connection>
@@ -1309,12 +1312,12 @@ QPushButton:hover{
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>368</x>
-     <y>348</y>
+     <x>607</x>
+     <y>1200</y>
     </hint>
     <hint type="destinationlabel">
-     <x>305</x>
-     <y>355</y>
+     <x>387</x>
+     <y>1197</y>
     </hint>
    </hints>
   </connection>

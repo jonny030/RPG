@@ -31,7 +31,6 @@ public:
     QMediaPlaylist *playlist = new QMediaPlaylist();
     QMediaPlayer *backmusic = new QMediaPlayer();
     QLabel *Win=new QLabel();
-    int allVolume;
     int soundVolume;
     int backVolume;
 
@@ -93,7 +92,6 @@ private slots:
     void on_soundmute_stateChanged();
 
     void on_backmute_stateChanged();
-
 
 private:
     Ui::UI_Test_Project *ui;

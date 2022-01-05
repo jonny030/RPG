@@ -17,7 +17,7 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
 
     connect(ui->volume_sounds_silderbar, SIGNAL(valueChanged(int)),this, SLOT(setsoundVolume()));
     connect(ui->volume_body_silderbar, SIGNAL(valueChanged(int)),this, SLOT(setbackVolume()));
-
+    soundVolume=ui->volume_sounds_silderbar->value();
     srand( time(NULL) );
     QMovie *movie = new QMovie(":/assets/images/monster1.gif");
     QImage img;
@@ -31,6 +31,8 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     playlist->addMedia(QUrl("./sound/backmusic.mp3"));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
     backmusic->setPlaylist(playlist);
+    backVolume=ui->volume_body_silderbar->value();
+    backmusic->setVolume(backVolume);
     backmusic->play();
 
     ui->select_item->addItem("");
@@ -139,24 +141,18 @@ void UI_Test_Project::sleep(){
 void UI_Test_Project::on_startButton_clicked()
 {
     clickedButton();
+    ui->stopButton->setEnabled(true);
+    ui->startButton->setEnabled(false);
     myTimer->start(300);
-    QIcon icon1,icon2;
-    icon1.addFile(QString::fromUtf8(":/assets/images/stop.png"), QSize(), QIcon::Normal, QIcon::Off);
-    ui->stopButton->setIcon(icon1);
-    icon2.addFile(QString::fromUtf8(":/assets/images/play-button%1.png").arg(2), QSize(), QIcon::Normal, QIcon::Off);
-    ui->startButton->setIcon(icon2);
 }
 
 
 void UI_Test_Project::on_stopButton_clicked()
 {
     clickedButton();
+    ui->stopButton->setEnabled(false);
+    ui->startButton->setEnabled(true);
     myTimer->stop();
-    QIcon icon1,icon2;
-    icon1.addFile(QString::fromUtf8(":/assets/images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
-    ui->stopButton->setIcon(icon1);
-    icon2.addFile(QString::fromUtf8(":/assets/images/play-button.png"), QSize(), QIcon::Normal, QIcon::Off);
-    ui->startButton->setIcon(icon2);
     initHp();
 }
 
@@ -470,6 +466,8 @@ void UI_Test_Project::on_soundmute_stateChanged()
     clickedButton();
     if(ui->soundmute->checkState()){
         soundVolume = 0;
+    }else{
+        soundVolume = ui->volume_sounds_silderbar->value();
     }
 }
 
@@ -486,3 +484,4 @@ void UI_Test_Project::on_backmute_stateChanged()
     }
     backmusic->setVolume(backVolume);
 }
+
