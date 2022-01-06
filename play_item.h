@@ -9,6 +9,7 @@ public:
     QString kind;
     int atk;
     int def;
+    int money;
     Equi *next;
     Equi(){
         this->icon.addFile("");
@@ -18,12 +19,13 @@ public:
         this->def=0;
         this->next=0;
     }
-    Equi(QString file,QString name,QString kind,int atk,int def){
+    Equi(QString file,QString name,QString kind,int atk,int def,int money){
         this->icon.addFile(":/assets/images/"+file+".png");
         this->name = name;
         this->kind=kind;
         this->atk=atk;
         this->def=def;
+        this->money = money;
         this->next=0;
     };
 };
@@ -33,8 +35,8 @@ public:
     Equilist(){
         item=0;
     }
-    void push(QString file,QString name,QString kind,int atk,int def){
-        Equi *newNode = new Equi(file,name,kind,atk,def);
+    void push(QString file,QString name,QString kind,int atk,int def,int money){
+        Equi *newNode = new Equi(file,name,kind,atk,def,money);
         if(item == 0){
             item = newNode;
             return;
@@ -55,11 +57,13 @@ public:
 };
 class player{
 public:
+    QString kind;
     int hp;
     int default_hp;
     int atk;
     int killcount;
     int level;
+    int money;
     Equi *weapons_1,*weapons_2;
     Equi *armor,*leg;
     player(int hp,int atk){
@@ -67,7 +71,8 @@ public:
         this->default_hp=hp;
         this->atk=atk;
         this->killcount=0;
-        this->level=0;
+        this->level=1;
+        this->money=0;
         weapons_1 = new Equi();
         weapons_2= new Equi();
         armor = new Equi();

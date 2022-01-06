@@ -1,4 +1,0 @@
-NormalLeg
-0
-2
-leg

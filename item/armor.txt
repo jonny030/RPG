@@ -1,4 +1,0 @@
-NormalArmor
-0
-2
-armor

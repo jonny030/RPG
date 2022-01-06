@@ -138,6 +138,7 @@ public:
     QPushButton *Priest;
     QFrame *horizontalFrame_2;
     QHBoxLayout *horizontalLayout_11;
+    QLabel *money;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -263,7 +264,7 @@ public:
 
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(7, 22, 161, 62));
+        layoutWidget->setGeometry(QRect(7, 22, 161, 61));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -456,7 +457,7 @@ public:
         backpack_action_bar = new QFrame(item_info);
         backpack_action_bar->setObjectName(QString::fromUtf8("backpack_action_bar"));
         backpack_action_bar->setMinimumSize(QSize(0, 32));
-        backpack_action_bar->setMaximumSize(QSize(16777215, 48));
+        backpack_action_bar->setMaximumSize(QSize(16777215, 58));
         backpack_action_bar->setStyleSheet(QString::fromUtf8(""));
         _4 = new QHBoxLayout(backpack_action_bar);
         _4->setObjectName(QString::fromUtf8("_4"));
@@ -494,7 +495,7 @@ public:
         close_backpack = new QPushButton(backpack_action_bar);
         close_backpack->setObjectName(QString::fromUtf8("close_backpack"));
         close_backpack->setMinimumSize(QSize(72, 40));
-        close_backpack->setMaximumSize(QSize(72, 32));
+        close_backpack->setMaximumSize(QSize(72, 43));
         close_backpack->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "	background-color: rgb(255, 255, 255);\n"
 "	padding:4px 4px;\n"
@@ -528,19 +529,23 @@ public:
 
         item_action_btn = new QFrame(item_info);
         item_action_btn->setObjectName(QString::fromUtf8("item_action_btn"));
-        item_action_btn->setMaximumSize(QSize(16777215, 55));
+        item_action_btn->setMaximumSize(QSize(16777215, 51));
         item_action_btn->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout_2 = new QHBoxLayout(item_action_btn);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         equi = new QPushButton(item_action_btn);
         equi->setObjectName(QString::fromUtf8("equi"));
+        equi->setMinimumSize(QSize(96, 40));
+        equi->setMaximumSize(QSize(16777215, 46));
         equi->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "	background-color: rgb(255, 255, 255);\n"
 "	padding:4px 16px;\n"
 "	margin:0px 16px;\n"
 "	border-radius:16px;\n"
 "	border:solid 3px black;\n"
-"	border-width:8px;\n"
+"	border-width:4px;\n"
+"	min-width:24px;\n"
+"	min-height:24px;\n"
 "}\n"
 "QPushButton:hover{\n"
 "	background:rgb(222, 222, 222);\n"
@@ -570,7 +575,7 @@ public:
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         shop_select_bar = new QFrame(shop_gui);
         shop_select_bar->setObjectName(QString::fromUtf8("shop_select_bar"));
-        shop_select_bar->setMaximumSize(QSize(16777215, 50));
+        shop_select_bar->setMaximumSize(QSize(16777215, 56));
         shop_select_bar->setStyleSheet(QString::fromUtf8("background-color: gray;\n"
 "border:solid black 3px;"));
         horizontalLayout_3 = new QHBoxLayout(shop_select_bar);
@@ -605,14 +610,16 @@ public:
 
         resetshop = new QPushButton(shop_select_bar);
         resetshop->setObjectName(QString::fromUtf8("resetshop"));
-        resetshop->setMaximumSize(QSize(126, 16777215));
+        resetshop->setMaximumSize(QSize(140, 16777215));
         resetshop->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "	background-color: rgb(255, 255, 255);\n"
 "	padding:4px 16px;\n"
 "	margin:0px 16px;\n"
 "	border-radius:16px;\n"
 "	border:solid 3px black;\n"
-"	border-width:6px;\n"
+"	border-width:4px;\n"
+"	min-width:24px;\n"
+"	min-height:20px;\n"
 "}\n"
 "QPushButton:hover{\n"
 "	background:rgb(222, 222, 222);\n"
@@ -656,7 +663,9 @@ public:
 "	margin:0px 16px;\n"
 "	border-radius:16px;\n"
 "	border:solid 3px black;\n"
-"	border-width:8px;\n"
+"	border-width:4px;\n"
+"	min-width:20px;\n"
+"	min-height:20px;\n"
 "}\n"
 "QPushButton:hover{\n"
 "	background:rgb(222, 222, 222);\n"
@@ -672,7 +681,9 @@ public:
 "	margin:0px 16px;\n"
 "	border-radius:16px;\n"
 "	border:solid 3px black;\n"
-"	border-width:8px;\n"
+"	border-width:4px;\n"
+"	min-width:20px;\n"
+"	min-height:20px;\n"
 "}\n"
 "QPushButton:hover{\n"
 "	background:rgb(222, 222, 222);\n"
@@ -714,6 +725,8 @@ public:
 "	border-radius:16px;\n"
 "	border:solid 3px black;\n"
 "	border-width:4px;\n"
+"	min-width:20px;\n"
+"	min-height:20px;\n"
 "}\n"
 "QPushButton:hover{\n"
 "	background:rgb(222, 222, 222);\n"
@@ -730,6 +743,8 @@ public:
 "	border-radius:16px;\n"
 "	border:solid 3px black;\n"
 "	border-width:4px;\n"
+"	min-width:20px;\n"
+"	min-height:20px;\n"
 "}\n"
 "QPushButton:hover{\n"
 "	background:rgb(222, 222, 222);\n"
@@ -746,6 +761,8 @@ public:
 "	border-radius:16px;\n"
 "	border:solid 3px black;\n"
 "	border-width:4px;\n"
+"	min-width:20px;\n"
+"	min-height:20px;\n"
 "}\n"
 "QPushButton:hover{\n"
 "	background:rgb(222, 222, 222);\n"
@@ -762,6 +779,8 @@ public:
 "	border-radius:16px;\n"
 "	border:solid 3px black;\n"
 "	border-width:4px;\n"
+"	min-width:20px;\n"
+"	min-height:20px;\n"
 "}\n"
 "QPushButton:hover{\n"
 "	background:rgb(222, 222, 222);\n"
@@ -809,14 +828,14 @@ public:
         volume_sounds_spinBox = new QSpinBox(volume_main);
         volume_sounds_spinBox->setObjectName(QString::fromUtf8("volume_sounds_spinBox"));
         volume_sounds_spinBox->setMaximum(100);
-        volume_sounds_spinBox->setValue(100);
+        volume_sounds_spinBox->setValue(50);
 
         volume_sounds_frame->addWidget(volume_sounds_spinBox);
 
         volume_sounds_silderbar = new QSlider(volume_main);
         volume_sounds_silderbar->setObjectName(QString::fromUtf8("volume_sounds_silderbar"));
         volume_sounds_silderbar->setMaximum(100);
-        volume_sounds_silderbar->setValue(100);
+        volume_sounds_silderbar->setValue(50);
         volume_sounds_silderbar->setOrientation(Qt::Horizontal);
 
         volume_sounds_frame->addWidget(volume_sounds_silderbar);
@@ -841,15 +860,15 @@ public:
         volume_body_spinBox = new QSpinBox(volume_main);
         volume_body_spinBox->setObjectName(QString::fromUtf8("volume_body_spinBox"));
         volume_body_spinBox->setMaximum(100);
-        volume_body_spinBox->setValue(100);
+        volume_body_spinBox->setValue(30);
 
         volume_body_frame->addWidget(volume_body_spinBox);
 
         volume_body_silderbar = new QSlider(volume_main);
         volume_body_silderbar->setObjectName(QString::fromUtf8("volume_body_silderbar"));
         volume_body_silderbar->setMaximum(100);
-        volume_body_silderbar->setValue(100);
-        volume_body_silderbar->setSliderPosition(100);
+        volume_body_silderbar->setValue(30);
+        volume_body_silderbar->setSliderPosition(30);
         volume_body_silderbar->setOrientation(Qt::Horizontal);
 
         volume_body_frame->addWidget(volume_body_silderbar);
@@ -884,7 +903,7 @@ public:
 
         level = new QLabel(centralwidget);
         level->setObjectName(QString::fromUtf8("level"));
-        level->setGeometry(QRect(110, 140, 61, 21));
+        level->setGeometry(QRect(110, 130, 61, 21));
         level->setFont(font1);
         select_Professional = new QFrame(centralwidget);
         select_Professional->setObjectName(QString::fromUtf8("select_Professional"));
@@ -1039,7 +1058,15 @@ public:
         horizontalFrame_2->setMaximumSize(QSize(142, 16777215));
         horizontalLayout_11 = new QHBoxLayout(horizontalFrame_2);
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
+        money = new QLabel(centralwidget);
+        money->setObjectName(QString::fromUtf8("money"));
+        money->setGeometry(QRect(50, 380, 701, 31));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Arial"));
+        font4.setPointSize(14);
+        money->setFont(font4);
         UI_Test_Project->setCentralWidget(centralwidget);
+        money->raise();
         level->raise();
         verticalLayoutWidget->raise();
         layoutWidget->raise();
@@ -1048,12 +1075,12 @@ public:
         exp_bar->raise();
         startButton->raise();
         stopButton->raise();
-        backpack_gui->raise();
-        shop_gui->raise();
         setting_gui->raise();
         volume_gui->raise();
         horizontalFrame_2->raise();
         select_Professional->raise();
+        shop_gui->raise();
+        backpack_gui->raise();
 
         retranslateUi(UI_Test_Project);
         QObject::connect(volume_sounds_spinBox, SIGNAL(valueChanged(int)), volume_sounds_silderbar, SLOT(setValue(int)));
@@ -1100,7 +1127,7 @@ public:
         volume_body_text->setText(QApplication::translate("UI_Test_Project", "\350\203\214\346\231\257\350\250\255\345\256\232", nullptr));
         backmute->setText(QApplication::translate("UI_Test_Project", "\351\235\234\351\237\263", nullptr));
         volume_close_btn->setText(QApplication::translate("UI_Test_Project", "\351\227\234\351\226\211", nullptr));
-        level->setText(QApplication::translate("UI_Test_Project", "LV.0", nullptr));
+        level->setText(QApplication::translate("UI_Test_Project", "LV.1", nullptr));
         label->setText(QApplication::translate("UI_Test_Project", "\345\210\272\345\256\242", nullptr));
         Swordsman->setText(QString());
         label_3->setText(QApplication::translate("UI_Test_Project", "\350\253\213\350\274\270\345\205\245\347\216\251\345\256\266\345\220\215\347\250\261", nullptr));
@@ -1108,6 +1135,7 @@ public:
         label_4->setText(QApplication::translate("UI_Test_Project", "(\346\234\200\345\244\232\344\272\224\345\200\213\345\255\227)", nullptr));
         label_2->setText(QApplication::translate("UI_Test_Project", "\347\211\247\345\270\253", nullptr));
         Priest->setText(QString());
+        money->setText(QApplication::translate("UI_Test_Project", "$0", nullptr));
     } // retranslateUi
 
 };

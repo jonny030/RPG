@@ -195,7 +195,7 @@ background-image: url(:/assets/images/btnbg2.png);
       <x>7</x>
       <y>22</y>
       <width>161</width>
-      <height>62</height>
+      <height>61</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -566,7 +566,7 @@ border:solid black 3px;</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>48</height>
+            <height>58</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -628,7 +628,7 @@ border-left: 1px solid #ffffff;
              <property name="maximumSize">
               <size>
                <width>72</width>
-               <height>32</height>
+               <height>43</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -679,7 +679,7 @@ border-width:8px;</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>55</height>
+            <height>51</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -688,6 +688,18 @@ border-width:8px;</string>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QPushButton" name="equi">
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>46</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
 	background-color: rgb(255, 255, 255);
@@ -695,7 +707,9 @@ border-width:8px;</string>
 	margin:0px 16px;
 	border-radius:16px;
 	border:solid 3px black;
-	border-width:8px;
+	border-width:4px;
+	min-width:24px;
+	min-height:24px;
 }
 QPushButton:hover{
 	background:rgb(222, 222, 222);
@@ -754,7 +768,7 @@ border:solid black 3px;</string>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>50</height>
+           <height>56</height>
           </size>
          </property>
          <property name="styleSheet">
@@ -795,7 +809,7 @@ border-left: 1px solid #ffffff;
            <widget class="QPushButton" name="resetshop">
             <property name="maximumSize">
              <size>
-              <width>126</width>
+              <width>140</width>
               <height>16777215</height>
              </size>
             </property>
@@ -806,7 +820,9 @@ border-left: 1px solid #ffffff;
 	margin:0px 16px;
 	border-radius:16px;
 	border:solid 3px black;
-	border-width:6px;
+	border-width:4px;
+	min-width:24px;
+	min-height:20px;
 }
 QPushButton:hover{
 	background:rgb(222, 222, 222);
@@ -869,7 +885,9 @@ border:solid black 3px;</string>
 	margin:0px 16px;
 	border-radius:16px;
 	border:solid 3px black;
-	border-width:8px;
+	border-width:4px;
+	min-width:20px;
+	min-height:20px;
 }
 QPushButton:hover{
 	background:rgb(222, 222, 222);
@@ -889,7 +907,9 @@ QPushButton:hover{
 	margin:0px 16px;
 	border-radius:16px;
 	border:solid 3px black;
-	border-width:8px;
+	border-width:4px;
+	min-width:20px;
+	min-height:20px;
 }
 QPushButton:hover{
 	background:rgb(222, 222, 222);
@@ -963,6 +983,8 @@ border:solid black 3px;</string>
 	border-radius:16px;
 	border:solid 3px black;
 	border-width:4px;
+	min-width:20px;
+	min-height:20px;
 }
 QPushButton:hover{
 	background:rgb(222, 222, 222);
@@ -983,6 +1005,8 @@ QPushButton:hover{
 	border-radius:16px;
 	border:solid 3px black;
 	border-width:4px;
+	min-width:20px;
+	min-height:20px;
 }
 QPushButton:hover{
 	background:rgb(222, 222, 222);
@@ -1003,6 +1027,8 @@ QPushButton:hover{
 	border-radius:16px;
 	border:solid 3px black;
 	border-width:4px;
+	min-width:20px;
+	min-height:20px;
 }
 QPushButton:hover{
 	background:rgb(222, 222, 222);
@@ -1023,6 +1049,8 @@ QPushButton:hover{
 	border-radius:16px;
 	border:solid 3px black;
 	border-width:4px;
+	min-width:20px;
+	min-height:20px;
 }
 QPushButton:hover{
 	background:rgb(222, 222, 222);
@@ -1116,7 +1144,7 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>100</number>
+             <number>50</number>
             </property>
            </widget>
           </item>
@@ -1126,7 +1154,7 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>100</number>
+             <number>50</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -1166,7 +1194,7 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>100</number>
+             <number>30</number>
             </property>
            </widget>
           </item>
@@ -1176,10 +1204,10 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>100</number>
+             <number>30</number>
             </property>
             <property name="sliderPosition">
-             <number>100</number>
+             <number>30</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -1222,7 +1250,7 @@ QPushButton:hover{
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>140</y>
+      <y>130</y>
       <width>61</width>
       <height>21</height>
      </rect>
@@ -1233,7 +1261,7 @@ QPushButton:hover{
      </font>
     </property>
     <property name="text">
-     <string>LV.0</string>
+     <string>LV.1</string>
     </property>
    </widget>
    <widget class="QFrame" name="select_Professional">
@@ -1558,6 +1586,26 @@ QPushButton:hover{
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_11"/>
    </widget>
+   <widget class="QLabel" name="money">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>380</y>
+      <width>701</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>$0</string>
+    </property>
+   </widget>
+   <zorder>money</zorder>
    <zorder>level</zorder>
    <zorder>verticalLayoutWidget</zorder>
    <zorder>layoutWidget</zorder>
@@ -1566,12 +1614,12 @@ QPushButton:hover{
    <zorder>exp_bar</zorder>
    <zorder>startButton</zorder>
    <zorder>stopButton</zorder>
-   <zorder>backpack_gui</zorder>
-   <zorder>shop_gui</zorder>
    <zorder>setting_gui</zorder>
    <zorder>volume_gui</zorder>
    <zorder>horizontalFrame_2</zorder>
    <zorder>select_Professional</zorder>
+   <zorder>shop_gui</zorder>
+   <zorder>backpack_gui</zorder>
   </widget>
  </widget>
  <resources>

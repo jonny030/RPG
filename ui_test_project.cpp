@@ -24,7 +24,7 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->monster->setMovie(movie);
     ui->monster->setScaledContents(true);
 
-    playlist->addMedia(QUrl("./sound/backmusic.mp3"));
+    playlist->addMedia(QUrl("./sound/backmusic2.mp3"));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
     backmusic->setPlaylist(playlist);
     backVolume=ui->volume_body_silderbar->value();
@@ -37,30 +37,6 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->shop_gui->setVisible(false);
     ui->setting_gui->setVisible(false);
     ui->volume_gui->setVisible(false);
-
-    //getitem
-    QFile mFile;
-    QString path="./item";
-    QDir *dir=new QDir(path);
-    QStringList filter;
-    filter<<"*.txt";
-    dir->setNameFilters(filter);
-    QList<QFileInfo> *fileInfo=new QList<QFileInfo>(dir->entryInfoList(filter));
-    for(int n=1;n<=fileInfo->count();n++){
-        QString file=fileInfo->at(n-1).filePath();
-        mFile.setFileName(file);
-        if(!mFile.open(QFile::ReadOnly | QFile::Text)){
-            qDebug()<<"無法開啟檔案";
-            return;
-        }
-        QStringList list= QString(mFile.readAll()).split("\n");
-        file = file.remove("./item/");
-        file = file.remove(".txt");
-        itemlist.push(file,list[0],list[3],list[1].toInt(),list[2].toInt());
-        ui->shop_select_item->addItem(QIcon(":/assets/images/"+file+".png"),list[0]);
-    }
-    mFile.flush();
-    mFile.close();
 }
 UI_Test_Project::~UI_Test_Project()
 {
@@ -97,6 +73,8 @@ void UI_Test_Project::timerstart(){
                 ui->playerHp->setValue(player_note->gethp());
             }
         }else if(who > 3){
+            player_note->money += 1*player_note->level;
+            ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
             if(ui->monsterHp->value()<player_atk){
                 playSound("bonk");
                 monster_note->hp=0;
@@ -110,6 +88,32 @@ void UI_Test_Project::timerstart(){
     }
 }
 
+void UI_Test_Project::getitem(QString kind){
+    //getitem
+    QFile mFile;
+    QString path="./item/"+kind;
+    QDir *dir=new QDir(path);
+    QStringList filter;
+    filter<<"*.txt";
+    dir->setNameFilters(filter);
+    QList<QFileInfo> *fileInfo=new QList<QFileInfo>(dir->entryInfoList(filter));
+    for(int n=1;n<=fileInfo->count();n++){
+        QString file=fileInfo->at(n-1).filePath();
+        mFile.setFileName(file);
+        if(!mFile.open(QFile::ReadOnly | QFile::Text)){
+            qDebug()<<"無法開啟檔案";
+            return;
+        }
+        QStringList list= QString(mFile.readAll()).split("\n");
+        file = file.remove("./item/"+kind);
+        file = file.remove(".txt");
+        itemlist.push(file,list[0],list[3],list[1].toInt(),list[2].toInt(),list[4].toInt());
+        ui->shop_select_item->addItem(QIcon(":/assets/images/"+file+".png"),list[0]);
+    }
+    mFile.flush();
+    mFile.close();
+}
+
 void UI_Test_Project::initHp(){
     if(ui->monsterHp->value()<=0){
         player_note->killcount +=1;
@@ -119,6 +123,8 @@ void UI_Test_Project::initHp(){
         }else{
             playSound("levelup");
             player_note->level +=1;
+            player_note->money += 10*player_note->level;
+            ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
             ui->level->setText("LV."+QString::number(player_note->level));
             ui->exp_bar->setValue(0);
         }
@@ -196,6 +202,8 @@ void UI_Test_Project::on_backtogame_clicked()
     bigegg_count+=1;
     if(bigegg_count>=5){
         bigegg = true;
+        player_note->money=999999;
+        ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
     }
 }
 
@@ -211,7 +219,7 @@ void UI_Test_Project::on_endgame_clicked()
     playSound("gameover");
 }
 
-void UI_Test_Project::on_select_item_activated(const QString &arg1)
+void UI_Test_Project::on_select_item_currentTextChanged(const QString &arg1)
 {
     clickedButton();
     if(arg1 == ""){
@@ -231,15 +239,23 @@ void UI_Test_Project::on_equi_clicked()
         ui->item_info_panel->setText("");
     }else{
         Equi find = itemlist.find(arg1);
-        setIcon = find;
-        if(find.kind == "weapons"){
-            setIcon_weapons = true;
-            ui->weapons_1->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
-            ui->weapons_2->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
-        }else if(find.kind == "armor"){
+        if(find.kind == "weapons" && (player_note->weapons_1->name == "" || player_note->weapons_2->name == "")){
+            setIcon = find;
+            if(player_note->weapons_1->name == ""){
+                setIcon_weapons = true;
+                ui->weapons_1->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
+            }
+            if(player_note->weapons_2->name == ""){
+                setIcon_weapons = true;
+                ui->weapons_2->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
+            }
+
+        }else if(find.kind == "armor" && player_note->armor->name == ""){
+            setIcon = find;
             setIcon_armors = true;
             ui->armor->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
-        }else if(find.kind == "leg"){
+        }else if(find.kind == "leg" && player_note->leg->name == ""){
+            setIcon = find;
             setIcon_leg = true;
             ui->leg->setStyleSheet("border:3px solid yellow;\nborder-radius:16px;\nborder-width:8px;");
         }
@@ -258,6 +274,7 @@ void UI_Test_Project::on_weapons_1_clicked()
         ui->weapons_2->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->weapons_1->setText("");
         ui->weapons_1->setIcon(icon);
+        ui->select_item->removeItem(ui->select_item->currentIndex());
     }else{
         QMessageBox *msgBox = new QMessageBox();
         msgBox->setWindowTitle(QStringLiteral("系統訊息"));
@@ -267,6 +284,7 @@ void UI_Test_Project::on_weapons_1_clicked()
         msgBox->setStyleSheet("background-color:white");
         msgBox->exec();
         if(msgBox->clickedButton() == btn_sure){
+            ui->select_item->addItem(player_note->weapons_1->icon,player_note->weapons_1->name);
             player_note->set_weapons_1(new Equi());
             ui->weapons_1->setText(QStringLiteral("主手武器"));
             ui->weapons_1->setIcon(QIcon());
@@ -287,6 +305,7 @@ void UI_Test_Project::on_weapons_2_clicked()
         ui->weapons_2->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->weapons_2->setText("");
         ui->weapons_2->setIcon(icon);
+        ui->select_item->removeItem(ui->select_item->currentIndex());
     }else{
        QMessageBox *msgBox = new QMessageBox();
        msgBox->setWindowTitle(QStringLiteral("系統訊息"));
@@ -296,6 +315,7 @@ void UI_Test_Project::on_weapons_2_clicked()
        msgBox->setStyleSheet("background-color:white");
        msgBox->exec();
        if(msgBox->clickedButton() == btn_sure){
+           ui->select_item->addItem(player_note->weapons_2->icon,player_note->weapons_2->name);
            player_note->set_weapons_2(new Equi());
            ui->weapons_2->setText(QStringLiteral("副手武器"));
            ui->weapons_2->setIcon(QIcon());
@@ -316,6 +336,7 @@ void UI_Test_Project::on_armor_clicked()
         ui->leg->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->armor->setText("");
         ui->armor->setIcon(icon);
+        ui->select_item->removeItem(ui->select_item->currentIndex());
     }else{
         QMessageBox *msgBox = new QMessageBox();
         msgBox->setWindowTitle(QStringLiteral("系統訊息"));
@@ -325,7 +346,8 @@ void UI_Test_Project::on_armor_clicked()
         msgBox->setStyleSheet("background-color:white");
         msgBox->exec();
         if(msgBox->clickedButton() == btn_sure){
-            player_note->set_weapons_1(new Equi());
+            ui->select_item->addItem(player_note->armor->icon,player_note->armor->name);
+            player_note->set_armor(new Equi());
             ui->armor->setText(QStringLiteral("護甲區塊"));
             ui->armor->setIcon(QIcon());
         }
@@ -345,6 +367,7 @@ void UI_Test_Project::on_leg_clicked()
         ui->leg->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->leg->setText("");
         ui->leg->setIcon(icon);
+        ui->select_item->removeItem(ui->select_item->currentIndex());
     }else{
         QMessageBox *msgBox = new QMessageBox();
         msgBox->setWindowTitle(QStringLiteral("系統訊息"));
@@ -354,7 +377,8 @@ void UI_Test_Project::on_leg_clicked()
         msgBox->setStyleSheet("background-color:white");
         msgBox->exec();
         if(msgBox->clickedButton() == btn_sure){
-            player_note->set_weapons_1(new Equi());
+            ui->select_item->addItem(player_note->leg->icon,player_note->leg->name);
+            player_note->set_leg(new Equi());
             ui->leg->setText(QStringLiteral("護腿區塊"));
             ui->leg->setIcon(QIcon());
         }
@@ -363,14 +387,14 @@ void UI_Test_Project::on_leg_clicked()
 }
 
 
-void UI_Test_Project::on_shop_select_item_activated(const QString &arg1)
+void UI_Test_Project::on_shop_select_item_currentTextChanged(const QString &arg1)
 {
     clickedButton();
     if(arg1 == ""){
         ui->shop_item_info->setText("");
     }else{
         Equi find = itemlist.find(arg1);
-        ui->shop_item_info->setText(QStringLiteral("Name：")+find.name+QStringLiteral("\nAtk：")+QString::number(find.atk)+QStringLiteral("\nDef：")+QString::number(find.def));
+        ui->shop_item_info->setText(QStringLiteral("Name：")+find.name+QStringLiteral("\nAtk：")+QString::number(find.atk)+QStringLiteral("\nDef：")+QString::number(find.def)+QStringLiteral("\nMoney：")+QString::number(find.money));
     }
 }
 
@@ -378,11 +402,26 @@ void UI_Test_Project::on_shop_select_item_activated(const QString &arg1)
 void UI_Test_Project::on_buy_clicked()
 {
     clickedButton();
+    QMessageBox *msgBox = new QMessageBox();
+    msgBox->setWindowTitle(QStringLiteral("系統訊息"));
     if(ui->shop_select_item->currentText() != ""){
         Equi find = itemlist.find(ui->shop_select_item->currentText());
-        ui->select_item->addItem(find.icon,find.name);
-        if(find.name == "GodSword")
-            playSound("GodSword");
+        if(player_note->money >= find.money){
+            player_note->money -=find.money;
+            ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
+            ui->select_item->addItem(find.icon,find.name);
+            if(find.name == "GodSword")
+                playSound("GodSword");
+            msgBox->setText(QStringLiteral("商品購買成功"));
+            msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
+            msgBox->setStyleSheet("background-color:white");
+            msgBox->exec();
+        }else{
+            msgBox->setText(QStringLiteral("你的資產不夠"));
+            msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
+            msgBox->setStyleSheet("background-color:white");
+            msgBox->exec();
+        }
     }
 }
 void UI_Test_Project::playSound(QString url){
@@ -485,6 +524,8 @@ void UI_Test_Project::on_backmute_stateChanged()
 void UI_Test_Project::on_Swordsman_clicked()
 {
     clickedButton();
+    player_note->kind="Swordsman";
+    getitem(player_note->kind);
     ui->select_Professional->setVisible(false);
     QImage img;
     ui->player->setScaledContents(true);
@@ -501,6 +542,8 @@ void UI_Test_Project::on_Swordsman_clicked()
 void UI_Test_Project::on_Priest_clicked()
 {
     clickedButton();
+    player_note->kind="Priest";
+    getitem(player_note->kind);
     ui->select_Professional->setVisible(false);
     QImage img;
     ui->player->setScaledContents(true);

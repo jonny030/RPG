@@ -53,8 +53,6 @@ private slots:
 
     void on_endgame_clicked();
 
-    void on_select_item_activated(const QString &arg1);
-
     void on_equi_clicked();
 
     void timerstart();
@@ -71,7 +69,7 @@ private slots:
 
     void initHp();
 
-    void on_shop_select_item_activated(const QString &arg1);
+    void on_shop_select_item_currentTextChanged(const QString &arg1);
 
     void on_buy_clicked();
 
@@ -96,6 +94,10 @@ private slots:
     void on_Swordsman_clicked();
 
     void on_Priest_clicked();
+
+    void on_select_item_currentTextChanged(const QString &arg1);
+
+    void getitem(QString);
 
 private:
     Ui::UI_Test_Project *ui;

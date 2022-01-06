@@ -1,0 +1,5 @@
+NormalArmor
+0
+2
+armor
+10
