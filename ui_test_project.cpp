@@ -14,16 +14,12 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     connect(sleepTimer, SIGNAL(timeout()), this, SLOT(sleep()));
     connect(myTimer, SIGNAL(timeout()), this, SLOT(timerstart()));
     connect(backmusic,SIGNAL(durationChanged(qint64)),this,SLOT(getduration()));
-
+    ui->select_Professional->setGeometry(0,0,810,498);
     connect(ui->volume_sounds_silderbar, SIGNAL(valueChanged(int)),this, SLOT(setsoundVolume()));
     connect(ui->volume_body_silderbar, SIGNAL(valueChanged(int)),this, SLOT(setbackVolume()));
     soundVolume=ui->volume_sounds_silderbar->value();
     srand( time(NULL) );
     QMovie *movie = new QMovie(":/assets/images/monster1.gif");
-    QImage img;
-    ui->player->setScaledContents(true);
-    img.load(":/assets/images/play_icon.png");
-    ui->player->setPixmap(QPixmap::fromImage(img));
     movie->start();
     ui->monster->setMovie(movie);
     ui->monster->setScaledContents(true);
@@ -483,5 +479,37 @@ void UI_Test_Project::on_backmute_stateChanged()
         backmusic->play();
     }
     backmusic->setVolume(backVolume);
+}
+
+
+void UI_Test_Project::on_Swordsman_clicked()
+{
+    clickedButton();
+    ui->select_Professional->setVisible(false);
+    QImage img;
+    ui->player->setScaledContents(true);
+    img.load(":/assets/images/play_icon.png");
+    ui->player->setPixmap(QPixmap::fromImage(img));
+    if(ui->nameEdit->text()==""){
+        ui->username->setText(QStringLiteral("玩家：小可愛"));
+    }else{
+        ui->username->setText(QStringLiteral("玩家：")+ui->nameEdit->text());
+    }
+}
+
+
+void UI_Test_Project::on_Priest_clicked()
+{
+    clickedButton();
+    ui->select_Professional->setVisible(false);
+    QImage img;
+    ui->player->setScaledContents(true);
+    img.load(":/assets/images/play_icon2.png");
+    ui->player->setPixmap(QPixmap::fromImage(img));
+    if(ui->nameEdit->text()==""){
+        ui->username->setText(QStringLiteral("玩家：小可愛"));
+    }else{
+        ui->username->setText(QStringLiteral("玩家：")+ui->nameEdit->text());
+    }
 }
 

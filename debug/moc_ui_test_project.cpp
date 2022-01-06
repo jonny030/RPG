@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_UI_Test_Project_t {
-    QByteArrayData data[33];
-    char stringdata0[582];
+    QByteArrayData data[35];
+    char stringdata0[621];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -63,7 +63,9 @@ QT_MOC_LITERAL(28, 474, 27), // "on_volume_close_btn_clicked"
 QT_MOC_LITERAL(29, 502, 14), // "setsoundVolume"
 QT_MOC_LITERAL(30, 517, 13), // "setbackVolume"
 QT_MOC_LITERAL(31, 531, 25), // "on_soundmute_stateChanged"
-QT_MOC_LITERAL(32, 557, 24) // "on_backmute_stateChanged"
+QT_MOC_LITERAL(32, 557, 24), // "on_backmute_stateChanged"
+QT_MOC_LITERAL(33, 582, 20), // "on_Swordsman_clicked"
+QT_MOC_LITERAL(34, 603, 17) // "on_Priest_clicked"
 
     },
     "UI_Test_Project\0on_startButton_clicked\0"
@@ -80,7 +82,8 @@ QT_MOC_LITERAL(32, 557, 24) // "on_backmute_stateChanged"
     "url\0getduration\0on_volumesetting_clicked\0"
     "on_volume_close_btn_clicked\0setsoundVolume\0"
     "setbackVolume\0on_soundmute_stateChanged\0"
-    "on_backmute_stateChanged"
+    "on_backmute_stateChanged\0on_Swordsman_clicked\0"
+    "on_Priest_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -90,7 +93,7 @@ static const uint qt_meta_data_UI_Test_Project[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      29,   14, // methods
+      31,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -98,35 +101,37 @@ static const uint qt_meta_data_UI_Test_Project[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  159,    2, 0x08 /* Private */,
-       3,    0,  160,    2, 0x08 /* Private */,
-       4,    0,  161,    2, 0x08 /* Private */,
-       5,    0,  162,    2, 0x08 /* Private */,
-       6,    0,  163,    2, 0x08 /* Private */,
-       7,    0,  164,    2, 0x08 /* Private */,
-       8,    0,  165,    2, 0x08 /* Private */,
-       9,    0,  166,    2, 0x08 /* Private */,
-      10,    0,  167,    2, 0x08 /* Private */,
-      11,    1,  168,    2, 0x08 /* Private */,
-      13,    0,  171,    2, 0x08 /* Private */,
-      14,    0,  172,    2, 0x08 /* Private */,
-      15,    0,  173,    2, 0x08 /* Private */,
-      16,    0,  174,    2, 0x08 /* Private */,
-      17,    0,  175,    2, 0x08 /* Private */,
-      18,    0,  176,    2, 0x08 /* Private */,
-      19,    0,  177,    2, 0x08 /* Private */,
-      20,    0,  178,    2, 0x08 /* Private */,
-      21,    1,  179,    2, 0x08 /* Private */,
-      22,    0,  182,    2, 0x08 /* Private */,
-      23,    0,  183,    2, 0x08 /* Private */,
-      24,    1,  184,    2, 0x08 /* Private */,
-      26,    0,  187,    2, 0x08 /* Private */,
-      27,    0,  188,    2, 0x08 /* Private */,
-      28,    0,  189,    2, 0x08 /* Private */,
-      29,    0,  190,    2, 0x08 /* Private */,
-      30,    0,  191,    2, 0x08 /* Private */,
-      31,    0,  192,    2, 0x08 /* Private */,
-      32,    0,  193,    2, 0x08 /* Private */,
+       1,    0,  169,    2, 0x08 /* Private */,
+       3,    0,  170,    2, 0x08 /* Private */,
+       4,    0,  171,    2, 0x08 /* Private */,
+       5,    0,  172,    2, 0x08 /* Private */,
+       6,    0,  173,    2, 0x08 /* Private */,
+       7,    0,  174,    2, 0x08 /* Private */,
+       8,    0,  175,    2, 0x08 /* Private */,
+       9,    0,  176,    2, 0x08 /* Private */,
+      10,    0,  177,    2, 0x08 /* Private */,
+      11,    1,  178,    2, 0x08 /* Private */,
+      13,    0,  181,    2, 0x08 /* Private */,
+      14,    0,  182,    2, 0x08 /* Private */,
+      15,    0,  183,    2, 0x08 /* Private */,
+      16,    0,  184,    2, 0x08 /* Private */,
+      17,    0,  185,    2, 0x08 /* Private */,
+      18,    0,  186,    2, 0x08 /* Private */,
+      19,    0,  187,    2, 0x08 /* Private */,
+      20,    0,  188,    2, 0x08 /* Private */,
+      21,    1,  189,    2, 0x08 /* Private */,
+      22,    0,  192,    2, 0x08 /* Private */,
+      23,    0,  193,    2, 0x08 /* Private */,
+      24,    1,  194,    2, 0x08 /* Private */,
+      26,    0,  197,    2, 0x08 /* Private */,
+      27,    0,  198,    2, 0x08 /* Private */,
+      28,    0,  199,    2, 0x08 /* Private */,
+      29,    0,  200,    2, 0x08 /* Private */,
+      30,    0,  201,    2, 0x08 /* Private */,
+      31,    0,  202,    2, 0x08 /* Private */,
+      32,    0,  203,    2, 0x08 /* Private */,
+      33,    0,  204,    2, 0x08 /* Private */,
+      34,    0,  205,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -151,6 +156,8 @@ static const uint qt_meta_data_UI_Test_Project[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   25,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -197,6 +204,8 @@ void UI_Test_Project::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 26: _t->setbackVolume(); break;
         case 27: _t->on_soundmute_stateChanged(); break;
         case 28: _t->on_backmute_stateChanged(); break;
+        case 29: _t->on_Swordsman_clicked(); break;
+        case 30: _t->on_Priest_clicked(); break;
         default: ;
         }
     }
@@ -231,13 +240,13 @@ int UI_Test_Project::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 29)
+        if (_id < 31)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 29;
+        _id -= 31;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 29)
+        if (_id < 31)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 29;
+        _id -= 31;
     }
     return _id;
 }

@@ -658,7 +658,6 @@ QPushButton:hover{
          <widget class="QLabel" name="item_info_panel">
           <property name="font">
            <font>
-            <family>Arial</family>
             <pointsize>16</pointsize>
            </font>
           </property>
@@ -832,7 +831,6 @@ border:solid black 3px;</string>
            <widget class="QLabel" name="shop_item_info">
             <property name="font">
              <font>
-              <family>Arial</family>
               <pointsize>16</pointsize>
              </font>
             </property>
@@ -1118,7 +1116,7 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>50</number>
+             <number>100</number>
             </property>
            </widget>
           </item>
@@ -1128,7 +1126,7 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>50</number>
+             <number>100</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -1168,7 +1166,7 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>30</number>
+             <number>100</number>
             </property>
            </widget>
           </item>
@@ -1178,10 +1176,10 @@ color:white;</string>
              <number>100</number>
             </property>
             <property name="value">
-             <number>30</number>
+             <number>100</number>
             </property>
             <property name="sliderPosition">
-             <number>30</number>
+             <number>100</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -1231,13 +1229,334 @@ QPushButton:hover{
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
       <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">
      <string>LV.0</string>
     </property>
+   </widget>
+   <widget class="QFrame" name="select_Professional">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>1000</y>
+      <width>810</width>
+      <height>498</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>810</width>
+      <height>498</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/assets/images/select_bg.png);
+background-repeat: no-repeat;
+background-attachment: local;
+background-position: center;
+  background-clip: border-box;  </string>
+    </property>
+    <layout class="QHBoxLayout" name="_9">
+     <item>
+      <widget class="QFrame" name="horizontalFrame_3">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>25</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_12"/>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="space1">
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>262</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>標楷體</family>
+           <pointsize>24</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:transparent;</string>
+         </property>
+         <property name="text">
+          <string>刺客</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Swordsman">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>214</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	background:transparent;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:6px;
+}
+QPushButton:hover{
+	background:transparent;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QFrame" name="horizontalFrame">
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>142</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background:transparent;</string>
+            </property>
+            <property name="text">
+             <string>請輸入玩家名稱</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="nameEdit">
+            <property name="maxLength">
+             <number>5</number>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>預設:小可愛</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background:transparent;</string>
+            </property>
+            <property name="text">
+             <string>(最多五個字)</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <family>標楷體</family>
+           <pointsize>24</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:transparent;</string>
+         </property>
+         <property name="text">
+          <string>牧師</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Priest">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>214</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	background:transparent;
+	border-radius:16px;
+	border:solid 3px black;
+	border-width:6px;
+}
+QPushButton:hover{
+	background:transparent;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="horizontalFrame_2">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>160</y>
+      <width>142</width>
+      <height>480</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>40</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>142</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_11"/>
    </widget>
    <zorder>level</zorder>
    <zorder>verticalLayoutWidget</zorder>
@@ -1251,6 +1570,8 @@ QPushButton:hover{
    <zorder>shop_gui</zorder>
    <zorder>setting_gui</zorder>
    <zorder>volume_gui</zorder>
+   <zorder>horizontalFrame_2</zorder>
+   <zorder>select_Professional</zorder>
   </widget>
  </widget>
  <resources>
@@ -1264,12 +1585,12 @@ QPushButton:hover{
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>387</x>
-     <y>1080</y>
+     <x>317</x>
+     <y>233</y>
     </hint>
     <hint type="destinationlabel">
-     <x>606</x>
-     <y>1083</y>
+     <x>367</x>
+     <y>233</y>
     </hint>
    </hints>
   </connection>
@@ -1280,12 +1601,12 @@ QPushButton:hover{
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>620</x>
-     <y>1083</y>
+     <x>381</x>
+     <y>231</y>
     </hint>
     <hint type="destinationlabel">
-     <x>387</x>
-     <y>1080</y>
+     <x>300</x>
+     <y>230</y>
     </hint>
    </hints>
   </connection>
@@ -1296,12 +1617,12 @@ QPushButton:hover{
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>387</x>
-     <y>1197</y>
+     <x>319</x>
+     <y>356</y>
     </hint>
     <hint type="destinationlabel">
-     <x>600</x>
-     <y>1200</y>
+     <x>361</x>
+     <y>358</y>
     </hint>
    </hints>
   </connection>
@@ -1312,12 +1633,12 @@ QPushButton:hover{
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>607</x>
-     <y>1200</y>
+     <x>368</x>
+     <y>348</y>
     </hint>
     <hint type="destinationlabel">
-     <x>387</x>
-     <y>1197</y>
+     <x>305</x>
+     <y>355</y>
     </hint>
    </hints>
   </connection>
