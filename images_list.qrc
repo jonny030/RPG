@@ -20,5 +20,7 @@
         <file>images/btnbg2.png</file>
         <file>images/select_bg.png</file>
         <file>images/play_icon2.png</file>
+        <file>images/belt.png</file>
+        <file>images/witcher_cloth.png</file>
     </qresource>
 </RCC>

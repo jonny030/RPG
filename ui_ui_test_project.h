@@ -46,8 +46,8 @@ public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLabel *username;
-    QLabel *status;
-    QProgressBar *progressBar;
+    QLabel *MpText;
+    QProgressBar *MpBar;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
     QProgressBar *playerHp;
@@ -57,8 +57,6 @@ public:
     QProgressBar *monsterHp;
     QLabel *monster;
     QProgressBar *exp_bar;
-    QPushButton *startButton;
-    QPushButton *stopButton;
     QFrame *backpack_gui;
     QHBoxLayout *_2;
     QFrame *equipment_layout;
@@ -136,9 +134,14 @@ public:
     QSpacerItem *verticalSpacer_2;
     QLabel *label_2;
     QPushButton *Priest;
-    QFrame *horizontalFrame_2;
-    QHBoxLayout *horizontalLayout_11;
     QLabel *money;
+    QLabel *skills;
+    QWidget *layoutWidget1;
+    QHBoxLayout *horizontalLayout_8;
+    QPushButton *startButton;
+    QPushButton *skillsbtu;
+    QPushButton *stopButton;
+    QLabel *monster_Collision;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -165,7 +168,7 @@ public:
         centralwidget->setStyleSheet(QString::fromUtf8("background:transparent;"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, 0, 781, 106));
+        verticalLayoutWidget->setGeometry(QRect(0, 0, 781, 91));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -177,6 +180,8 @@ public:
         playerButton = new QPushButton(verticalLayoutWidget);
         playerButton->setObjectName(QString::fromUtf8("playerButton"));
         playerButton->setEnabled(true);
+        playerButton->setMinimumSize(QSize(200, 68));
+        playerButton->setMaximumSize(QSize(16777215, 88));
         playerButton->setStyleSheet(QString::fromUtf8("background-image: url(:/assets/images/profile.png);\n"
 "background-size:100% 100%;\n"
 "background-repeat: no-repeat;\n"
@@ -197,6 +202,8 @@ public:
 
         shopButton = new QPushButton(verticalLayoutWidget);
         shopButton->setObjectName(QString::fromUtf8("shopButton"));
+        shopButton->setMinimumSize(QSize(80, 21));
+        shopButton->setMaximumSize(QSize(16777215, 80));
         shopButton->setCursor(QCursor(Qt::ArrowCursor));
         shopButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-image: url(:/assets/images/btnbg.png);\n"
@@ -218,6 +225,8 @@ public:
 
         back = new QPushButton(verticalLayoutWidget);
         back->setObjectName(QString::fromUtf8("back"));
+        back->setMinimumSize(QSize(80, 20));
+        back->setMaximumSize(QSize(16777215, 80));
         back->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-image: url(:/assets/images/btnbg.png);\n"
 "background-repeat: no-repeat;\n"
@@ -238,6 +247,8 @@ public:
 
         settingButton = new QPushButton(verticalLayoutWidget);
         settingButton->setObjectName(QString::fromUtf8("settingButton"));
+        settingButton->setMinimumSize(QSize(80, 20));
+        settingButton->setMaximumSize(QSize(16777215, 80));
         settingButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-image: url(:/assets/images/btnbg.png);\n"
 "background-repeat: no-repeat;\n"
@@ -264,27 +275,35 @@ public:
 
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(7, 22, 161, 61));
+        layoutWidget->setGeometry(QRect(7, 14, 161, 61));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         username = new QLabel(layoutWidget);
         username->setObjectName(QString::fromUtf8("username"));
+        username->setMaximumSize(QSize(16777215, 28));
         QFont font;
-        font.setPointSize(12);
+        font.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
+        font.setPointSize(10);
         username->setFont(font);
         username->setTextFormat(Qt::AutoText);
 
         verticalLayout_2->addWidget(username);
 
-        status = new QLabel(layoutWidget);
-        status->setObjectName(QString::fromUtf8("status"));
+        MpText = new QLabel(layoutWidget);
+        MpText->setObjectName(QString::fromUtf8("MpText"));
+        MpText->setMaximumSize(QSize(16777215, 16));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
+        MpText->setFont(font1);
 
-        verticalLayout_2->addWidget(status);
+        verticalLayout_2->addWidget(MpText);
 
-        progressBar = new QProgressBar(layoutWidget);
-        progressBar->setObjectName(QString::fromUtf8("progressBar"));
-        progressBar->setStyleSheet(QString::fromUtf8("QProgressBar {\n"
+        MpBar = new QProgressBar(layoutWidget);
+        MpBar->setObjectName(QString::fromUtf8("MpBar"));
+        MpBar->setMaximumSize(QSize(16777215, 19));
+        MpBar->setFont(font1);
+        MpBar->setStyleSheet(QString::fromUtf8("QProgressBar {\n"
 "	text-align:center;\n"
 "	color:black;\n"
 "}\n"
@@ -292,9 +311,9 @@ public:
 "QProgressBar::chunk {\n"
 "    background-color: #00AEAE;\n"
 "}"));
-        progressBar->setValue(100);
+        MpBar->setValue(0);
 
-        verticalLayout_2->addWidget(progressBar);
+        verticalLayout_2->addWidget(MpBar);
 
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
@@ -365,22 +384,6 @@ public:
 "    margin: 0.5px;\n"
 "}"));
         exp_bar->setValue(0);
-        startButton = new QPushButton(centralwidget);
-        startButton->setObjectName(QString::fromUtf8("startButton"));
-        startButton->setGeometry(QRect(310, 420, 61, 31));
-        startButton->setAutoFillBackground(false);
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/assets/images/play-button2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        startButton->setIcon(icon3);
-        startButton->setIconSize(QSize(20, 20));
-        stopButton = new QPushButton(centralwidget);
-        stopButton->setObjectName(QString::fromUtf8("stopButton"));
-        stopButton->setEnabled(false);
-        stopButton->setGeometry(QRect(400, 420, 61, 31));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/assets/images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        stopButton->setIcon(icon4);
-        stopButton->setIconSize(QSize(25, 25));
         backpack_gui = new QFrame(centralwidget);
         backpack_gui->setObjectName(QString::fromUtf8("backpack_gui"));
         backpack_gui->setGeometry(QRect(30, 1000, 741, 381));
@@ -517,9 +520,9 @@ public:
 
         item_info_panel = new QLabel(item_info);
         item_info_panel->setObjectName(QString::fromUtf8("item_info_panel"));
-        QFont font1;
-        font1.setPointSize(16);
-        item_info_panel->setFont(font1);
+        QFont font2;
+        font2.setPointSize(16);
+        item_info_panel->setFont(font2);
         item_info_panel->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
@@ -638,7 +641,7 @@ public:
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         shop_item_info = new QLabel(shop_item_panel);
         shop_item_info->setObjectName(QString::fromUtf8("shop_item_info"));
-        shop_item_info->setFont(font1);
+        shop_item_info->setFont(font2);
         shop_item_info->setStyleSheet(QString::fromUtf8("border:3px solid black;\n"
 "border-radius:16px;\n"
 "border-width:8px;"));
@@ -904,7 +907,7 @@ public:
         level = new QLabel(centralwidget);
         level->setObjectName(QString::fromUtf8("level"));
         level->setGeometry(QRect(110, 130, 61, 21));
-        level->setFont(font1);
+        level->setFont(font2);
         select_Professional = new QFrame(centralwidget);
         select_Professional->setObjectName(QString::fromUtf8("select_Professional"));
         select_Professional->setEnabled(true);
@@ -939,12 +942,12 @@ public:
 
         label = new QLabel(select_Professional);
         label->setObjectName(QString::fromUtf8("label"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("\346\250\231\346\245\267\351\253\224"));
-        font2.setPointSize(24);
-        font2.setBold(false);
-        font2.setWeight(50);
-        label->setFont(font2);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("\346\250\231\346\245\267\351\253\224"));
+        font3.setPointSize(24);
+        font3.setBold(false);
+        font3.setWeight(50);
+        label->setFont(font3);
         label->setStyleSheet(QString::fromUtf8("background:transparent;"));
         label->setAlignment(Qt::AlignCenter);
 
@@ -984,11 +987,11 @@ public:
         label_3 = new QLabel(horizontalFrame);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setMaximumSize(QSize(16777215, 50));
-        QFont font3;
-        font3.setPointSize(11);
-        font3.setBold(true);
-        font3.setWeight(75);
-        label_3->setFont(font3);
+        QFont font4;
+        font4.setPointSize(11);
+        font4.setBold(true);
+        font4.setWeight(75);
+        label_3->setFont(font4);
         label_3->setStyleSheet(QString::fromUtf8("background:transparent;"));
         label_3->setAlignment(Qt::AlignCenter);
 
@@ -1027,7 +1030,7 @@ public:
 
         label_2 = new QLabel(select_Professional);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setFont(font2);
+        label_2->setFont(font3);
         label_2->setStyleSheet(QString::fromUtf8("background:transparent;"));
         label_2->setAlignment(Qt::AlignCenter);
 
@@ -1051,36 +1054,85 @@ public:
 
         _9->addLayout(verticalLayout_6);
 
-        horizontalFrame_2 = new QFrame(centralwidget);
-        horizontalFrame_2->setObjectName(QString::fromUtf8("horizontalFrame_2"));
-        horizontalFrame_2->setGeometry(QRect(510, 160, 142, 480));
-        horizontalFrame_2->setMinimumSize(QSize(40, 0));
-        horizontalFrame_2->setMaximumSize(QSize(142, 16777215));
-        horizontalLayout_11 = new QHBoxLayout(horizontalFrame_2);
-        horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
         money = new QLabel(centralwidget);
         money->setObjectName(QString::fromUtf8("money"));
-        money->setGeometry(QRect(50, 380, 701, 31));
-        QFont font4;
-        font4.setFamily(QString::fromUtf8("Arial"));
-        font4.setPointSize(14);
-        money->setFont(font4);
+        money->setGeometry(QRect(40, 380, 701, 31));
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("Arial"));
+        font5.setPointSize(14);
+        money->setFont(font5);
+        skills = new QLabel(centralwidget);
+        skills->setObjectName(QString::fromUtf8("skills"));
+        skills->setGeometry(QRect(230, 260, 71, 41));
+        QFont font6;
+        font6.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
+        font6.setPointSize(14);
+        skills->setFont(font6);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(270, 410, 231, 42));
+        horizontalLayout_8 = new QHBoxLayout(layoutWidget1);
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        horizontalLayout_8->setContentsMargins(0, 0, 0, 0);
+        startButton = new QPushButton(layoutWidget1);
+        startButton->setObjectName(QString::fromUtf8("startButton"));
+        startButton->setAutoFillBackground(false);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/assets/images/play-button2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        startButton->setIcon(icon3);
+        startButton->setIconSize(QSize(20, 20));
+
+        horizontalLayout_8->addWidget(startButton);
+
+        skillsbtu = new QPushButton(layoutWidget1);
+        skillsbtu->setObjectName(QString::fromUtf8("skillsbtu"));
+        skillsbtu->setEnabled(false);
+        skillsbtu->setAutoFillBackground(false);
+        skillsbtu->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"	min-width:24px;\n"
+"	min-height:24px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        horizontalLayout_8->addWidget(skillsbtu);
+
+        stopButton = new QPushButton(layoutWidget1);
+        stopButton->setObjectName(QString::fromUtf8("stopButton"));
+        stopButton->setEnabled(false);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/assets/images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        stopButton->setIcon(icon4);
+        stopButton->setIconSize(QSize(25, 25));
+
+        horizontalLayout_8->addWidget(stopButton);
+
+        monster_Collision = new QLabel(centralwidget);
+        monster_Collision->setObjectName(QString::fromUtf8("monster_Collision"));
+        monster_Collision->setGeometry(QRect(580, 150, 181, 251));
         UI_Test_Project->setCentralWidget(centralwidget);
+        layoutWidget->raise();
         money->raise();
+        skills->raise();
         level->raise();
         verticalLayoutWidget->raise();
         layoutWidget->raise();
         gridLayoutWidget->raise();
         gridLayoutWidget_2->raise();
         exp_bar->raise();
-        startButton->raise();
-        stopButton->raise();
         setting_gui->raise();
         volume_gui->raise();
-        horizontalFrame_2->raise();
         select_Professional->raise();
         shop_gui->raise();
         backpack_gui->raise();
+        monster_Collision->raise();
 
         retranslateUi(UI_Test_Project);
         QObject::connect(volume_sounds_spinBox, SIGNAL(valueChanged(int)), volume_sounds_silderbar, SLOT(setValue(int)));
@@ -1102,11 +1154,9 @@ public:
         back->setText(QString());
         settingButton->setText(QString());
         username->setText(QApplication::translate("UI_Test_Project", "\347\216\251\345\256\266\357\274\232Test", nullptr));
-        status->setText(QApplication::translate("UI_Test_Project", "MP:100/100", nullptr));
+        MpText->setText(QApplication::translate("UI_Test_Project", "MP:100/100", nullptr));
         player->setText(QApplication::translate("UI_Test_Project", "\347\216\251\345\256\266", nullptr));
         monster->setText(QApplication::translate("UI_Test_Project", "\346\200\252\347\211\251", nullptr));
-        startButton->setText(QString());
-        stopButton->setText(QString());
         armor->setText(QApplication::translate("UI_Test_Project", "\350\255\267\347\224\262\345\215\200\345\241\212", nullptr));
         leg->setText(QApplication::translate("UI_Test_Project", "\350\255\267\350\205\277\345\215\200\345\241\212", nullptr));
         weapons_1->setText(QApplication::translate("UI_Test_Project", "\344\270\273\346\211\213\346\255\246\345\231\250", nullptr));
@@ -1136,6 +1186,11 @@ public:
         label_2->setText(QApplication::translate("UI_Test_Project", "\347\211\247\345\270\253", nullptr));
         Priest->setText(QString());
         money->setText(QApplication::translate("UI_Test_Project", "$0", nullptr));
+        skills->setText(QApplication::translate("UI_Test_Project", "\347\201\253\347\220\203", nullptr));
+        startButton->setText(QString());
+        skillsbtu->setText(QApplication::translate("UI_Test_Project", "\346\212\200\350\203\275", nullptr));
+        stopButton->setText(QString());
+        monster_Collision->setText(QString());
     } // retranslateUi
 
 };

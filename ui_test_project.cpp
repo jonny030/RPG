@@ -13,6 +13,9 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->setupUi(this);
     connect(sleepTimer, SIGNAL(timeout()), this, SLOT(sleep()));
     connect(myTimer, SIGNAL(timeout()), this, SLOT(timerstart()));
+    connect(skills, SIGNAL(timeout()),this,SLOT(skillsgo()));
+    ui->skills->setVisible(false);
+    ui->skills->setGeometry(230,260,71,41);
     connect(backmusic,SIGNAL(durationChanged(qint64)),this,SLOT(getduration()));
     ui->select_Professional->setGeometry(0,0,810,498);
     connect(ui->volume_sounds_silderbar, SIGNAL(valueChanged(int)),this, SLOT(setsoundVolume()));
@@ -42,6 +45,45 @@ UI_Test_Project::~UI_Test_Project()
 {
     delete ui;
 }
+
+void UI_Test_Project::skillsgo(){
+    QPoint point=ui->skills->pos();
+    ui->skills->setVisible(true);
+    if(!Intersection()){
+        ui->skills->setGeometry(point.x()+5,point.y(),ui->skills->width(),ui->skills->height());
+    }else{
+        ui->skillsbtu->setEnabled(false);
+        ui->skills->setVisible(false);
+        ui->skills->setGeometry(230,260,71,41);
+        skills->stop();
+        int player_atk=monster_note->default_hp*0.2;
+        player_note->money += 20*player_note->level;
+        ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
+        if(ui->monsterHp->value()<player_atk){
+            playSound("bonk");
+            monster_note->hp=0;
+            ui->monsterHp->setValue(0);
+        }else{
+            playSound("monsterdie");
+            monster_note->hp-=player_atk;
+            ui->monsterHp->setValue(monster_note->gethp());
+            initHp();
+        }
+    }
+}
+
+bool UI_Test_Project::Intersection(){
+    QPoint a0=ui->skills->pos();
+    QPoint *a1=new QPoint(a0.x()+ui->skills->width(),a0.y()+ui->skills->height());
+    QPoint b0=ui->monster_Collision->pos();
+    QPoint *b1=new QPoint(b0.x()+ui->monster_Collision->width(),b0.y()+ui->monster_Collision->height());
+    if(a1->x() > b0.x() && b1->x() > a0.x() && a1->y() > b0.y() && b1->y() > a0.y()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 void UI_Test_Project::timerstart(){
     //exp
     if(ui->monsterHp->value()<=0){
@@ -62,6 +104,10 @@ void UI_Test_Project::timerstart(){
         int monster_atk=monster_note->atk+rand()%(int)(player_note->killcount/10+1)+1;
         int player_atk=player_note->getatk();
         int player_def=player_note->getdef();
+        ui->MpBar->setValue(ui->MpBar->value()+rand()%5);
+        if(ui->MpBar->value() == 100){
+            ui->skillsbtu->setEnabled(true);
+        }
         if(who == 1){
             if(player_note->hp<monster_atk){
                 playSound("playerdie");
@@ -554,5 +600,19 @@ void UI_Test_Project::on_Priest_clicked()
     }else{
         ui->username->setText(QStringLiteral("玩家：")+ui->nameEdit->text());
     }
+}
+
+
+void UI_Test_Project::on_skillsbtu_clicked()
+{
+    clickedButton();
+    ui->MpBar->setValue(0);
+    skills->start(10);
+}
+
+
+void UI_Test_Project::on_MpBar_valueChanged(int value)
+{
+    ui->MpText->setText("Mp:"+QString::number(ui->MpBar->value())+"/100");
 }
 

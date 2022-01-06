@@ -23,8 +23,9 @@ public:
     UI_Test_Project(QWidget *parent = nullptr);
     ~UI_Test_Project();
     QTimer *sleepTimer = new QTimer();
-    bool sleep_bool=true;
     QTimer *myTimer = new QTimer();
+    QTimer *skills = new QTimer();
+    bool sleep_bool=true;
     Equilist itemlist;
     player *player_note=new player(100,1);
     player *monster_note=new player(100);
@@ -58,6 +59,8 @@ private slots:
     void timerstart();
 
     void sleep();
+
+    void skillsgo();
 
     void on_weapons_1_clicked();
 
@@ -98,6 +101,12 @@ private slots:
     void on_select_item_currentTextChanged(const QString &arg1);
 
     void getitem(QString);
+
+    void on_skillsbtu_clicked();
+
+    bool Intersection();
+
+    void on_MpBar_valueChanged(int value);
 
 private:
     Ui::UI_Test_Project *ui;

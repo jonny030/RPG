@@ -1,0 +1,5 @@
+witcher_cloth
+0
+2
+armor
+10
