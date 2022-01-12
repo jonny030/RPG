@@ -1,0 +1,5 @@
+staff
+5
+0
+weapons
+5

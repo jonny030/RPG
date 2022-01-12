@@ -154,21 +154,29 @@ debug\qrc_images_list.cpp: images_list.qrc \
 		images\armor.png \
 		images\monster1.gif \
 		images\btnbg.png \
+		images\staff.png \
 		images\backpack_black_24dp.png \
 		images\stop2.png \
+		images\Priest_icon.png \
 		images\play-button.png \
+		images\witcher_cloth.png \
 		images\cog-solid.png \
 		images\play-button2.png \
-		images\play_icon.png \
 		images\meme.png \
 		images\NormalSword.png \
 		images\select_bg.png \
+		images\belt.png \
 		images\tumblr_p7k8f3fMWS1wvbydeo1_1280.png \
 		images\store-solid.png \
-		images\leg.png \
+		images\Priest_skills.png \
 		images\btnbg2.png \
+		images\leg.png \
+		images\Swordsman_icon.png \
+		images\Godbelt.png \
 		images\profile.png \
-		images\stop.png
+		images\Godstaff.png \
+		images\stop.png \
+		images\Swordsman_skills.png
 	C:\Qt\5.12.11\msvc2017_64\bin\rcc.exe -name images_list images_list.qrc -o debug\qrc_images_list.cpp
 
 compiler_moc_predefs_make_all: debug\moc_predefs.h
@@ -720,7 +728,11 @@ debug\ui_test_project.obj: ui_test_project.cpp ui_test_project.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\qmessagebox.h \
 		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\qdialog.h \
-		C:\Qt\5.12.11\msvc2017_64\include\QtGui\QPixmap
+		C:\Qt\5.12.11\msvc2017_64\include\QtGui\QPixmap \
+		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\QFileDialog \
+		C:\Qt\5.12.11\msvc2017_64\include\QtWidgets\qfiledialog.h \
+		C:\Qt\5.12.11\msvc2017_64\include\QtCore\QTime \
+		C:\Qt\5.12.11\msvc2017_64\include\QtCore\qdatetime.h
 
 debug\qrc_images_list.obj: debug\qrc_images_list.cpp 
 

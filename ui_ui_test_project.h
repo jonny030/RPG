@@ -34,15 +34,6 @@ class Ui_UI_Test_Project
 {
 public:
     QWidget *centralwidget;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout;
-    QHBoxLayout *horizontalLayout_4;
-    QPushButton *playerButton;
-    QSpacerItem *horizontalSpacer;
-    QPushButton *shopButton;
-    QPushButton *back;
-    QPushButton *settingButton;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLabel *username;
@@ -142,6 +133,19 @@ public:
     QPushButton *skillsbtu;
     QPushButton *stopButton;
     QLabel *monster_Collision;
+    QPushButton *pushButton;
+    QWidget *layoutWidget2;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *shopButton;
+    QPushButton *back;
+    QPushButton *settingButton;
+    QFrame *setting_save;
+    QHBoxLayout *horizontalLayout_4;
+    QFrame *verticalFrame;
+    QVBoxLayout *verticalLayout;
+    QPushButton *savegame;
+    QPushButton *inputgame;
+    QPushButton *clos;
 
     void setupUi(QMainWindow *UI_Test_Project)
     {
@@ -166,116 +170,9 @@ public:
         sizePolicy.setHeightForWidth(centralwidget->sizePolicy().hasHeightForWidth());
         centralwidget->setSizePolicy(sizePolicy);
         centralwidget->setStyleSheet(QString::fromUtf8("background:transparent;"));
-        verticalLayoutWidget = new QWidget(centralwidget);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, 0, 781, 91));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(0);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        playerButton = new QPushButton(verticalLayoutWidget);
-        playerButton->setObjectName(QString::fromUtf8("playerButton"));
-        playerButton->setEnabled(true);
-        playerButton->setMinimumSize(QSize(200, 68));
-        playerButton->setMaximumSize(QSize(16777215, 88));
-        playerButton->setStyleSheet(QString::fromUtf8("background-image: url(:/assets/images/profile.png);\n"
-"background-size:100% 100%;\n"
-"background-repeat: no-repeat;\n"
-"background-attachment: fixed;\n"
-"background-position: center;\n"
-"border:unset;\n"
-"min-width:200px;\n"
-"min-height:90px;\n"
-"position: relative;"));
-        playerButton->setCheckable(false);
-        playerButton->setFlat(false);
-
-        horizontalLayout_4->addWidget(playerButton);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_4->addItem(horizontalSpacer);
-
-        shopButton = new QPushButton(verticalLayoutWidget);
-        shopButton->setObjectName(QString::fromUtf8("shopButton"));
-        shopButton->setMinimumSize(QSize(80, 21));
-        shopButton->setMaximumSize(QSize(16777215, 80));
-        shopButton->setCursor(QCursor(Qt::ArrowCursor));
-        shopButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"background-image: url(:/assets/images/btnbg.png);\n"
-"background-repeat: no-repeat;\n"
-"background-attachment: fixed;\n"
-"background-position: center;\n"
-"border:unset;\n"
-"min-width:80px;\n"
-"min-height:100px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"background-image: url(:/assets/images/btnbg2.png);\n"
-"}"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/assets/images/store-solid.png"), QSize(), QIcon::Normal, QIcon::Off);
-        shopButton->setIcon(icon);
-
-        horizontalLayout_4->addWidget(shopButton);
-
-        back = new QPushButton(verticalLayoutWidget);
-        back->setObjectName(QString::fromUtf8("back"));
-        back->setMinimumSize(QSize(80, 20));
-        back->setMaximumSize(QSize(16777215, 80));
-        back->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"background-image: url(:/assets/images/btnbg.png);\n"
-"background-repeat: no-repeat;\n"
-"background-attachment: fixed;\n"
-"background-position: center;\n"
-"border:unset;\n"
-"min-width:80px;\n"
-"min-height:100px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"background-image: url(:/assets/images/btnbg2.png);\n"
-"}"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/assets/images/backpack_black_24dp.png"), QSize(), QIcon::Normal, QIcon::Off);
-        back->setIcon(icon1);
-
-        horizontalLayout_4->addWidget(back);
-
-        settingButton = new QPushButton(verticalLayoutWidget);
-        settingButton->setObjectName(QString::fromUtf8("settingButton"));
-        settingButton->setMinimumSize(QSize(80, 20));
-        settingButton->setMaximumSize(QSize(16777215, 80));
-        settingButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"background-image: url(:/assets/images/btnbg.png);\n"
-"background-repeat: no-repeat;\n"
-"background-attachment: fixed;\n"
-"background-position: center;\n"
-"border:unset;\n"
-"min-width:80px;\n"
-"min-height:100px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"background-image: url(:/assets/images/btnbg2.png);\n"
-"}"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/assets/images/cog-solid.png"), QSize(), QIcon::Normal, QIcon::Off);
-        settingButton->setIcon(icon2);
-
-        horizontalLayout_4->addWidget(settingButton);
-
-
-        horizontalLayout->addLayout(horizontalLayout_4);
-
-
-        verticalLayout->addLayout(horizontalLayout);
-
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(7, 14, 161, 61));
+        layoutWidget->setGeometry(QRect(10, 10, 161, 71));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -284,7 +181,7 @@ public:
         username->setMaximumSize(QSize(16777215, 28));
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
-        font.setPointSize(10);
+        font.setPointSize(12);
         username->setFont(font);
         username->setTextFormat(Qt::AutoText);
 
@@ -342,6 +239,8 @@ public:
 
         gridLayout->addWidget(player, 1, 1, 1, 1);
 
+        player->raise();
+        playerHp->raise();
         gridLayoutWidget_2 = new QWidget(centralwidget);
         gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
         gridLayoutWidget_2->setGeometry(QRect(590, 160, 163, 231));
@@ -1063,7 +962,7 @@ public:
         money->setFont(font5);
         skills = new QLabel(centralwidget);
         skills->setObjectName(QString::fromUtf8("skills"));
-        skills->setGeometry(QRect(230, 260, 71, 41));
+        skills->setGeometry(QRect(230, 230, 121, 91));
         QFont font6;
         font6.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
         font6.setPointSize(14);
@@ -1077,9 +976,9 @@ public:
         startButton = new QPushButton(layoutWidget1);
         startButton->setObjectName(QString::fromUtf8("startButton"));
         startButton->setAutoFillBackground(false);
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/assets/images/play-button2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        startButton->setIcon(icon3);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/assets/images/play-button2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        startButton->setIcon(icon);
         startButton->setIconSize(QSize(20, 20));
 
         horizontalLayout_8->addWidget(startButton);
@@ -1107,9 +1006,9 @@ public:
         stopButton = new QPushButton(layoutWidget1);
         stopButton->setObjectName(QString::fromUtf8("stopButton"));
         stopButton->setEnabled(false);
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/assets/images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        stopButton->setIcon(icon4);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/assets/images/stop2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        stopButton->setIcon(icon1);
         stopButton->setIconSize(QSize(25, 25));
 
         horizontalLayout_8->addWidget(stopButton);
@@ -1117,22 +1016,184 @@ public:
         monster_Collision = new QLabel(centralwidget);
         monster_Collision->setObjectName(QString::fromUtf8("monster_Collision"));
         monster_Collision->setGeometry(QRect(580, 150, 181, 251));
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(5, 3, 200, 91));
+        pushButton->setStyleSheet(QString::fromUtf8("background-image: url(:/assets/images/profile.png);\n"
+"background-size:100% 100%;\n"
+"background-repeat: no-repeat;\n"
+"background-attachment: fixed;\n"
+"background-position: center;\n"
+"border:unset;\n"
+"min-width:200px;\n"
+"min-height:90px;\n"
+"position: relative;"));
+        layoutWidget2 = new QWidget(centralwidget);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(550, 0, 254, 102));
+        horizontalLayout = new QHBoxLayout(layoutWidget2);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        shopButton = new QPushButton(layoutWidget2);
+        shopButton->setObjectName(QString::fromUtf8("shopButton"));
+        shopButton->setMinimumSize(QSize(80, 100));
+        shopButton->setMaximumSize(QSize(16777215, 80));
+        shopButton->setCursor(QCursor(Qt::ArrowCursor));
+        shopButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/assets/images/btnbg.png);\n"
+"background-repeat: no-repeat;\n"
+"background-attachment: fixed;\n"
+"background-position: center;\n"
+"border:unset;\n"
+"min-width:80px;\n"
+"min-height:100px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-image: url(:/assets/images/btnbg2.png);\n"
+"}"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/assets/images/store-solid.png"), QSize(), QIcon::Normal, QIcon::Off);
+        shopButton->setIcon(icon2);
+
+        horizontalLayout->addWidget(shopButton);
+
+        back = new QPushButton(layoutWidget2);
+        back->setObjectName(QString::fromUtf8("back"));
+        back->setMinimumSize(QSize(80, 100));
+        back->setMaximumSize(QSize(16777215, 80));
+        back->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/assets/images/btnbg.png);\n"
+"background-repeat: no-repeat;\n"
+"background-attachment: fixed;\n"
+"background-position: center;\n"
+"border:unset;\n"
+"min-width:80px;\n"
+"min-height:100px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-image: url(:/assets/images/btnbg2.png);\n"
+"}"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/assets/images/backpack_black_24dp.png"), QSize(), QIcon::Normal, QIcon::Off);
+        back->setIcon(icon3);
+
+        horizontalLayout->addWidget(back);
+
+        settingButton = new QPushButton(layoutWidget2);
+        settingButton->setObjectName(QString::fromUtf8("settingButton"));
+        settingButton->setMinimumSize(QSize(80, 100));
+        settingButton->setMaximumSize(QSize(16777215, 80));
+        settingButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/assets/images/btnbg.png);\n"
+"background-repeat: no-repeat;\n"
+"background-attachment: fixed;\n"
+"background-position: center;\n"
+"border:unset;\n"
+"min-width:80px;\n"
+"min-height:100px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-image: url(:/assets/images/btnbg2.png);\n"
+"}"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/assets/images/cog-solid.png"), QSize(), QIcon::Normal, QIcon::Off);
+        settingButton->setIcon(icon4);
+
+        horizontalLayout->addWidget(settingButton);
+
+        setting_save = new QFrame(centralwidget);
+        setting_save->setObjectName(QString::fromUtf8("setting_save"));
+        setting_save->setGeometry(QRect(280, 160, 250, 150));
+        setting_save->setMinimumSize(QSize(250, 150));
+        setting_save->setMaximumSize(QSize(0, 0));
+        setting_save->setStyleSheet(QString::fromUtf8("background-color: rgb(255,255,255);\n"
+"border-radius:16px;\n"
+"border:solid black 3px;"));
+        horizontalLayout_4 = new QHBoxLayout(setting_save);
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        horizontalLayout_4->setContentsMargins(9, 9, 9, 9);
+        verticalFrame = new QFrame(setting_save);
+        verticalFrame->setObjectName(QString::fromUtf8("verticalFrame"));
+        verticalFrame->setStyleSheet(QString::fromUtf8("background:gray;\n"
+""));
+        verticalLayout = new QVBoxLayout(verticalFrame);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(9, 9, 9, 9);
+        savegame = new QPushButton(verticalFrame);
+        savegame->setObjectName(QString::fromUtf8("savegame"));
+        savegame->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"	min-width:20px;\n"
+"	min-height:20px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        verticalLayout->addWidget(savegame);
+
+        inputgame = new QPushButton(verticalFrame);
+        inputgame->setObjectName(QString::fromUtf8("inputgame"));
+        inputgame->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"	min-width:20px;\n"
+"	min-height:20px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        verticalLayout->addWidget(inputgame);
+
+        clos = new QPushButton(verticalFrame);
+        clos->setObjectName(QString::fromUtf8("clos"));
+        clos->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	padding:4px 16px;\n"
+"	margin:0px 16px;\n"
+"	border-radius:16px;\n"
+"	border:solid 3px black;\n"
+"	border-width:4px;\n"
+"	min-width:20px;\n"
+"	min-height:20px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background:rgb(222, 222, 222);\n"
+"}"));
+
+        verticalLayout->addWidget(clos);
+
+
+        horizontalLayout_4->addWidget(verticalFrame);
+
         UI_Test_Project->setCentralWidget(centralwidget);
+        setting_gui->raise();
+        pushButton->raise();
+        layoutWidget->raise();
+        monster_Collision->raise();
         layoutWidget->raise();
         money->raise();
         skills->raise();
         level->raise();
-        verticalLayoutWidget->raise();
         layoutWidget->raise();
         gridLayoutWidget->raise();
         gridLayoutWidget_2->raise();
         exp_bar->raise();
-        setting_gui->raise();
-        volume_gui->raise();
-        select_Professional->raise();
         shop_gui->raise();
         backpack_gui->raise();
-        monster_Collision->raise();
+        select_Professional->raise();
+        volume_gui->raise();
+        setting_save->raise();
 
         retranslateUi(UI_Test_Project);
         QObject::connect(volume_sounds_spinBox, SIGNAL(valueChanged(int)), volume_sounds_silderbar, SLOT(setValue(int)));
@@ -1140,21 +1201,14 @@ public:
         QObject::connect(volume_body_spinBox, SIGNAL(valueChanged(int)), volume_body_silderbar, SLOT(setValue(int)));
         QObject::connect(volume_body_silderbar, SIGNAL(valueChanged(int)), volume_body_spinBox, SLOT(setValue(int)));
 
-        playerButton->setDefault(false);
-
-
         QMetaObject::connectSlotsByName(UI_Test_Project);
     } // setupUi
 
     void retranslateUi(QMainWindow *UI_Test_Project)
     {
         UI_Test_Project->setWindowTitle(QApplication::translate("UI_Test_Project", "UI_Test_Project", nullptr));
-        playerButton->setText(QString());
-        shopButton->setText(QString());
-        back->setText(QString());
-        settingButton->setText(QString());
         username->setText(QApplication::translate("UI_Test_Project", "\347\216\251\345\256\266\357\274\232Test", nullptr));
-        MpText->setText(QApplication::translate("UI_Test_Project", "MP:100/100", nullptr));
+        MpText->setText(QApplication::translate("UI_Test_Project", "MP:0/100", nullptr));
         player->setText(QApplication::translate("UI_Test_Project", "\347\216\251\345\256\266", nullptr));
         monster->setText(QApplication::translate("UI_Test_Project", "\346\200\252\347\211\251", nullptr));
         armor->setText(QApplication::translate("UI_Test_Project", "\350\255\267\347\224\262\345\215\200\345\241\212", nullptr));
@@ -1186,11 +1240,18 @@ public:
         label_2->setText(QApplication::translate("UI_Test_Project", "\347\211\247\345\270\253", nullptr));
         Priest->setText(QString());
         money->setText(QApplication::translate("UI_Test_Project", "$0", nullptr));
-        skills->setText(QApplication::translate("UI_Test_Project", "\347\201\253\347\220\203", nullptr));
+        skills->setText(QApplication::translate("UI_Test_Project", "\346\212\200\350\203\275", nullptr));
         startButton->setText(QString());
         skillsbtu->setText(QApplication::translate("UI_Test_Project", "\346\212\200\350\203\275", nullptr));
         stopButton->setText(QString());
         monster_Collision->setText(QString());
+        pushButton->setText(QString());
+        shopButton->setText(QString());
+        back->setText(QString());
+        settingButton->setText(QString());
+        savegame->setText(QApplication::translate("UI_Test_Project", "\345\255\230\346\252\224", nullptr));
+        inputgame->setText(QApplication::translate("UI_Test_Project", "\350\256\200\346\252\224", nullptr));
+        clos->setText(QApplication::translate("UI_Test_Project", "\350\277\224\345\233\236", nullptr));
     } // retranslateUi
 
 };

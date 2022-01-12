@@ -11,7 +11,6 @@
         <file>images/play-button2.png</file>
         <file>images/stop.png</file>
         <file>images/stop2.png</file>
-        <file>images/play_icon.png</file>
         <file>images/GodSword.png</file>
         <file>images/NormalSword.png</file>
         <file>images/armor.png</file>
@@ -19,8 +18,14 @@
         <file>images/meme.png</file>
         <file>images/btnbg2.png</file>
         <file>images/select_bg.png</file>
-        <file>images/play_icon2.png</file>
+        <file>images/Swordsman_icon.png</file>
+        <file>images/Priest_icon.png</file>
         <file>images/belt.png</file>
+	<file>images/Godbelt.png</file>
         <file>images/witcher_cloth.png</file>
+	<file>images/staff.png</file>
+	<file>images/Godstaff.png</file>
+	<file>images/Swordsman_skills.png</file>
+	<file>images/Priest_skills.png</file>
     </qresource>
 </RCC>

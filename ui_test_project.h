@@ -108,6 +108,18 @@ private slots:
 
     void on_MpBar_valueChanged(int value);
 
+    void on_savegame_clicked();
+
+    void on_shop_select_item_activated();
+
+    void on_select_item_activated();
+
+    void on_gamesaves_clicked();
+
+    void on_clos_clicked();
+
+    void on_inputgame_clicked();
+
 private:
     Ui::UI_Test_Project *ui;
 };

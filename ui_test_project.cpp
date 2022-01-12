@@ -2,7 +2,8 @@
 #include "ui_ui_test_project.h"
 #include <QMessageBox>
 #include <QPixmap>
-QIcon icon;
+#include <QFileDialog>
+#include <QTime>
 Equi setIcon;
 int bigegg_count=0;
 bool setIcon_weapons=false,setIcon_armors=false,setIcon_leg=false,bigegg=false,end=false;
@@ -11,15 +12,19 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     , ui(new Ui::UI_Test_Project)
 {
     ui->setupUi(this);
+    setWindowTitle(QStringLiteral("掛機RPG小遊戲"));
     connect(sleepTimer, SIGNAL(timeout()), this, SLOT(sleep()));
     connect(myTimer, SIGNAL(timeout()), this, SLOT(timerstart()));
     connect(skills, SIGNAL(timeout()),this,SLOT(skillsgo()));
+    ui->skills->setScaledContents(true);
+    ui->player->setScaledContents(true);
     ui->skills->setVisible(false);
-    ui->skills->setGeometry(230,260,71,41);
     connect(backmusic,SIGNAL(durationChanged(qint64)),this,SLOT(getduration()));
     ui->select_Professional->setGeometry(0,0,810,498);
+
     connect(ui->volume_sounds_silderbar, SIGNAL(valueChanged(int)),this, SLOT(setsoundVolume()));
     connect(ui->volume_body_silderbar, SIGNAL(valueChanged(int)),this, SLOT(setbackVolume()));
+
     soundVolume=ui->volume_sounds_silderbar->value();
     srand( time(NULL) );
     QMovie *movie = new QMovie(":/assets/images/monster1.gif");
@@ -40,6 +45,7 @@ UI_Test_Project::UI_Test_Project(QWidget *parent)
     ui->shop_gui->setVisible(false);
     ui->setting_gui->setVisible(false);
     ui->volume_gui->setVisible(false);
+    ui->setting_save->setVisible(false);
 }
 UI_Test_Project::~UI_Test_Project()
 {
@@ -52,23 +58,29 @@ void UI_Test_Project::skillsgo(){
     if(!Intersection()){
         ui->skills->setGeometry(point.x()+5,point.y(),ui->skills->width(),ui->skills->height());
     }else{
-        ui->skillsbtu->setEnabled(false);
         ui->skills->setVisible(false);
-        ui->skills->setGeometry(230,260,71,41);
+        if(player_note->kind=="Swordsman")
+            ui->skills->setGeometry(230,160,81,221);
+        else if(player_note->kind=="Priest")
+            ui->skills->setGeometry(230,230,121,91);
         skills->stop();
         int player_atk=monster_note->default_hp*0.2;
         player_note->money += 20*player_note->level;
         ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
-        if(ui->monsterHp->value()<player_atk){
+        if(ui->monsterHp->value()<=player_atk){
             playSound("bonk");
             monster_note->hp=0;
             ui->monsterHp->setValue(0);
+            initHp();
         }else{
             playSound("monsterdie");
             monster_note->hp-=player_atk;
             ui->monsterHp->setValue(monster_note->gethp());
-            initHp();
         }
+        if(bigegg){
+            ui->skillsbtu->setEnabled(true);
+        }
+        sleep_bool=false;
     }
 }
 
@@ -104,12 +116,14 @@ void UI_Test_Project::timerstart(){
         int monster_atk=monster_note->atk+rand()%(int)(player_note->killcount/10+1)+1;
         int player_atk=player_note->getatk();
         int player_def=player_note->getdef();
-        ui->MpBar->setValue(ui->MpBar->value()+rand()%5);
-        if(ui->MpBar->value() == 100){
-            ui->skillsbtu->setEnabled(true);
+        if(who !=2){
+            if(ui->MpBar->value() >= 100){
+                ui->MpBar->setValue(100);
+                ui->skillsbtu->setEnabled(true);
+            }
         }
         if(who == 1){
-            if(player_note->hp<monster_atk){
+            if(player_note->hp<=monster_atk){
                 playSound("playerdie");
                 player_note->hp=0;
                 ui->playerHp->setValue(0);
@@ -118,10 +132,11 @@ void UI_Test_Project::timerstart(){
                 player_note->hp-=monster_atk+player_def;
                 ui->playerHp->setValue(player_note->gethp());
             }
-        }else if(who > 3){
+        }else if(who > 2){
+            ui->MpBar->setValue(ui->MpBar->value()+rand()%5+1);
             player_note->money += 1*player_note->level;
             ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
-            if(ui->monsterHp->value()<player_atk){
+            if(ui->monsterHp->value()<=player_atk){
                 playSound("bonk");
                 monster_note->hp=0;
                 ui->monsterHp->setValue(0);
@@ -245,11 +260,14 @@ void UI_Test_Project::on_backtogame_clicked()
 {
     clickedButton();
     ui->setting_gui->setVisible(false);
+    ui->setting_save->setVisible(false);
     bigegg_count+=1;
     if(bigegg_count>=5){
         bigegg = true;
         player_note->money=999999;
         ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
+        ui->MpBar->setValue(100);
+        ui->skillsbtu->setEnabled(true);
     }
 }
 
@@ -267,7 +285,6 @@ void UI_Test_Project::on_endgame_clicked()
 
 void UI_Test_Project::on_select_item_currentTextChanged(const QString &arg1)
 {
-    clickedButton();
     if(arg1 == ""){
         ui->item_info_panel->setText("");
     }else{
@@ -284,7 +301,7 @@ void UI_Test_Project::on_equi_clicked()
     if(arg1 == ""){
         ui->item_info_panel->setText("");
     }else{
-        Equi find = itemlist.find(arg1);
+        Equi find = player_note->back.find(arg1);
         if(find.kind == "weapons" && (player_note->weapons_1->name == "" || player_note->weapons_2->name == "")){
             setIcon = find;
             if(player_note->weapons_1->name == ""){
@@ -315,11 +332,10 @@ void UI_Test_Project::on_weapons_1_clicked()
     if(setIcon_weapons){
         setIcon_weapons = false;
         player_note->set_weapons_1(&setIcon);
-        icon = player_note->weapons_1->icon;
         ui->weapons_1->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->weapons_2->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->weapons_1->setText("");
-        ui->weapons_1->setIcon(icon);
+        ui->weapons_1->setIcon(player_note->weapons_1->icon);
         ui->select_item->removeItem(ui->select_item->currentIndex());
     }else{
         QMessageBox *msgBox = new QMessageBox();
@@ -346,11 +362,10 @@ void UI_Test_Project::on_weapons_2_clicked()
     if(setIcon_weapons){
         setIcon_weapons = false;
         player_note->set_weapons_2(&setIcon);
-        icon = player_note->weapons_2->icon;
         ui->weapons_1->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->weapons_2->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->weapons_2->setText("");
-        ui->weapons_2->setIcon(icon);
+        ui->weapons_2->setIcon(player_note->weapons_2->icon);
         ui->select_item->removeItem(ui->select_item->currentIndex());
     }else{
        QMessageBox *msgBox = new QMessageBox();
@@ -377,11 +392,10 @@ void UI_Test_Project::on_armor_clicked()
     if(setIcon_armors){
         setIcon_armors = false;
         player_note->set_armor(&setIcon);
-        icon = player_note->armor->icon;
         ui->armor->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->leg->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->armor->setText("");
-        ui->armor->setIcon(icon);
+        ui->armor->setIcon( player_note->armor->icon);
         ui->select_item->removeItem(ui->select_item->currentIndex());
     }else{
         QMessageBox *msgBox = new QMessageBox();
@@ -408,11 +422,10 @@ void UI_Test_Project::on_leg_clicked()
     if(setIcon_leg){
         setIcon_leg = false;
         player_note->set_leg(&setIcon);
-        icon = player_note->leg->icon;
         ui->armor->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->leg->setStyleSheet("border:3px solid black;\nborder-radius:16px;\nborder-width:8px;");
         ui->leg->setText("");
-        ui->leg->setIcon(icon);
+        ui->leg->setIcon(player_note->leg->icon);
         ui->select_item->removeItem(ui->select_item->currentIndex());
     }else{
         QMessageBox *msgBox = new QMessageBox();
@@ -435,7 +448,6 @@ void UI_Test_Project::on_leg_clicked()
 
 void UI_Test_Project::on_shop_select_item_currentTextChanged(const QString &arg1)
 {
-    clickedButton();
     if(arg1 == ""){
         ui->shop_item_info->setText("");
     }else{
@@ -456,6 +468,9 @@ void UI_Test_Project::on_buy_clicked()
             player_note->money -=find.money;
             ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
             ui->select_item->addItem(find.icon,find.name);
+
+            player_note->back.push(find.icon,find.name,find.kind,find.atk,find.def);
+
             if(find.name == "GodSword")
                 playSound("GodSword");
             msgBox->setText(QStringLiteral("商品購買成功"));
@@ -571,17 +586,17 @@ void UI_Test_Project::on_Swordsman_clicked()
 {
     clickedButton();
     player_note->kind="Swordsman";
+    ui->skills->setGeometry(230,160,81,221);
+    ui->skills->setPixmap(QPixmap::fromImage(QImage(":/assets/images/Swordsman_skills.png")));
+    ui->player->setPixmap(QPixmap::fromImage(QImage(":/assets/images/Swordsman_icon.png")));
     getitem(player_note->kind);
     ui->select_Professional->setVisible(false);
-    QImage img;
-    ui->player->setScaledContents(true);
-    img.load(":/assets/images/play_icon.png");
-    ui->player->setPixmap(QPixmap::fromImage(img));
     if(ui->nameEdit->text()==""){
-        ui->username->setText(QStringLiteral("玩家：小可愛"));
+        player_note->name=QStringLiteral("小可愛");
     }else{
-        ui->username->setText(QStringLiteral("玩家：")+ui->nameEdit->text());
+        player_note->name=ui->nameEdit->text();
     }
+    ui->username->setText(QStringLiteral("玩家：")+player_note->name);
 }
 
 
@@ -589,30 +604,174 @@ void UI_Test_Project::on_Priest_clicked()
 {
     clickedButton();
     player_note->kind="Priest";
+    ui->skills->setGeometry(230,230,121,91);
+    ui->skills->setPixmap(QPixmap::fromImage(QImage(":/assets/images/Priest_skills.png")));
+    ui->player->setPixmap(QPixmap::fromImage(QImage(":/assets/images/Priest_icon.png")));
     getitem(player_note->kind);
     ui->select_Professional->setVisible(false);
-    QImage img;
-    ui->player->setScaledContents(true);
-    img.load(":/assets/images/play_icon2.png");
-    ui->player->setPixmap(QPixmap::fromImage(img));
     if(ui->nameEdit->text()==""){
-        ui->username->setText(QStringLiteral("玩家：小可愛"));
+        player_note->name=QStringLiteral("小可愛");
     }else{
-        ui->username->setText(QStringLiteral("玩家：")+ui->nameEdit->text());
+        player_note->name=ui->nameEdit->text();
     }
+    ui->username->setText(QStringLiteral("玩家：")+player_note->name);
 }
 
 
 void UI_Test_Project::on_skillsbtu_clicked()
 {
     clickedButton();
-    ui->MpBar->setValue(0);
+    if(!bigegg)
+        ui->MpBar->setValue(0);
+    ui->skillsbtu->setEnabled(false);
     skills->start(10);
+    sleep_bool=true;
 }
 
 
 void UI_Test_Project::on_MpBar_valueChanged(int value)
 {
     ui->MpText->setText("Mp:"+QString::number(ui->MpBar->value())+"/100");
+}
+
+void UI_Test_Project::on_shop_select_item_activated()
+{
+    clickedButton();
+}
+
+void UI_Test_Project::on_select_item_activated()
+{
+    clickedButton();
+}
+
+void UI_Test_Project::on_savegame_clicked()
+{
+    clickedButton();
+    player *p=player_note;
+    qDebug() <<p->name;
+    QString save=p->name+"\n"+QString(p->kind)+"\n"+QString::number(p->hp)+"\n"+QString::number(p->default_hp)+"\n"+QString::number(p->atk)+"\n"+QString::number(p->killcount)+"\n"+QString::number(p->level)
+            +"\n"+QString::number(p->money)+"\nback:\n";
+    save+=p->back.print();
+    QFile mFile;
+    QDateTime local=QDateTime::currentDateTime();
+    QString localTime = local.toString("yyyy_MM_dd_hh_mm_ss");
+    QFile file("./item/Save/"+localTime+".sv");
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)){
+        return;
+    }
+
+    QTextStream out(&file);
+    out.setCodec("UTF-8");
+    out << save;
+
+    file.close();
+    QMessageBox *msgBox = new QMessageBox();
+    msgBox->setWindowTitle(QStringLiteral("系統訊息"));
+    msgBox->setText(QStringLiteral("遊戲存檔成功"));
+    msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
+    msgBox->setStyleSheet("background-color:white");
+    msgBox->exec();
+}
+
+
+void UI_Test_Project::on_gamesaves_clicked()
+{
+    clickedButton();
+    ui->setting_gui->setVisible(false);
+    ui->setting_save->setVisible(true);
+    ui->volume_gui->setGeometry(280,160,250,150);
+}
+
+
+void UI_Test_Project::on_clos_clicked()
+{
+    clickedButton();
+    ui->setting_save->setVisible(false);
+    ui->setting_gui->setVisible(true);
+    ui->volume_gui->setGeometry(280,1000,250,150);
+}
+
+
+void UI_Test_Project::on_inputgame_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(NULL, QObject::tr("Text file"),
+        "./item/Save", QObject::tr("SaveFiles (*.sv)"));
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        return;
+    }
+    ui->select_item->clear();
+    ui->shop_select_item->clear();
+    ui->select_item->addItem("");
+    ui->shop_select_item->addItem("");
+    ui->weapons_1->setText(QStringLiteral("主手武器"));
+    ui->weapons_1->setIcon(QIcon());
+    ui->weapons_2->setText(QStringLiteral("副手武器"));
+    ui->weapons_2->setIcon(QIcon());
+    ui->armor->setText(QStringLiteral("護甲區塊"));
+    ui->armor->setIcon(QIcon());
+    ui->leg->setText(QStringLiteral("護腿區塊"));
+    ui->leg->setIcon(QIcon());
+    player_note=new player(100,1);
+    QStringList list= QString(file.readAll()).split("\n");
+    for(int i=0;i<list.length();i++){
+        switch (i) {
+            case 0:
+                player_note->name=list[i];
+                ui->username->setText(QStringLiteral("玩家：")+player_note->name);
+            break;
+            case 1:
+                player_note->kind=list[i];
+                getitem(player_note->kind);
+                if(player_note->kind=="Swordsman"){
+                    ui->skills->setPixmap(QPixmap::fromImage(QImage(":/assets/images/Swordsman_skills.png")));
+                    ui->player->setPixmap(QPixmap::fromImage(QImage(":/assets/images/Swordsman_icon.png")));
+                    ui->skills->setGeometry(230,160,81,221);
+                }else{
+                    ui->skills->setGeometry(230,230,121,91);
+                    ui->skills->setPixmap(QPixmap::fromImage(QImage(":/assets/images/Priest_skills.png")));
+                    ui->player->setPixmap(QPixmap::fromImage(QImage(":/assets/images/Priest_icon.png")));
+                }
+            break;
+            case 2:
+                player_note->hp=list[i].toInt();
+                ui->playerHp->setValue(player_note->gethp());
+            break;
+            case 3:
+                player_note->default_hp=list[i].toInt();
+            break;
+            case 4:
+                player_note->atk=list[i].toInt();
+            break;
+            case 5:
+                player_note->killcount=list[i].toInt();
+            break;
+            case 6:
+                player_note->level=list[i].toInt();
+                ui->level->setText("LV."+QString::number(player_note->level));
+            break;
+            case 7:
+                player_note->money=list[i].toInt();
+                ui->money->setText(QStringLiteral("$")+QString::number(player_note->money));
+            break;
+            case 8:
+            while(list[++i] != "backend"){
+                Equi find=itemlist.find(list[i]);
+                player_note->back.push(find.icon,find.name,find.kind,find.atk,find.def);
+                ui->select_item->addItem(find.icon,find.name);
+            }
+            break;
+        }
+
+    }
+
+    file.close();
+    QMessageBox *msgBox = new QMessageBox();
+    msgBox->setWindowTitle(QStringLiteral("系統訊息"));
+    msgBox->setText(QStringLiteral("遊戲讀檔成功"));
+    msgBox->addButton(QStringLiteral("确定"), QMessageBox::AcceptRole);
+    msgBox->setStyleSheet("background-color:white");
+    msgBox->exec();
 }
 
